@@ -2,13 +2,16 @@
 
 class Database
 {
-    
+    const DB_HOST = 'mysql:host=localhost;dbname=blog;charset=utf8';
+    const DB_USER = 'root';
+    const DB_PASS = '';
+
     public function getConnection()
     {
         try{
-            $connection = new PDO('mysql:host=localhost;dbname=exerciceblog;charset=utf8', 'root', '');
+            $connection = new PDO(Database::DB_HOST, Database::DB_USER, Database::DB_PASS);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return 'Connexion OK';
+            return $connection;
         }
         catch(Exception $errorConnection)
         {
