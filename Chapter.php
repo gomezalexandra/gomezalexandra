@@ -1,24 +1,30 @@
 
 <?php
 
-class Chapter
+class Chapter extends Database
 {
     public function getChapters()
     {
-        $db = new Database();
+        $sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
+        return $this->createQuery($sql);
+
+       /* $db = new Database();
         $connection = $db->getConnection();
         $result = $connection->query('SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC');
-        return $result;
+        return $result;*/
     }
 
     public function getchapter($chapterId)
     {
-        $db = new Database();
+        $sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
+        return $this->createQuery($sql, [$chapterId]);
+
+        /*$db = new Database();
         $connection = $db->getConnection();
         $result = $connection->prepare('SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?');
         $result->execute([
             $chapterId
         ]);
-        return $result;
+        return $result;*/
     }
 }

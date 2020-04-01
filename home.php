@@ -22,10 +22,10 @@ require 'Chapter.php';
         {
             ?>
             <div>
-                <h2><a href="single.php?chapterId=<?= htmlspecialchars($chapters['id']);?>"><?= htmlspecialchars($chapters['title']);?></a></h2>
-                <p><?= htmlspecialchars($chapters['content']);?></p>
-                <p><?= htmlspecialchars($chapters['author']);?></p>
-                <p>Créé le : <?= htmlspecialchars($chapters['createdAt']);?></p>
+                <h2><a href="single.php?chapterId=<?= htmlspecialchars($chapters->id);?>"><?= htmlspecialchars($chapters->title);?></a></h2>
+                <p><?= htmlspecialchars($chapters->content);?></p>
+                <p><?= htmlspecialchars($chapters->author);?></p>
+                <p>Créé le : <?= htmlspecialchars($chapters->createdAt);?></p>
             </div>
             <br>
             <?php
