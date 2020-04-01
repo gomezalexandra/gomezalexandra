@@ -1,7 +1,15 @@
 <?php
-require 'Database.php';
-require 'Chapter.php';
-require 'Comment.php';
+
+//require '../config/Autoloader.php';
+//require '../src/DAO/ChapterDAO.php';
+//require '../src/DAO/CommentDAO.php';
+
+use \App\config\Autoloader;
+use App\src\DAO\ChapterDAO;
+use App\src\DAO\CommentDAO;
+
+Autoloader::register();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +24,7 @@ require 'Comment.php';
     <h1>Mon livre</h1>
     <p>En construction</p>
     <?php
-    $chapter = new Chapter();
+    $chapter = new ChapterDAO();
     $chapters = $chapter->getChapter(1);
     $chapter = $chapters->fetch()
     ?>
@@ -31,12 +39,12 @@ require 'Comment.php';
     $chapters->closeCursor();
     ?>
 
-    <a href="home.php">Retour à l'accueil</a>
+    <a href="../public/index.php">Retour à l'accueil</a>
 
     <div id="comment">
         <h3>Commentaires</h3>
         <?php
-        $comment = new Comment();
+        $comment = new CommentDAO();
         $comments = $comment->getChapterComment($_GET['chapterId']);
         while($comment = $comments->fetch())
         {

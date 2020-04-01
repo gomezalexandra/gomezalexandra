@@ -1,11 +1,11 @@
 <?php
 
-abstract class Database
-{
-    const DB_HOST = 'mysql:host=localhost;dbname=blog;charset=utf8';
-    const DB_USER = 'root';
-    const DB_PASS = '';
+namespace App\src\DAO;
+use PDO;
+use Exception;
 
+abstract class DAO
+{
     private $connection;
 
     private function checkConnection()
@@ -19,7 +19,7 @@ abstract class Database
     public function getConnection()
     {
         try{
-            $this->connection = new PDO(self::DB_HOST, self::DB_USER, self::DB_PASS);
+            $this->connection = new PDO(DB_HOST, DB_USER, DB_PASS); //dans fichier dev.php
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             return $this->connection;

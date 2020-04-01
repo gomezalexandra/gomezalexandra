@@ -1,6 +1,13 @@
 <?php 
-require 'Database.php'; 
-require 'Chapter.php';
+
+//require '../config/Autoloader.php';
+//require '../src/DAO/ChapterDAO.php';
+
+
+use \App\config\Autoloader;
+use App\src\DAO\ChapterDAO;
+
+Autoloader::register();
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +23,13 @@ require 'Chapter.php';
         <p>En construction</p>
 
         <?php
-        $chapters = new Chapter();
+        $chapters = new ChapterDAO();
         $allChapters = $chapters->getChapters();
         while($chapters = $allChapters->fetch())
         {
             ?>
             <div>
-                <h2><a href="single.php?chapterId=<?= htmlspecialchars($chapters->id);?>"><?= htmlspecialchars($chapters->title);?></a></h2>
+                <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapters->id);?>"><?= htmlspecialchars($chapters->title);?></a></h2>
                 <p><?= htmlspecialchars($chapters->content);?></p>
                 <p><?= htmlspecialchars($chapters->author);?></p>
                 <p>Créé le : <?= htmlspecialchars($chapters->createdAt);?></p>
