@@ -3,6 +3,7 @@ namespace App\config;
 //require  '..\src\controller\FrontController.php';
 
 use App\src\controller\FrontController;
+use App\src\controller\BackController;
 use App\src\controller\ErrorController;
 use \App\config\Autoloader;
 use Exception;
@@ -12,11 +13,13 @@ Autoloader::register();
 class Router
 {
     private $frontController;
+    private $backController;
     private $errorController;
 
     public function __construct() //pour ne pas répéter l'appel au front controller
     {
         $this->frontController = new FrontController();
+        $this->backController = new BackController();
         $this->errorController = new ErrorController();
     }
 
@@ -28,6 +31,12 @@ class Router
                 if($_GET['route'] === 'chapter'){
                     //$frontController = new FrontController();
                     $this->frontController->chapter($_GET['chapterId']);
+                }
+                elseif($_GET['route'] === 'writteChapter'){
+                    require '../templates/new_chapter.php';
+                }
+                elseif($_GET['route'] === 'newChapter'){
+                    $this->backController->newChapter($_POST);
                 }
                 else{
                     $this->errorController->error404();

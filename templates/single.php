@@ -29,14 +29,14 @@
         //$chapter = $chapters->fetch()
     ?>
     <div>
-        <h2><?= htmlspecialchars($chapter->title);?></h2>
-        <p><?= htmlspecialchars($chapter->content);?></p>
-        <p><?= htmlspecialchars($chapter->author);?></p>
-        <p>Créé le : <?= htmlspecialchars($chapter->createdAt);?></p>
+        <h2><?= htmlspecialchars($chapter->getTitle());?></h2>
+        <p><?= htmlspecialchars($chapter->getContent());?></p>
+        <p><?= htmlspecialchars($chapter->getAuthor());?></p>
+        <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
     </div>
     <br>
     <?php
-    $chapters->closeCursor();
+    //$chapters->closeCursor();
     ?>
 
     <a href="../public/index.php">Retour à l'accueil</a>
@@ -44,15 +44,14 @@
     <div id="comment">
         <h3>Commentaires</h3>
         <?php
-        while($comment = $comments->fetch())
+        foreach ($comments as $comment)
         {
             ?>
-            <h4><?= htmlspecialchars($comment->pseudo);?></h4>
-            <p><?= htmlspecialchars($comment->content);?></p>
-            <p>Posté le <?= htmlspecialchars($comment->createdAt);?></p>
+            <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
+            <p><?= htmlspecialchars($comment->getContent());?></p>
+            <p>Posté le <?= htmlspecialchars($comment->getCreatedAt());?></p>
             <?php
         }
-        $comments->closeCursor();
         ?>
     </div>
 </div>

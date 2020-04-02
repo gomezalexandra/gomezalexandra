@@ -1,6 +1,9 @@
 <?php
 namespace App\src\DAO;
 
+use App\src\model\Comment;
+use App\src\model\Chapter;
+
 class CommentDAO extends DAO
 {
     private function buildObject($row)
@@ -16,7 +19,7 @@ class CommentDAO extends DAO
     public function getChapterComment($chapterId)
     {
         $sql = 'SELECT id, pseudo, content, createdAt FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
-        $result = $this->createQuery($sql, [$chapterId]]);
+        $result = $this->createQuery($sql, [$chapterId]);
         $comments = [];
         foreach ($result as $row) {
             $commentId = $row['id'];

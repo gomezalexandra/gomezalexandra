@@ -29,13 +29,20 @@ class ChapterDAO extends DAO
         return $chapters;
     }
 
-    public function getchapter($chapterId)
+    public function getChapter($chapterId)
     {
         $sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
         $result = $this->createQuery($sql, [$chapterId]);
         $chapter = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($chapter);
+    }
+
+    public function newChapter($chapter)
+    {
+        extract($chapter);
+        $sql = 'INSERT INTO chapter (title, content, author, createdAt) VALUES (?, ?, ?, NOW())';
+        $this->createQuery($sql, [$title, $content, $author]);
     }
 }
 
