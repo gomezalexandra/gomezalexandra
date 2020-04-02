@@ -4,10 +4,10 @@
 //require '../src/DAO/ChapterDAO.php';
 
 
-use \App\config\Autoloader;
-use App\src\DAO\ChapterDAO;
+//use \App\config\Autoloader;
 
-Autoloader::register();
+
+//Autoloader::register();
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,7 @@ Autoloader::register();
         <p>En construction</p>
 
         <?php
-        $chapters = new ChapterDAO();
-        $allChapters = $chapters->getChapters();
+        
         while($chapters = $allChapters->fetch())
         {
             ?>

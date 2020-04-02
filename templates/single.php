@@ -4,11 +4,11 @@
 //require '../src/DAO/ChapterDAO.php';
 //require '../src/DAO/CommentDAO.php';
 
-use \App\config\Autoloader;
+//use \App\config\Autoloader;
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\CommentDAO;
 
-Autoloader::register();
+//Autoloader::register();
 
 ?>
 
@@ -44,8 +44,6 @@ Autoloader::register();
     <div id="comment">
         <h3>Commentaires</h3>
         <?php
-        $comment = new CommentDAO();
-        $comments = $comment->getChapterComment($_GET['chapterId']);
         while($comment = $comments->fetch())
         {
             ?>
