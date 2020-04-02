@@ -20,23 +20,23 @@
 <body>
     <div>
         <h1>Mon Livre</h1>
-        <p>En construction</p>
 
         <?php
         
-        while($chapters = $allChapters->fetch())
+            //while($chapters = $allChapters->fetch())
+            foreach ($chapters as $chapter)
         {
             ?>
             <div>
-                <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapters->id);?>"><?= htmlspecialchars($chapters->title);?></a></h2>
-                <p><?= htmlspecialchars($chapters->content);?></p>
-                <p><?= htmlspecialchars($chapters->author);?></p>
-                <p>Créé le : <?= htmlspecialchars($chapters->createdAt);?></p>
+                <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars($chapter->GetTitle());?></a></h2>
+                <p><?= htmlspecialchars($chapter->getContent());?></p>
+                <p><?= htmlspecialchars($chapter->getAuthor());?></p>
+                <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
             </div>
             <br>
             <?php
         }
-        $allChapters->closeCursor();
+        //$allChapters->closeCursor();
         ?>
     </div>
 </body>

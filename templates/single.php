@@ -5,8 +5,8 @@
 //require '../src/DAO/CommentDAO.php';
 
 //use \App\config\Autoloader;
-use App\src\DAO\ChapterDAO;
-use App\src\DAO\CommentDAO;
+    //use App\src\DAO\ChapterDAO;
+    //use App\src\DAO\CommentDAO;
 
 //Autoloader::register();
 
@@ -22,11 +22,11 @@ use App\src\DAO\CommentDAO;
 <body>
 <div>
     <h1>Mon livre</h1>
-    <p>En construction</p>
+    
     <?php
-    $chapter = new ChapterDAO();
-    $chapters = $chapter->getChapter(1);
-    $chapter = $chapters->fetch()
+        //$chapter = new ChapterDAO();
+        //$chapters = $chapter->getChapter(1);
+        //$chapter = $chapters->fetch()
     ?>
     <div>
         <h2><?= htmlspecialchars($chapter->title);?></h2>

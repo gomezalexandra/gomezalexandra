@@ -36,12 +36,12 @@ abstract class DAO
         if($parameters)
         {
             $result = $this->checkConnection()->prepare($sql);
-            $result->setFetchMode(PDO::FETCH_CLASS, static::class); //pas un tableau mais une class
+            //$result->setFetchMode(PDO::FETCH_CLASS, static::class); //pas un tableau mais une class
             $result->execute($parameters);
             return $result;
         }
         $result = $this->checkConnection()->query($sql);
-        $result->setFetchMode(PDO::FETCH_CLASS, static::class);
+        //$result->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $result;
 
         /*if($parameters)
