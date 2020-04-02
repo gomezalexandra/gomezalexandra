@@ -3,6 +3,7 @@ namespace App\config;
 //require  '..\src\controller\FrontController.php';
 
 use App\src\controller\FrontController;
+use App\src\controller\ErrorController;
 use \App\config\Autoloader;
 use Exception;
 
@@ -11,10 +12,12 @@ Autoloader::register();
 class Router
 {
     private $frontController;
+    private $errorController;
 
     public function __construct() //pour ne pas répéter l'appel au front controller
     {
         $this->frontController = new FrontController();
+        $this->errorController = new ErrorController();
     }
 
     public function run()
@@ -27,7 +30,7 @@ class Router
                     $this->frontController->chapter($_GET['chapterId']);
                 }
                 else{
-                    echo 'Page d\'erreur';
+                    $this->errorController->error404();
                 }
             }
             else{
@@ -37,7 +40,7 @@ class Router
         }
         catch (Exception $e)
         {
-            echo 'Page d\'erreur';
+            $this->errorController->error500();
         }
     }
 }
