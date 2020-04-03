@@ -12,12 +12,14 @@ Autoloader::register();
 
 class Router
 {
+    private $request;
     private $frontController;
     private $backController;
     private $errorController;
 
     public function __construct() //pour ne pas répéter l'appel au front controller
     {
+        $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
@@ -25,18 +27,21 @@ class Router
 
     public function run()
     {
+        var_dump($this->request->getPost());
+
+        $route = $this->request->getGet()->get('route');
         try{
-            if(isset($_GET['route']))
+            if(isset($route)) //(isset($_GET['route']))
             {
                 if($_GET['route'] === 'chapter'){
                     //$frontController = new FrontController();
-                    $this->frontController->chapter($_GET['chapterId']);
+                    $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
                 elseif($_GET['route'] === 'writteChapter'){
                     require '../templates/new_chapter.php';
                 }
                 elseif($_GET['route'] === 'newChapter'){
-                    $this->backController->newChapter($_POST);
+                    $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
                 }
                 else{
                     $this->errorController->error404();

@@ -2,6 +2,7 @@
 namespace App\src\DAO;
 
 use App\src\model\Chapter;
+use App\config\Parameter;
 
 class ChapterDAO extends DAO
 {
@@ -38,11 +39,11 @@ class ChapterDAO extends DAO
         return $this->buildObject($chapter);
     }
 
-    public function newChapter($chapter)
+    public function newChapter(Parameter $post)
     {
-        extract($chapter);
+        //extract($chapter); plus nécessaire car parameter
         $sql = 'INSERT INTO chapter (title, content, author, createdAt) VALUES (?, ?, ?, NOW())';
-        $this->createQuery($sql, [$title, $content, $author]);
+        $this->createQuery($sql, [$post->get('title'), $post->get('content'), $post->get('author')]);
     }
 }
 

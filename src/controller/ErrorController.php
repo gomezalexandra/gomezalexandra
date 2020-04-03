@@ -1,7 +1,7 @@
 <?php
 namespace App\src\controller;
 
-class ErrorController
+class ErrorController extends Controller
 {
     public function Error404()
     {
