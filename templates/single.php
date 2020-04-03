@@ -34,7 +34,11 @@
         <p><?= htmlspecialchars($chapter->getAuthor());?></p>
         <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
     </div>
-    <br>
+    
+    <div class="actions">
+        <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier le chapitre</a> 
+    </div>
+    </br>
     <?php
     //$chapters->closeCursor();
     ?>

@@ -27,8 +27,6 @@ class Router
 
     public function run()
     {
-        var_dump($this->request->getPost());
-
         $route = $this->request->getGet()->get('route');
         try{
             if(isset($route)) //(isset($_GET['route']))
@@ -42,6 +40,12 @@ class Router
                 }
                 elseif($_GET['route'] === 'newChapter'){
                     $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
+                }
+                /*elseif($_GET['route'] === 'editChapter'){
+                    require '../templates/modify_chapter.php';
+                }*/
+                elseif($_GET['route'] === 'modifyChapter'){
+                    $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
                 }
                 else{
                     $this->errorController->error404();
