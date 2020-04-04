@@ -47,6 +47,18 @@ class Router
                 elseif($_GET['route'] === 'modifyChapter'){
                     $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
                 }
+                elseif($route === 'deleteChapter'){
+                    $this->backController->deleteChapter($this->request->getGet()->get('chapterId'));
+                }
+                elseif($route === 'addComment'){
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'));
+                }
+                elseif($route === 'flagComment'){
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId'));
+                }
+                elseif($route === 'deleteComment'){
+                    $this->backController->deleteComment($this->request->getGet()->get('commentId'));
+                }
                 else{
                     $this->errorController->error404();
                 }

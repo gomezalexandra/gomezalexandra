@@ -56,6 +56,12 @@ class ChapterDAO extends DAO
             'chapterId' => $chapterId
         ]);
     }
+
+    public function deleteChapter($chapterId)
+    {
+        $sql = 'DELETE FROM chapter WHERE id = ?';
+        $this->createQuery($sql, [$chapterId]);
+    }
 }
 
 /*class ChapterDAO extends DAO

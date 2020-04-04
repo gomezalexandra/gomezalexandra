@@ -24,9 +24,23 @@ class BackController extends Controller
         $chapter = $this-> chapterDAO-> getChapter($chapterId);
         if($post->get('submit')) {
             $this->chapterDAO->modifyChapter($post, $chapterId);
-            $this->session->set('modify_chapter', 'L\' article a été modifié'); //apparait dans home.php
+            $this->session->set('modify_chapter', 'Le chapitre a été modifié'); //apparait dans home.php
             header('Location: ../public/index.php');
         }
         require '../templates/modify_chapter.php';
+    }
+
+    public function deleteChapter($chapterId)
+    {
+        $this->chapterDAO->deleteChapter($chapterId);
+        $this->session->set('delete_chapter', 'Le chapitre a bien été supprimé');
+        header('Location: ../public/index.php');
+    }
+
+    public function deleteComment($commentId)
+    {
+        $this->commentDAO->deleteComment($commentId);
+        $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
+        header('Location: ../public/index.php');
     }
 }

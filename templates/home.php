@@ -21,9 +21,11 @@
     <div>
         <h1>Mon Livre</h1>
         <a href="../public/index.php?route=writteChapter">Ajouter un chapitre</a></br>
-        <?= $this->session->show('new_chapter'); ?> <!--fait apparaitre message de backcontroller-->
-        <?= $this->session->show('modify_chapter'); ?> <!--fait apparaitre message de backcontroller-->
-
+        <?= $this->session->show('new_chapter'); ?> <!--fait apparaitre les messages de backcontroller-->
+        <?= $this->session->show('modify_chapter'); ?> 
+        <?= $this->session->show('delete_chapter'); ?> 
+        <?= $this->session->show('flag_comment'); ?>
+        <?= $this->session->show('delete_comment'); ?>
         <?php
         
             //while($chapters = $allChapters->fetch())

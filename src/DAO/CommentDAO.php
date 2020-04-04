@@ -3,6 +3,7 @@ namespace App\src\DAO;
 
 use App\src\model\Comment;
 use App\src\model\Chapter;
+use App\config\Parameter;
 
 class CommentDAO extends DAO
 {
@@ -13,12 +14,13 @@ class CommentDAO extends DAO
         $comment->setPseudo($row['pseudo']);
         $comment->setContent($row['content']);
         $comment->setCreatedAt($row['createdAt']);
+        $comment->setFlag($row['flag']);
         return $comment;
     }
 
     public function getChapterComment($chapterId)
     {
-        $sql = 'SELECT id, pseudo, content, createdAt FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
+        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
         $result = $this->createQuery($sql, [$chapterId]);
         $comments = [];
         foreach ($result as $row) {
@@ -27,5 +29,23 @@ class CommentDAO extends DAO
         }
         $result->closeCursor();
         return $comments;
+    }
+
+    public function addComment(Parameter $post, $chapterId)
+    {
+        $sql = 'INSERT INTO comment (pseudo, content, createdAt, flag, chapterId) VALUES (?, ?, NOW(), ?, ?)';
+        $this->createQuery($sql, [$post->get('pseudo'), $post->get('content'), 0, $chapterId]);
+    }
+
+    public function deleteComment($commentId)
+    {
+        $sql = 'DELETE FROM comment WHERE id = ?';
+        $this->createQuery($sql, [$commentId]);
+    }
+
+    public function flagComment($commentId)
+    {
+        $sql = 'UPDATE comment SET flag = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $commentId]);
     }
 }

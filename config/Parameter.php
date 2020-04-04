@@ -22,5 +22,4 @@ class Parameter
     {
         $this->parameter[$name] = $value;
     }
-
 }
