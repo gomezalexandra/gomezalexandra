@@ -12,14 +12,16 @@ class ChapterDAO extends DAO
         $chapter->setId($row['id']);
         $chapter->setTitle($row['title']);
         $chapter->setContent($row['content']);
-        $chapter->setAuthor($row['author']);
+        //$chapter->setAuthor($row['author']);
+        $chapter->setAuthor($row['pseudo']);
         $chapter->setCreatedAt($row['createdAt']);
         return $chapter;
     }
 
     public function getChapters()
     {
-        $sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
+        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = userId ORDER BY chapter.id DESC';
+        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $chapters = [];
         foreach ($result as $row){
@@ -32,27 +34,27 @@ class ChapterDAO extends DAO
 
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
+        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = userId WHERE chapter.id = ?';
+        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
         $result = $this->createQuery($sql, [$chapterId]);
         $chapter = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($chapter);
     }
 
-    public function newChapter(Parameter $post)
+    public function newChapter(Parameter $post, $userId)
     {
-        //extract($chapter); plus nécessaire car parameter
-        $sql = 'INSERT INTO chapter (title, content, author, createdAt) VALUES (?, ?, ?, NOW())';
-        $this->createQuery($sql, [$post->get('title'), $post->get('content'), $post->get('author')]);
+        $sql = 'INSERT INTO chapter (title, content, userId, createdAt) VALUES (?, ?, ?, NOW())';
+        $this->createQuery($sql, [$post->get('title'), $post->get('content'), $userId]);
     }
 
-    public function modifyChapter(Parameter $post, $chapterId)
+    public function modifyChapter(Parameter $post, $chapterId, $userId)
     {
-        $sql = 'UPDATE chapter SET title=:title, content=:content, author=:author WHERE id=:chapterId';
+        $sql = 'UPDATE chapter SET title=:title, content=:content, userId=:userId WHERE id=:chapterId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
             'content' => $post->get('content'),
-            'author' => $post->get('author'),
+            'userId' => $userId,
             'chapterId' => $chapterId
         ]);
     }
@@ -60,6 +62,8 @@ class ChapterDAO extends DAO
     public function deleteChapter($chapterId)
     {
         $sql = 'DELETE FROM chapter WHERE id = ?';
+        $this->createQuery($sql, [$chapterId]);
+        $sql = 'DELETE FROM comment WHERE chapterId = ?';
         $this->createQuery($sql, [$chapterId]);
     }
 }

@@ -9,22 +9,23 @@
     <div>
         <h1>Mon Livre</h1>
         
-        <?= $this->session->show('new_chapter'); ?> <!--fait apparaitre les messages de backcontroller-->
-        <?= $this->session->show('modify_chapter'); ?> 
-        <?= $this->session->show('delete_chapter'); ?> 
         <?= $this->session->show('flag_comment'); ?>
-        <?= $this->session->show('delete_comment'); ?>
+        <?= $this->session->show('delete_comment'); ?>  <!--à passer en admin-->
         <?= $this->session->show('register'); ?>
         <?= $this->session->show('login'); ?> <!-- a personnaliser avec le pseudo voir frontcontroller-->
-        <?= $this->session->show('logout'); ?> </br>
+        <?= $this->session->show('logout'); ?> 
+        <?= $this->session->show('delete_account'); ?></br>
 
         <?php
         if ($this->session->get('pseudo')) {
             ?>
             <a href="../public/index.php?route=logout">Déconnexion</a> </br>
             <a href="../public/index.php?route=profile">Profil</a> </br>
-            <a href="../public/index.php?route=writteChapter">Ajouter un chapitre</a></br>
-            <?php
+
+            <?php if($this->session->get('role') === 'admin') { ?>
+                <a href="../public/index.php?route=administration">Administration</a> </br>
+            <?php } 
+
         } else {
             ?>
             <a href="../public/index.php?route=register">S'inscrire</a>
