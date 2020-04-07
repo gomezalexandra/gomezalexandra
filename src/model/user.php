@@ -1,6 +1,4 @@
-
 <?php
-
 namespace App\src\model;
 
 class User
@@ -9,6 +7,7 @@ class User
     private $pseudo;
     private $password;
     private $createdAt;
+    private $role;
 
     public function getId()
     {
@@ -48,5 +47,15 @@ class User
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 }

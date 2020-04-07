@@ -10,7 +10,6 @@
         <h1>Mon Livre</h1>
         
         <?= $this->session->show('flag_comment'); ?>
-        <?= $this->session->show('delete_comment'); ?>  <!--à passer en admin-->
         <?= $this->session->show('register'); ?>
         <?= $this->session->show('login'); ?> <!-- a personnaliser avec le pseudo voir frontcontroller-->
         <?= $this->session->show('logout'); ?> 

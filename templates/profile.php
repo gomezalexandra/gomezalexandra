@@ -10,6 +10,7 @@
     <p>Mon espace personnel</p>
 
     <?= $this->session->show('password'); ?>
+    <?= $this->session->show('not_admin'); ?>
 
     <div>
         <h2><?= $this->session->get('pseudo'); ?></h2>

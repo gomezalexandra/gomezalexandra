@@ -10,11 +10,11 @@ try {
     $sql = "CREATE DATABASE blog";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "Database created successfully<br>";
+    echo "Database created successfully</br>";
     }
 catch(PDOException $e)
     {
-    echo $sql . "<br>" . $e->getMessage();
+    echo $sql . "</br>" . $e->getMessage();
     }
 
 $conn = null;
