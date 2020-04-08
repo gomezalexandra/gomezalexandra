@@ -10,14 +10,14 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $chapters = $this-> chapterDAO ->getChapters();
+        $chapters = $this->chapterDAO ->getChapters();
         require '../templates/home.php';
     }
 
     public function chapter($chapterId)
     {
-        $chapter = $this-> chapterDAO-> getChapter($chapterId);
-        $comments = $this-> commentDAO-> getChapterComment($chapterId);
+        $chapter = $this->chapterDAO-> getChapter($chapterId);
+        $comments = $this->commentDAO-> getChapterComment($chapterId);
         require '../templates/single.php';
     }
 

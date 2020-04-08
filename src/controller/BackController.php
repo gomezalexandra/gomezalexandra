@@ -46,7 +46,7 @@ class BackController extends Controller
     public function modifyChapter(Parameter $post, $chapterId)
     {
         if($this->checkAdmin()) {
-            $chapter = $this-> chapterDAO-> getChapter($chapterId);
+            $chapter = $this->chapterDAO-> getChapter($chapterId);
             if($post->get('submit')) {
                 //$this->chapterDAO->modifyChapter($post, $chapterId);
                 $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));

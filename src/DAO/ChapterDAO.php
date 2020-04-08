@@ -12,7 +12,7 @@ class ChapterDAO extends DAO
         $chapter->setId($row['id']);
         $chapter->setTitle($row['title']);
         $chapter->setContent($row['content']);
-        //$chapter->setAuthor($row['author']);
+        //$chapter->setAuthor($row['author']); car est forcement celui connecté
         $chapter->setAuthor($row['pseudo']);
         $chapter->setCreatedAt($row['createdAt']);
         return $chapter;
@@ -20,7 +20,7 @@ class ChapterDAO extends DAO
 
     public function getChapters()
     {
-        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = userId ORDER BY chapter.id DESC';
+        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = user.id ORDER BY chapter.id DESC';
         //$sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $chapters = [];
@@ -34,7 +34,7 @@ class ChapterDAO extends DAO
 
     public function getChapter($chapterId)
     {
-        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = userId WHERE chapter.id = ?';
+        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = user.id WHERE chapter.id = ?';
         //$sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
         $result = $this->createQuery($sql, [$chapterId]);
         $chapter = $result->fetch();
@@ -67,19 +67,3 @@ class ChapterDAO extends DAO
         $this->createQuery($sql, [$chapterId]);
     }
 }
-
-/*class ChapterDAO extends DAO
-{
-    public function getChapters()
-    {
-        $sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
-        return $this->createQuery($sql);
-    }
-
-    public function getchapter($chapterId)
-    {
-        $sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
-        return $this->createQuery($sql, [$chapterId]);
-
-    }
-}*/

@@ -25,9 +25,6 @@
     <?= $this->session->show('add_comment'); ?> 
     
     <?php
-        //$chapter = new ChapterDAO();
-        //$chapters = $chapter->getChapter(1);
-        //$chapter = $chapters->fetch()
     ?>
     <div>
         <h2><?= htmlspecialchars($chapter->getTitle());?></h2>
