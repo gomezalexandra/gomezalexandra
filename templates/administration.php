@@ -24,7 +24,6 @@
 
     <table>
         <tr>
-            <td>Id</td>
             <td>Titre</td>
             <td>Contenu</td>
             <td>Auteur</td>
@@ -36,7 +35,6 @@
         {
             ?>
             <tr>
-                <td><?= htmlspecialchars($chapter->getId());?></td>
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars($chapter->getTitle());?></a></td>
                 <td><?= substr(htmlspecialchars($chapter->getContent()), 0, 150);?></td>
                 <td><?= htmlspecialchars($chapter->getAuthor());?></td>
@@ -55,7 +53,6 @@
 
     <table>
         <tr>
-            <td>Id</td>
             <td>Pseudo</td>
             <td>Message</td>
             <td>Date</td>
@@ -66,7 +63,6 @@
         {
             ?>
             <tr>
-                <td><?= htmlspecialchars($comment->getId());?></td>
                 <td><?= htmlspecialchars($comment->getPseudo());?></td>
                 <td><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></td>
                 <td>Créé le : <?= htmlspecialchars($comment->getCreatedAt());?></td>
@@ -85,7 +81,6 @@
 
     <table>
         <tr>
-            <td>Id</td>
             <td>Pseudo</td>
             <td>Date</td>
             <td>Rôle</td>
@@ -96,7 +91,6 @@
         {
             ?>
             <tr>
-                <td><?= htmlspecialchars($user->getId());?></td>
                 <td><?= htmlspecialchars($user->getPseudo());?></td>
                 <td>Créé le : <?= htmlspecialchars($user->getCreatedAt());?></td>
                 <td><?= htmlspecialchars($user->getRole());?></td>
