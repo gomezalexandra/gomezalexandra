@@ -22,7 +22,8 @@
 <body>
 <div>
     <h1>Mon livre</h1>
-    <?= $this->session->show('add_comment'); ?> 
+    <?= $this->session->show('add_comment'); ?> </br>
+    <a href="../public/index.php">Retour à l'accueil</a>
     
     <?php
     ?>
@@ -32,17 +33,17 @@
         <p><?= htmlspecialchars($chapter->getAuthor());?></p>
         <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
     </div>
-    
-    <div class="actions">
-        <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier le chapitre</a> </br>
-        <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer le chapitre</a>
-    </div>
-    </br>
-    <?php
-    //$chapters->closeCursor();
-    ?>
 
-    <a href="../public/index.php">Retour à l'accueil</a>
+    <?php if($this->session->get('role') === 'admin') { ?>
+    
+        <div class="actions">
+            <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier le chapitre</a> </br>
+            <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer le chapitre</a>
+        </div>
+        </br>
+    <?php
+    }
+    ?> 
 
     <div id="comment">
     
@@ -69,9 +70,12 @@
                 <?php
             }
             ?>
-            <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a></p>
-            <br>
-            <?php
+
+            <?php if($this->session->get('role') === 'admin') { ?>
+                <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a></p>
+                <br>
+                <?php
+            }
         }
         ?>
          

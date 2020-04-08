@@ -21,10 +21,10 @@ class FrontController extends Controller
         require '../templates/single.php';
     }
 
-    public function addComment(Parameter $post, $chapterId)
+    public function addComment(Parameter $post, $chapterId, $pseudo)
     {
         if($post->get('submit')) {
-            $this->commentDAO->addComment($post, $chapterId);
+            $this->commentDAO->addComment($post, $chapterId, $pseudo);
             $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
             header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
         }

@@ -3,6 +3,7 @@ namespace App\src\DAO;
 
 use App\src\model\Comment;
 use App\src\model\Chapter;
+use App\config\Session;
 use App\config\Parameter;
 
 class CommentDAO extends DAO
@@ -31,10 +32,11 @@ class CommentDAO extends DAO
         return $comments;
     }
 
-    public function addComment(Parameter $post, $chapterId)
-    {
+    public function addComment(Parameter $post, $chapterId, $pseudo)
+    {           
         $sql = 'INSERT INTO comment (pseudo, content, createdAt, flag, chapterId) VALUES (?, ?, NOW(), ?, ?)';
-        $this->createQuery($sql, [$post->get('pseudo'), $post->get('content'), 0, $chapterId]);
+        $this->createQuery($sql, [$pseudo , $post->get('content'), 0, $chapterId]);
+        //$this->createQuery($sql, [$post->get('pseudo'), $post->get('content'), 0, $chapterId]);
     }
 
     public function deleteComment($commentId)

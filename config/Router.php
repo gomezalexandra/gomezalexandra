@@ -51,7 +51,7 @@ class Router
                     $this->backController->deleteChapter($this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'));
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'), $this->request->getSession()->get('pseudo'));
                 }
                 elseif($route === 'flagComment'){
                     $this->frontController->flagComment($this->request->getGet()->get('commentId'));
