@@ -14,9 +14,9 @@ class FrontController extends Controller
     {
         $chapters = $this->chapterDAO ->getChapters();
         //require '../templates/home.php'; TODOVIEW  $this->session ajouté
-        return $this->view->render('home', [
+        return $this->view->render('home', $this->session, [
             'chapters' => $chapters
-        ], $this->session);
+        ]);
     }
 
     public function chapter($chapterId)
@@ -24,10 +24,10 @@ class FrontController extends Controller
         $chapter = $this->chapterDAO-> getChapter($chapterId);
         $comments = $this->commentDAO-> getChapterComment($chapterId);
         //require '../templates/single.php'; TODOVIEW
-        return $this->view->render('single', [
+        return $this->view->render('single', $this->session, [
             'chapter' => $chapter,
             'comments' => $comments
-        ], $this->session);
+        ]);
     }
 
     public function addComment(Parameter $post, $chapterId, $pseudo)
@@ -55,7 +55,7 @@ class FrontController extends Controller
             header('Location: ../public/index.php');    
         }
         //require '../templates/register.php'; TODOVIEW
-        return $this->view->render('register');
+        return $this->view->render('register', $this->session);
     }
 
     public function login(Parameter $post)
@@ -74,6 +74,6 @@ class FrontController extends Controller
             }
         }
         //require '../templates/login.php'; TODOVIEW
-        return $this->view->render('login');
+        return $this->view->render('login', $this->session);
     }
 }

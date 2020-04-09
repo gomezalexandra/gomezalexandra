@@ -4,6 +4,7 @@ namespace App\src\controller;
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\CommentDAO;
 use App\config\Request;
+use App\src\constraint\Validation;
 use App\src\DAO\UserDAO;
 use App\src\model\View;
 
@@ -16,6 +17,7 @@ abstract class Controller
     protected $post;
     protected $session;
     protected $userDAO;
+    protected $validation;
     private $request;
 
     public function __construct()
@@ -25,6 +27,7 @@ abstract class Controller
         $this->view = new View();
         $this->userDAO = new UserDAO();
         $this->request = new Request();
+        $this->validation = new Validation();
         $this->get = $this->request->getGet();
         $this->post = $this->request->getPost();
         $this->session = $this->request->getSession();

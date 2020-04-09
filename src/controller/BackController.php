@@ -30,7 +30,7 @@ class BackController extends Controller
 
     public function newChapter(Parameter $post)
     {
-        if($this->checkAdmin()) {
+        /*if($this->checkAdmin()) {
             if($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
                 $this->chapterDAO->newChapter($post,$this->session->get('id'));
                 $this->session->set('new_chapter', 'Nouveau chapitre publié!'); //apparait dans home.php
@@ -44,12 +44,28 @@ class BackController extends Controller
                 'errors' => $errors
             ]);
         }
-        return $this->view->render('new_chapter');   
+        return $this->view->render('new_chapter');*/   
+
+        if($this->checkAdmin()) {
+            if ($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
+                $errors = $this->validation->validate($post, 'Chapter');
+                if (!$errors) {
+                    $this->chapterDAO->newChapter($post, $this->session->get('id'));
+                    $this->session->set('new_chapter', 'Le nouvel article a bien été ajouté');
+                    header('Location: ../public/index.php?route=administration');
+                }
+                return $this->view->render('new_chapter', [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
+            }
+            return $this->view->render('new_chapter', $this->session);
+        }
     }
 
     public function modifyChapter(Parameter $post, $chapterId)
     {
-        if($this->checkAdmin()) {
+        /*if($this->checkAdmin()) {
             $chapter = $this->chapterDAO-> getChapter($chapterId);
             if($post->get('submit')) {
                 //$this->chapterDAO->modifyChapter($post, $chapterId);
@@ -70,7 +86,32 @@ class BackController extends Controller
 
         return $this->view->render('modify_chapter', [
             'post' => $post
-        ]);      
+        ]); */
+        
+        if($this->checkAdmin()) {
+            $chapter = $this->chapterDAO-> getChapter($chapterId);
+            if($post->get('submit')) {
+                $errors = $this->validation->validate($post, 'Chapter');
+                if (!$errors) {
+                    $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
+                    $this->session->set('modify_chapter', 'L\' article a bien été modifié');
+                    header('Location: ../public/index.php?route=administration');
+                }
+                return $this->view->render('modify_chapter', $this->session, [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
+
+            }
+            $post->set('id', $chapter->getId());
+            $post->set('title', $chapter->getTitle());
+            $post->set('content', $chapter->getContent());
+            $post->set('author', $chapter->getAuthor());
+
+            return $this->view->render('modify_chapter', $this->session, [
+                'post' => $post
+            ]);
+        }
     }
 
     public function deleteChapter($chapterId)
@@ -104,7 +145,7 @@ class BackController extends Controller
     {
         if($this->checkLoggedIn()) {
             //require '../templates/profile.php'; TODOVIEW
-            return $this->view->render('profile');
+            return $this->view->render('profile', $this->session);
         }    
     }
 
@@ -117,7 +158,7 @@ class BackController extends Controller
                 header('Location: ../public/index.php?route=profile');
             }
             //require '../templates/password.php'; TODOVIEW
-            return $this->view->render('password');
+            return $this->view->render('password', $this->session);
         }
     }
 
@@ -164,11 +205,11 @@ class BackController extends Controller
             $comments = $this->commentDAO->getFlagComments();
             $users = $this->userDAO->getUsers();
            // require '../templates/administration.php'; TODOVIEW
-            return $this->view->render('administration', [
+            return $this->view->render('administration', $this->session, [
             'chapters' => $chapters,
             'comments' => $comments,
             'users' => $users
-        ]);
+            ]);
         }     
     }
 }

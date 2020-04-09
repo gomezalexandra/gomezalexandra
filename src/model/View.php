@@ -8,7 +8,7 @@ class View
     private $title;
     private $session; //TODOVIEW comment passer autrement la session
 
-    public function render($template, $data = [], $session)
+    public function render($template, $session, $data = [])
     {
         $this->session = $session;
         $this->file = '../templates/'.$template.'.php';
@@ -25,7 +25,6 @@ class View
         if(file_exists($file)){
             extract($data);
             ob_start();
-            var_dump($file);
             require $file;
             return ob_get_clean();
         }
