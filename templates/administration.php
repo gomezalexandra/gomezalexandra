@@ -1,11 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Mon livre</title>
-</head>
+    <title>Mon livre</title>   
+</head>-->
 
-<body>
+
+<?php $this->title = 'Administration'; ?>
+
     <h1>Mon livre</h1>
     <p>Espace d'administration</p>
 
@@ -19,8 +21,11 @@
     <a href="../public/index.php?route=logout">Déconnexion</a> </br>
     <a href="../public/index.php">Retour à l'accueil</a>
 
+
     <h2>Chapitres</h2>
     <a href="../public/index.php?route=writteChapter">Ajouter un chapitre</a>
+
+    
 
     <table>
         <tr>
@@ -31,12 +36,13 @@
             <td>Actions</td>
         </tr>
         <?php
+      
         foreach ($chapters as $chapter)
         {
             ?>
             <tr>
-                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars($chapter->getTitle());?></a></td>
-                <td><?= substr(htmlspecialchars($chapter->getContent()), 0, 150);?></td>
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
+                <td><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></td>
                 <td><?= htmlspecialchars($chapter->getAuthor());?></td>
                 <td>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></td>
                 <td>
@@ -110,6 +116,3 @@
         }
         ?>
     </table>
-
-</body>
-</html>

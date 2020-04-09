@@ -38,9 +38,13 @@ class BackController extends Controller
                 //$chapterDAO->newChapter($post);
                 header('Location: ../public/index.php?route=administration');
             }
-            //header('Location: ../public/index.php'); // si pas de nouveau chapitre
-            require '../templates/new_chapter.php';
-        }      
+            //require '../templates/new_chapter.php'; TODOVIEW
+            return $this->view->render('new_chapter', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+        return $this->view->render('new_chapter');   
     }
 
     public function modifyChapter(Parameter $post, $chapterId)
@@ -53,8 +57,20 @@ class BackController extends Controller
                 $this->session->set('modify_chapter', 'Le chapitre a été modifié'); //apparait dans home.php
                 header('Location: ../public/index.php?route=administration');
             }
-            require '../templates/modify_chapter.php';
-        }      
+            //require '../templates/modify_chapter.php'; TODOVIEW
+            return $this->view->render('modify_chapter', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+        $post->set('id', $chapter->getId());
+        $post->set('title', $chapter->getTitle());
+        $post->set('content', $chapter->getContent());
+        $post->set('author', $chapter->getAuthor());
+
+        return $this->view->render('modify_chapter', [
+            'post' => $post
+        ]);      
     }
 
     public function deleteChapter($chapterId)
@@ -80,7 +96,6 @@ class BackController extends Controller
         if($this->checkAdmin()) {
             $this->commentDAO->deleteComment($commentId);
             $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
-            //header('Location: ../public/index.php');
             header('Location: ../public/index.php?route=administration');
         }
     }
@@ -88,7 +103,8 @@ class BackController extends Controller
     public function profile()
     {
         if($this->checkLoggedIn()) {
-            require '../templates/profile.php';
+            //require '../templates/profile.php'; TODOVIEW
+            return $this->view->render('profile');
         }    
     }
 
@@ -100,7 +116,8 @@ class BackController extends Controller
                 $this->session->set('password', 'Le mot de passe a été mis à jour');
                 header('Location: ../public/index.php?route=profile');
             }
-            require '../templates/password.php';
+            //require '../templates/password.php'; TODOVIEW
+            return $this->view->render('password');
         }
     }
 
@@ -146,7 +163,12 @@ class BackController extends Controller
             $chapters = $this->chapterDAO->getChapters();
             $comments = $this->commentDAO->getFlagComments();
             $users = $this->userDAO->getUsers();
-            require '../templates/administration.php';
+           // require '../templates/administration.php'; TODOVIEW
+            return $this->view->render('administration', [
+            'chapters' => $chapters,
+            'comments' => $comments,
+            'users' => $users
+        ]);
         }     
     }
 }

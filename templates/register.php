@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Mon livre</title>
-</head>
+</head>-->
+
+
+<?php $this->title = "Inscription"; ?>
 
 <body>
     <h1>Mon livre</h1>
@@ -18,5 +21,3 @@
         </form>
         <a href="../public/index.php">Retour à l'accueil</a>
     </div>
-</body>
-</html>

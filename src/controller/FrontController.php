@@ -2,23 +2,32 @@
 namespace App\src\controller;
 
 //use App\src\controller\Controller;
+use App\src\model\View;
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\CommentDAO;
 use App\config\Parameter;
+
 
 class FrontController extends Controller
 {
     public function home()
     {
         $chapters = $this->chapterDAO ->getChapters();
-        require '../templates/home.php';
+        //require '../templates/home.php'; TODOVIEW  $this->session ajouté
+        return $this->view->render('home', [
+            'chapters' => $chapters
+        ], $this->session);
     }
 
     public function chapter($chapterId)
     {
         $chapter = $this->chapterDAO-> getChapter($chapterId);
         $comments = $this->commentDAO-> getChapterComment($chapterId);
-        require '../templates/single.php';
+        //require '../templates/single.php'; TODOVIEW
+        return $this->view->render('single', [
+            'chapter' => $chapter,
+            'comments' => $comments
+        ], $this->session);
     }
 
     public function addComment(Parameter $post, $chapterId, $pseudo)
@@ -45,7 +54,8 @@ class FrontController extends Controller
             $this->session->set('register', 'Votre inscription a bien été effectuée');
             header('Location: ../public/index.php');    
         }
-        require '../templates/register.php';
+        //require '../templates/register.php'; TODOVIEW
+        return $this->view->render('register');
     }
 
     public function login(Parameter $post)
@@ -63,6 +73,7 @@ class FrontController extends Controller
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
             }
         }
-        require '../templates/login.php';
+        //require '../templates/login.php'; TODOVIEW
+        return $this->view->render('login');
     }
 }

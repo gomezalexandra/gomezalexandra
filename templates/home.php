@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Mon Livre</title>
-</head>
+</head>-->
 
-<body>
+
+<?php $this->title = "Accueil"; ?>
+
+
     <div>
         <h1>Mon Livre</h1>
         
@@ -40,8 +43,8 @@
         {
             ?>
             <div>
-                <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars($chapter->GetTitle());?></a></h2>
-                <p><?= htmlspecialchars($chapter->getContent());?></p>
+                <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->GetTitle());?></a></h2>
+                <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
                 <p><?= htmlspecialchars($chapter->getAuthor());?></p>
                 <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
             </div>
@@ -50,5 +53,3 @@
         }
         ?>
     </div>
-</body>
-</html>

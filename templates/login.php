@@ -1,11 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Mon livre</title>
-</head>
+</head>-->
 
-<body>
+<?php $this->title = "Connexion"; ?>
+
+
     <h1>Mon livre</h1>
     <p>se connecter</p>
     <?= $this->session->show('error_login'); ?>
@@ -20,5 +22,3 @@
         </form>
         <a href="../public/index.php">Retour à l'accueil</a>
     </div>
-</body>
-</html>

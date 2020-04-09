@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mon Livre</title>
-</head>
+<?php $this->title = 'mofification'; ?>
 
 <h1>Modifier le chapitre</h1>
 

@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php $this->title = 'mofification'; ?>
 <head>
-    <meta charset="utf-8">
-    <title>Mes chapitres</title>
+    <script src="https://cdn.tiny.cloud/1/cw4q64aokxm6bpoqnqo3ll1stp1bwm7285a3jsoyczyjp3dm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <h1>Modifier les chapitres</h1>
@@ -15,9 +13,21 @@ $content = isset($chapter) && $chapter->getContent() ? htmlspecialchars($chapter
 //$author = isset($chapter) && $chapter->getAuthor() ? htmlspecialchars($chapter->getAuthor()) : '';
 ?>
 
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        toolbar_mode: 'floating',
+        });
+
+        tinymce.init({
+        selector: '.title',
+        toolbar_mode: 'floating',
+        });
+    </script>
+
 <form method="post" action="../public/index.php?route=<?= $route; ?>">
     <label for="title">Titre</label><br>
-    <input type="text" id="title" name="title" value="<?= $title; ?>"><br>
+    <input class='title' type="text" id="title" name="title" value="<?= $title; ?>"><br>
     <label for="content">Contenu</label><br>
     <textarea id="content" name="content"><?= $content; ?></textarea><br>
     <input type="submit" value="Envoyer" id="submit" name="submit">

@@ -12,12 +12,15 @@
 
 ?>
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Mon livre</title>
-</head>
+</head>-->
+
+
+<?php $this->title = "Chapter"; ?>
 
 <body>
 <div>
@@ -28,8 +31,8 @@
     <?php
     ?>
     <div>
-        <h2><?= htmlspecialchars($chapter->getTitle());?></h2>
-        <p><?= htmlspecialchars($chapter->getContent());?></p>
+        <h2><?= htmlspecialchars_decode($chapter->getTitle());?></h2>
+        <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
         <p><?= htmlspecialchars($chapter->getAuthor());?></p>
         <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
     </div>

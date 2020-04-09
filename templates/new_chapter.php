@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mon Livre</title>
-</head>
+<?php $this->title = 'ajout chapitre'; ?>
 
-<body>
     <h1>Mon livre</h1>
 
     <div>
@@ -20,4 +14,3 @@
 
         <a href="../public/index.php">Retour à l'accueil</a>
     </div>
-</body>

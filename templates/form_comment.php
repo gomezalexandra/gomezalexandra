@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mes chapitres</title>
-</head>
+<?php $this->title = 'commentaire'; ?>
 
 <form method="post" action="../public/index.php?route=addComment&chapterId=<?= htmlspecialchars($chapter->getId()); ?>">
     <!--<label for="pseudo">Pseudo</label><br>

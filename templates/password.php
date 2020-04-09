@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mon livre</title>
-</head>
+<?php $this->title = 'password'; ?>
 
-<body>
+
     <h1>Mon livre</h1>
     <p>Modifier le mot de passe</p>
 
@@ -19,6 +14,3 @@
 </div>
 <br>
 <a href="../public/index.php">Retour à l'accueil</a>
-
-</body>
-</html>
