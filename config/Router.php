@@ -35,6 +35,12 @@ class Router
                     //$frontController = new FrontController();
                     $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
+                elseif($_GET['route'] === 'allChapters'){
+                    $this->frontController->allChapters($this->request->getGet()->get('chapterId'));
+                }
+                elseif($_GET['route'] === 'author'){
+                    $this->frontController->author();
+                }
                 elseif($_GET['route'] === 'writteChapter'){
                     require '../templates/new_chapter.php';
                 }

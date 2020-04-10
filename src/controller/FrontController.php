@@ -12,9 +12,18 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $chapters = $this->chapterDAO ->getChapters();
+        $chapters = $this->chapterDAO ->getLastChapter();
         //require '../templates/home.php'; TODOVIEW  $this->session ajouté
         return $this->view->render('home', $this->session, [
+            'chapters' => $chapters
+        ]);
+    }
+
+    public function allChapters()
+    {
+        $chapters = $this->chapterDAO ->getChapters();
+        //require '../templates/home.php'; TODOVIEW  $this->session ajouté
+        return $this->view->render('all_chapters', $this->session, [
             'chapters' => $chapters
         ]);
     }
@@ -28,6 +37,11 @@ class FrontController extends Controller
             'chapter' => $chapter,
             'comments' => $comments
         ]);
+    }
+
+    public function author()
+    {
+            return $this->view->render('author', $this->session);  
     }
 
     public function addComment(Parameter $post, $chapterId, $pseudo)

@@ -1,0 +1,159 @@
+@font-face 
+{
+	font-family: 'MrsSaintDelafieldregular';
+	src: url('../fonts/MrsSaintDelafield-Regular.ttf');
+}
+
+h1 {
+    margin: 40px;
+}
+
+.title {
+    font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
+    font-size: 2.8em;
+    color: #707070;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #707070;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #F0F0F0;
+}
+
+.menuTab {
+    padding: 10px;
+    margin: 40px 10px 10px 10px;
+    width: 100px;
+    background-color: #DDC3AC;
+    text-align: center;
+    height: 18px;
+}
+
+.menuTab a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logo{
+    font-weight: 300;
+    font-size: 3em;
+    margin: 60px 30px 10px 30px;
+    color: #707070;
+    font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
+}
+
+.subMenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subMenuTab {
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    width: 100px;
+    background-color: #30536F;
+    margin-bottom: 30px;
+}
+
+.subMenuTab a {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.presentation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    margin: auto;
+    text-align: justify;
+    margin-bottom: 80px;
+}
+
+.lastChapterContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    max-width: 1000px;
+    height: 400px;
+    margin: auto;
+}
+
+.lastChapter {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0F0;
+    height: 400px;
+}
+
+.content {
+    padding: 10px;
+}
+
+.lastChapterLink{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DDC3AC;
+    height: 400px;
+}
+
+.sectionThree{
+    margin-top: 80px;
+    position: absolue;
+}
+
+.allChaptersContainer, .authorContainer {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.whiteBlock {
+    background-color: white;
+    height: 180px;
+    width: 400px;
+    position: relative;
+    left: 75px;
+    z-index: 1;
+}
+
+.allChaptersLink, .authorLink{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.blueBlock {
+    height: 300px;
+    width: 600px;
+    background-color: #30536F;
+    position: relative;
+    right: 75px;
+    z-index: 0;  
+}

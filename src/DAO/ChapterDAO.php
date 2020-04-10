@@ -32,6 +32,20 @@ class ChapterDAO extends DAO
         return $chapters;
     }
 
+    public function getLastChapter()
+    {
+        $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = user.id ORDER BY chapter.id DESC LIMIT 0, 1';
+        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
+        $result = $this->createQuery($sql);
+        $chapters = [];
+        foreach ($result as $row){
+            $chapterId = $row['id'];
+            $chapters[$chapterId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $chapters;
+    }
+
     public function getChapter($chapterId)
     {
         $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = user.id WHERE chapter.id = ?';
