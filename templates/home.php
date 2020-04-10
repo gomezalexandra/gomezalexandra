@@ -69,10 +69,10 @@
                         <h3><a href="../public/index.php?route=allChapters">Voir les Chapitres  -></a></h3>
                     </div>
                 </div>
-                <div class="blueBlock">                  
-                </div>
-                <div class="image"> 
-                    <img class="image" src="../public/img/book.jpg" alt="livre ouvert"/>                  
+                <div class="blueBlock"> 
+                    <div class="image"> 
+                        <img class="image" src="../public/img/book.jpg" alt="livre ouvert"/>                  
+                    </div>                
                 </div>
             </div>
             
@@ -82,11 +82,12 @@
                         <h3><a href="../public/index.php?route=author">Découvrir l'Auteur  -></a></h3>
                     </div>
                 </div>
-                <div class="blueBlock">               
+                <div class="blueBlock">
+                    <div class="image"> 
+                        <img class="image" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
+                    </div>        
                 </div>
-                <div class="image"> 
-                    <img class="image" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
-                </div>
+                
             </div> 
         <section>
     </div>
