@@ -46,7 +46,7 @@
                     foreach ($chapters as $chapter)
                 {
                     ?>
-                    <div class="content">
+                    <div class="chapterContent">
                         <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->GetTitle());?></a></h2>
                         <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
                         <p><?= htmlspecialchars($chapter->getAuthor());?></p>

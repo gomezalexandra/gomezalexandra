@@ -8,8 +8,10 @@
 
 <?php $this->title = 'Administration'; ?>
 
-    <h1>Mon livre</h1>
-    <p>Espace d'administration</p>
+<div class="title">
+    <h1>L'Administration</h1>
+</div>
+
 
     <?= $this->session->show('new_chapter'); ?> <!--fait apparaitre les messages de backcontroller-->
     <?= $this->session->show('modify_chapter'); ?> 
@@ -17,9 +19,6 @@
     <?= $this->session->show('delete_comment'); ?>
     <?= $this->session->show('unflag_comment'); ?>
     <?= $this->session->show('delete_user'); ?> </br>
-
-    <a href="../public/index.php?route=logout">Déconnexion</a> </br>
-    <a href="../public/index.php">Retour à l'accueil</a>
 
 
     <h2>Chapitres</h2>

@@ -14,7 +14,7 @@
 </div>
 
 <div class="subMenu">
-    <div class="subMenuTab"> <a href="../public/index.php?route=updatePassword">Modifier son mot de passe</a> </div>
+    <div class="subMenuTab"> <a href="../public/index.php?route=updatePassword">Modifier mon mot de passe</a> </div>
     <div class="subMenuTab"> <a href="../public/index.php?route=deleteAccount">Supprimer mon compte</a> </div>
 </div>
 

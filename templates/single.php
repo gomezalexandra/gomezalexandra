@@ -65,7 +65,6 @@
             <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier le chapitre</a> </br>
             <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer le chapitre</a>
         </div>
-        </br>
     <?php
     }
     ?> 
