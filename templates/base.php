@@ -9,11 +9,19 @@
 
 <body>
     <header class="menu">
-        <div class="menuTab">Accueil</div>
-        <div class="menuTab">Chapitres</div>
+        <div class="menuTab">
+            <a href="../public/index.php">L'Accueil</a>
+        </div>
+        <div class="menuTab">
+            <a href="../public/index.php?route=allChapters">Les Chapitres</a>
+        </div>
         <div class= "logo">JF</div>
-        <div class="menuTab">L'Auteur</div>
-        <div class="menuTab">Mon Compte</div>
+        <div class="menuTab">
+            L'Auteur
+        </div>
+        <div class="menuTab">
+            Mon Compte
+        </div>
     </header>
 
     <div id="content">
@@ -21,9 +29,7 @@
     </div>
 
     <footer>
-        <div>
-            <p>Mention légales/Droit d'auteur</p>
-        </div>
+            <p>Site réalisé dans le cadre d'une formation OpenClassrooms</br>par Alexandra Gomez.</p>
     </footer>
 </body>
 </html>

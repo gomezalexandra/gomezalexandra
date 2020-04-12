@@ -8,16 +8,22 @@
 
 <?php $this->title = "Inscription"; ?>
 
-<body>
-    <h1>Mon livre</h1>
-    <p>S'inscrire</p>
-    <div>
+<div class="title">
+    <h1>Inscription</h1>
+</div>
+
+<div class="register">
+    <div class="formContainer">
         <form method="post" action="../public/index.php?route=register">
-            <label for="pseudo">Pseudo</label><br>
+            <label for="pseudo">Pseudo :</label><br>
             <input type="text" id="pseudo" name="pseudo"><br>
-            <label for="password">Mot de passe</label><br>
+            <label for="password">Mot de passe :</label><br>
             <input type="password" id="password" name="password"><br>
             <input type="submit" value="Inscription" id="submit" name="submit">
         </form>
-        <a href="../public/index.php">Retour à l'accueil</a>
     </div>
+
+    <div class="alreadyMember">
+        <a href="../public/index.php?route=login">J'ai déjà un Compte -> </a>
+    </div>
+</div>

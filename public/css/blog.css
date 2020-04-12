@@ -8,6 +8,11 @@ h1 {
     margin: 40px;
 }
 
+h2 {
+    color: #707070;
+    font-size: 2em;
+}
+
 .title {
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
     font-size: 2.8em;
@@ -62,7 +67,7 @@ a {
 .subMenuTab {
     padding: 10px;
     margin: 0px 10px 10px 10px;
-    width: 100px;
+    min-width: 100px;
     background-color: #30536F;
     margin-bottom: 30px;
 }
@@ -73,6 +78,8 @@ a {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+/*page home*/
 
 .presentation {
     display: flex;
@@ -117,8 +124,7 @@ a {
     height: 400px;
 }
 
-.sectionThree{
-    
+.sectionThree{ 
     position: absolue;
 }
 
@@ -168,9 +174,204 @@ a {
     z-index: 3;
 }
 
+/*page all_chapters*/
+
+.chapterContainer{
+    margin: auto;
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: 1px solid #707070;
+}
+
+.chapterDescription{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F0F0;
+    height: 340px;
+    width: 50%;
+}
+
+.chapterLinkBlue, .chapterLinkBrown{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 340px;
+    width: 50%;
+}
+
+.chapterLinkBlue {
+    background-color: #30536F;
+}
+
+.chapterLinkBrown {
+    background-color: #DDC3AC;
+}
+
+/*part single*/
+
+
+.singleChapter, .addCommentContainer, .allComments {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.singleChapter {
+    border: 2px solid #30536F;
+    max-width: 900px;
+    width: 80%;
+    padding: 20px;
+}
+
+.addComment, .singleComment, .addCommentContainer, .allComments, .singleChapter {
+    margin-top: 20px;
+}
+
+.addComment {
+    background-color: #30536F;
+}
+
+.singleComment {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px;
+}
+
+.comment {
+    width: 70%;
+    background-color: #DDC3AC;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flagCommentContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    flex-direction: column;
+}
+
+.flagComment {
+    border: 2px solid #30536F;
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 4px;
+}
+
+/*part form*/
+
+.register, .login, .password {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    max-width: 600px;
+}
+
+.formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.formContainer form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    background-color:#30536F;
+}
+
+#password, #pseudo {
+    height: 30px;
+    width: 200px;
+}
+
+label {
+    color: white;
+    font-size: 1.1em;
+}
+
+#submit {
+    background-color: #DDC3AC;
+    border: 2px solid #DDC3AC;
+    padding: 5px;
+    width: 100px;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.alreadyMember, .notMember, .routeProfile {
+    display: flex;
+    margin: auto;
+}
+
+.alreadyMember a, .notMember a,  .routeProfile a{
+    border: 2px solid #30536F;
+    padding: 8px;
+    background-color: #DDC3AC;
+    color: black;
+}
+
+.alreadyMember a:hover, .notMember a:hover, .routeProfile a:hover{
+    background-color: #30536F;
+    color: white;
+}
+
+/*page password*/
+
+.passwordChange {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.passwordChange p {
+    font-size: 1.1em;
+}
+
+/*page profile */
+
+.profilePseudo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/*part footer*/
+
 footer {
     margin-top: 200px;
     height: 100px;
     background-color: #F0F0F0;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
