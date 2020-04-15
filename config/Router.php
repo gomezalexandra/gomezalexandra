@@ -41,9 +41,9 @@ class Router
                 elseif($_GET['route'] === 'author'){
                     $this->frontController->author();
                 }
-                elseif($_GET['route'] === 'writteChapter'){
+                /*elseif($_GET['route'] === 'writteChapter'){
                     require '../templates/new_chapter.php';
-                }
+                }*/
                 elseif($_GET['route'] === 'newChapter'){
                     $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
                 }
@@ -60,13 +60,13 @@ class Router
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'), $this->request->getSession()->get('pseudo'));
                 }
                 elseif($route === 'flagComment'){
-                    $this->frontController->flagComment($this->request->getGet()->get('commentId'));
+                    $this->frontController->flagComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'unflagComment'){
                     $this->backController->unflagComment($this->request->getGet()->get('commentId'));
                 }
                 elseif($route === 'deleteComment'){
-                    $this->backController->deleteComment($this->request->getGet()->get('commentId'));
+                    $this->backController->deleteComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'register'){
                     $this->frontController->register($this->request->getPost());

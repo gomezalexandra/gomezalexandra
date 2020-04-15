@@ -89,20 +89,21 @@ class BackController extends Controller
         ]); */
         
         if($this->checkAdmin()) {
-            $chapter = $this->chapterDAO-> getChapter($chapterId);
+            $chapter = $this->chapterDAO->getChapter($chapterId);
+            
             if($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
                     $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
-                    $this->session->set('modify_chapter', 'L\' article a bien été modifié');
+                    $this->session->set('modify_chapter', 'L\'article a bien été modifié');
                     header('Location: ../public/index.php?route=administration');
                 }
                 return $this->view->render('modify_chapter', $this->session, [
                     'post' => $post,
                     'errors' => $errors
                 ]);
-
             }
+
             $post->set('id', $chapter->getId());
             $post->set('title', $chapter->getTitle());
             $post->set('content', $chapter->getContent());
@@ -132,12 +133,12 @@ class BackController extends Controller
         }
     }
 
-    public function deleteComment($commentId)
+    public function deleteComment($commentId, $chapterId)
     {
         if($this->checkAdmin()) {
             $this->commentDAO->deleteComment($commentId);
             $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
-            header('Location: ../public/index.php?route=administration');
+            header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
         }
     }
 

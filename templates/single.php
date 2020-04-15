@@ -69,14 +69,16 @@
     }
     ?> 
 
-    <div id="commentContainer">
     
-        <div class="addCommentContainer">
-            <h2>Ajouter un commentaire</h2>
-            <div class="addComment">
-                <?php include('form_comment.php'); ?>
+    <div id="commentContainer">
+        <?php if ($this->session->get('pseudo')) { ?>
+            <div class="addCommentContainer">
+                <h2>Ajouter un commentaire</h2>
+                <div class="addComment">
+                    <?php include('form_comment.php'); ?>
+                </div>
             </div>
-        </div>
+        <?php } ?>
 
         <div class="allComments">
 
@@ -103,18 +105,18 @@
                             <?php
                             } else {
                                 ?>
-                                <p><a href="../public/index.php?route=flagComment&commentId=<?= $comment->getId(); ?>">Signaler le commentaire</a></p>
+                                <p><a href="../public/index.php?route=flagComment&commentId=<?=$comment->getId()?>&chapterId=<?= $chapter->getId(); ?>">Signaler le commentaire</a></p>
                                 <?php
                             }
                             ?>
                         </div>
-                        <div class="flagComment">
-                            <?php if($this->session->get('role') === 'admin') { ?>
-                                <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a></p>
-                                <br>
-                                <?php
-                            } ?>
-                        </div>
+                        
+                        <?php if($this->session->get('role') === 'admin') { ?>
+                            <div class="flagComment">
+                                <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId()?>&chapterId=<?= $chapter->getId(); ?>">Supprimer le commentaire</a></p>
+                            </div>
+                        <?php
+                        } ?>
                         
                     </div>
                 </div>

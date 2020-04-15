@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title><?= $title ?></title>
     <link rel="stylesheet" href="../public/css/blog.css"/>
+    <script src="https://cdn.tiny.cloud/1/cw4q64aokxm6bpoqnqo3ll1stp1bwm7285a3jsoyczyjp3dm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 	<!--<link rel="stylesheet" href="fontawesome-free/css/all.css"/>-->
 </head>
 
@@ -17,10 +18,26 @@
         </div>
         <div class= "logo">JF</div>
         <div class="menuTab">
-            L'Auteur
+            <a href="../public/index.php?route=author">L'Auteur</a>
         </div>
-        <div class="menuTab">
-            Mon Compte
+        <div id="hidenMenu" class="menuTab">
+            <div><a>Mon Compte</a> </div>
+            
+            <div class="hidenMenuTab">
+                <?php if ($this->session->get('pseudo')) { ?>
+                    <a href="../public/index.php?route=profile">Profil</a>
+
+                    <?php if ($this->session->get('role') === 'admin') { ?>
+                        <a href="../public/index.php?route=administration">Administration</a>
+                    <?php } ?>
+
+                    <a href="../public/index.php?route=logout">Déconnexion</a>
+                <?php } else { ?>
+                    <a href="../public/index.php?route=register">S'inscrire</a>
+                    <a href="../public/index.php?route=login">Se Connecter</a>
+                <?php } ?>
+
+            </div>
         </div>
     </header>
 

@@ -47,10 +47,12 @@
                 {
                     ?>
                     <div class="chapterContent">
-                        <h2><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->GetTitle());?></a></h2>
-                        <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
-                        <p><?= htmlspecialchars($chapter->getAuthor());?></p>
-                        <p >Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
+                        <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
+                            <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
+                            <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
+                            <p><?= htmlspecialchars($chapter->getAuthor());?></p>
+                            <p >Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
+                        </a>
                     </div>
                     
             </div>

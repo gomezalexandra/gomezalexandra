@@ -53,11 +53,11 @@ class FrontController extends Controller
         }
     }
 
-    public function flagComment($commentId)
+    public function flagComment($commentId, $chapterId)
     {
         $this->commentDAO->flagComment($commentId);
         $this->session->set('flag_comment', 'Le commentaire a bien été signalé');
-        header('Location: ../public/index.php');
+        header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
     }
 
     public function register(Parameter $post)

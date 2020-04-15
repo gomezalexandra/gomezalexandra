@@ -1,16 +1,13 @@
 <?php $this->title = 'ajout chapitre'; ?>
 
-    <h1>Mon livre</h1>
+<div class="title">
+    <h1>Nouveau Chapitre</h1>
+</div>
 
-    <div>
-        <!--<form method="post" action="../public/index.php?route=newChapter">
-            <p><label> Titre du Chapitre : <input type="text" name="title"/></label></p>
-            <p><label> Texte : <input type="text" name="content"/></label></p>
-            <p><label> Auteur : <input type="text" name="author"/></label></p>
-            <p><input type= "submit" value="Créer" name="send"/></p>
-        </form>-->
+<div class="routeAdministration">
+    <a href="../public/index.php?route=administration">Retour à l'Administration -> </a>
+</div>
 
-        <?php include('form_chapter.php');?>
-
-        <a href="../public/index.php">Retour à l'accueil</a>
-    </div>
+<div>
+    <?php include('form_chapter.php');?>
+</div>

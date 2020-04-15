@@ -35,6 +35,33 @@ a {
     background-color: #F0F0F0;
 }
 
+.hidenMenuTab {
+    display: none; 
+    position: absolute; 
+    left: 120px; 
+    top: 0px;
+     background-color: #DDC3AC
+}
+
+
+.hidenMenuTab a{
+    margin: 10px;
+}
+
+.hidenMenuTab a:hover {
+color: #30536F;
+}
+
+#hidenMenu {
+    list-style-type: none; 
+    position: relative
+}
+
+#hidenMenu:hover .hidenMenuTab{
+    display: block;   
+}
+
+
 .menuTab {
     padding: 10px;
     margin: 40px 10px 10px 10px;
@@ -359,24 +386,24 @@ label {
     cursor: pointer;
 }
 
-.alreadyMember, .notMember, .routeProfile, .routeChapter {
+.alreadyMember, .notMember, .routeProfile, .routeChapter, .routeAdministration {
     display: flex;
     margin: auto;
 }
 
-.alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a{
+.alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a, .routeAdministration a{
     border: 2px solid #30536F;
     padding: 8px;
     background-color: #DDC3AC;
     color: black;
 }
 
-.alreadyMember a:hover, .notMember a:hover, .routeProfile a:hover, .routeChapter a:hover{
+.alreadyMember a:hover, .notMember a:hover, .routeProfile a:hover, .routeChapter a:hover, .routeAdministration a:hover{
     background-color: #30536F;
     color: white;
 }
 
-.routeChapter {
+.routeChapter, .routeAdministration {
     justify-content: center;
     margin: 20px 0px 40px 0px;
 }
@@ -403,6 +430,81 @@ label {
     margin-bottom: 20px;
 }
 
+
+/*pages administration */
+
+.administrationUser, .administrationComments, .administrationChapter {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.addChapter {
+    padding: 10px;
+    margin: 40px 0px 50px 0px;
+    width: 120px;
+    background-color: #30536F;
+}
+
+.addChapter a {
+    color: white;
+}
+
+.addChapter:hover, .tableHead {
+    background-color: #DDC3AC;
+}
+
+.tableHead td{
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+.tableBody {
+    background-color: #F0F0F0;
+}
+
+table {
+    border-spacing: 0px;
+    border: 1px solid #30536F;
+    margin-bottom: 50px;
+}
+
+table td {
+    border: 1px solid #30536F;
+    padding: 8px;
+}
+
+.tableActions {
+    background-color: #DDC3AC;
+    font-weight: 800;
+}
+
+.tableActions a {
+    vertical-align: 40%;
+}
+
+.tableActions a:hover{
+    color:  #30536F;
+}
+
+/*pages author */
+.author {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    text-align: justify;
+    border: 2px solid #30536F;
+    padding: 20px;
+}
+
+
 /*pages error */
 
 .error {
@@ -422,7 +524,7 @@ label {
 /*part footer*/
 
 footer {
-    margin-top: 200px;
+    margin-top: 100px;
     height: 100px;
     background-color: #F0F0F0;
     display: flex;

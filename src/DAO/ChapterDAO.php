@@ -21,7 +21,6 @@ class ChapterDAO extends DAO
     public function getChapters()
     {
         $sql = 'SELECT chapter.id, chapter.title, chapter.content, user.pseudo, chapter.createdAt FROM chapter INNER JOIN user ON chapter.userId = user.id ORDER BY chapter.id DESC';
-        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $chapters = [];
         foreach ($result as $row){
