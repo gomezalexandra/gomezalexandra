@@ -8,6 +8,7 @@ class Comment
     private $content;
     private $createdAt;
     private $flag;
+    private $chapterId;
 
     public function getId()
     {
@@ -57,5 +58,15 @@ class Comment
     public function setFlag($flag)
     {
         $this->flag = $flag;
+    }
+
+    public function getChapterId()
+    {
+        return $this->chapterId;
+    }
+
+    public function setChapterId($chapterId)
+    {
+        $this->chapterId = $chapterId;
     }
 }

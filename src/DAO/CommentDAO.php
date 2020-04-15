@@ -16,12 +16,13 @@ class CommentDAO extends DAO
         $comment->setContent($row['content']);
         $comment->setCreatedAt($row['createdAt']);
         $comment->setFlag($row['flag']);
+        $comment->setChapterId($row['chapterId']);
         return $comment;
     }
 
     public function getChapterComment($chapterId)
     {
-        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
+        $sql = 'SELECT id, pseudo, content, createdAt, flag, chapterId FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
         $result = $this->createQuery($sql, [$chapterId]);
         $comments = [];
         foreach ($result as $row) {
@@ -59,7 +60,7 @@ class CommentDAO extends DAO
 
     public function getFlagComments()
     {
-        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE flag = ? ORDER BY createdAt DESC';
+        $sql = 'SELECT id, pseudo, content, createdAt, flag, chapterId FROM comment WHERE flag = ? ORDER BY createdAt DESC';
         $result = $this->createQuery($sql, [1]);
         $comments = [];
         foreach ($result as $row) {

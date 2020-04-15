@@ -53,6 +53,9 @@ class Router
                 elseif($_GET['route'] === 'modifyChapter'){
                     $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
                 }
+                elseif($_GET['route'] === 'publish'){
+                    $this->backController->publishChapter($this->request->getGet()->get('chapterId'));
+                }
                 elseif($route === 'deleteChapter'){
                     $this->backController->deleteChapter($this->request->getGet()->get('chapterId'));
                 }
@@ -91,6 +94,9 @@ class Router
                 }
                 elseif($route === 'administration'){
                     $this->backController->administration();
+                }
+                elseif($_GET['route'] === 'modifyAuthor'){
+                    $this->backController->modifyAuthor($this->request->getPost());
                 }
                 else{
                     $this->errorController->error404();

@@ -3,6 +3,7 @@ namespace App\src\controller;
 
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\CommentDAO;
+use App\src\DAO\AuthorDAO;
 use App\config\Request;
 use App\src\constraint\Validation;
 use App\src\DAO\UserDAO;
@@ -12,6 +13,7 @@ abstract class Controller
 {
     protected $chapterDAO;
     protected $commentDAO;
+    protected $authorDAO;
     protected $view;
     protected $get;
     protected $post;
@@ -24,6 +26,7 @@ abstract class Controller
     {
         $this->chapterDAO = new ChapterDAO();
         $this->commentDAO = new CommentDAO();
+        $this->authorDAO = new AuthorDAO();
         $this->view = new View();
         $this->userDAO = new UserDAO();
         $this->request = new Request();

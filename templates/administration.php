@@ -19,6 +19,7 @@
     <?= $this->session->show('delete_comment'); ?>
     <?= $this->session->show('unflag_comment'); ?>
     <?= $this->session->show('delete_user'); ?>
+    <?= $this->session->show('modify_author'); ?>
 
 <div class="administrationChapter">
     <div class="administrationSubtitle">
@@ -31,6 +32,7 @@
 
     <table>
         <tr class="tableHead">
+            <td>Numéro</td>
             <td>Titre</td>
             <td>Contenu</td>
             <td>Auteur</td>
@@ -43,6 +45,7 @@
         {
             ?>
             <tr class="tableBody">
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getChapterNumber());?></a></td>
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
                 <td><?= htmlspecialchars($chapter->getAuthor());?></td>
@@ -56,7 +59,45 @@
         }
         ?>
     </table>
+
+    <div class="administrationSubtitle">
+        <h2>Les Brouillons</h2>
+    </div>
+
+
+    <table>
+        <tr class="tableHead">
+            <td>Numéro</td>
+            <td>Titre</td>
+            <td>Contenu</td>
+            <td>Auteur</td>
+            <td>Date</td>
+            <td>Actions</td>
+        </tr>
+        <?php
+      
+        foreach ($drafts as $draft)
+        {
+            ?>
+            <tr class="tableBody">
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= htmlspecialchars_decode($draft->getChapterNumber());?></a></td>
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= htmlspecialchars_decode($draft->getTitle());?></a></td>
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= substr(htmlspecialchars_decode($draft->getContent()), 0, 350);?></a></td>
+                <td><?= htmlspecialchars($draft->getAuthor());?></td>
+                <td>Créé le : <?= htmlspecialchars($draft->getCreatedAt());?></td>
+                <td class="tableActions">
+                    <a href="../public/index.php?route=publish&chapterId=<?= $draft->getId(); ?>">Publier</a></br>
+                    <a href="../public/index.php?route=modifyChapter&chapterId=<?= $draft->getId(); ?>">Modifier</a></br>
+                    <a href="../public/index.php?route=deleteChapter&chapterId=<?= $draft->getId(); ?>">Supprimer</a>
+                </td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
 </div>
+
+
 
 <div class="administrationComments">
     <div class="administrationSubtitle">
@@ -75,8 +116,8 @@
             ?>
             <tr class="tableBody">
                 <td><?= htmlspecialchars($comment->getPseudo());?></td>
-                <td><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></td>
-                <td>Créé le : <?= htmlspecialchars($comment->getCreatedAt());?></td>
+                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($comment->getChapterId());?>"><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></a></td>
+                <td>Créé le <?= htmlspecialchars($comment->getCreatedAt());?></td>
                 <td class="tableActions">
                     <a href="../public/index.php?route=unflagComment&commentId=<?= $comment->getId(); ?>">Désignaler le commentaire</a> </br>
                     <a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a>
@@ -86,6 +127,16 @@
         }
         ?>
     </table>
+</div>
+
+<div class="administrationAuthor">
+    <div class="administrationSubtitle">
+            <h2>L'Auteur</h2>
+    </div>
+
+    <div class="modifyAuthor">
+        <a href="../public/index.php?route=modifyAuthor">Modifier la Page Auteur</a>
+    </div>
 </div>
 
 <div class="administrationUser">

@@ -35,7 +35,7 @@
                     <div class="chapterDescription">
                         <div class= "content">
                             <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
-                                <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
+                                <h2><?= htmlspecialchars_decode($chapter->getTitle());?></h2>
                                 <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
                                 <p><?= htmlspecialchars($chapter->getAuthor());?></p>
                                 <p>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <?php if((htmlspecialchars($chapter->getId()) % 2) == 0) {
+                    <?php if((htmlspecialchars($chapter->getChapterNumber()) % 2) == 0) {
                             $color = "chapterLinkBlue";
                         } else {
                             $color = "chapterLinkBrown";
@@ -51,7 +51,7 @@
                     ?> 
 
                     <div class= "<?= $color ?>">
-                        <p>Chapitre <?= htmlspecialchars($chapter->getId());?> </p>
+                        <p>Chapitre <?= htmlspecialchars($chapter->getChapterNumber());?> </p>
                     </div>
                 </div>
                 <?php

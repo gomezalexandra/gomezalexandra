@@ -3,6 +3,7 @@ namespace App\src\controller;
 
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\userDAO; 
+use App\src\DAO\authorDAO; 
 use App\config\Parameter;
 
 class BackController extends Controller
@@ -30,22 +31,6 @@ class BackController extends Controller
 
     public function newChapter(Parameter $post)
     {
-        /*if($this->checkAdmin()) {
-            if($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
-                $this->chapterDAO->newChapter($post,$this->session->get('id'));
-                $this->session->set('new_chapter', 'Nouveau chapitre publié!'); //apparait dans home.php
-                //$chapterDAO = new ChapterDAO();
-                //$chapterDAO->newChapter($post);
-                header('Location: ../public/index.php?route=administration');
-            }
-            //require '../templates/new_chapter.php'; TODOVIEW
-            return $this->view->render('new_chapter', [
-                'post' => $post,
-                'errors' => $errors
-            ]);
-        }
-        return $this->view->render('new_chapter');*/   
-
         if($this->checkAdmin()) {
             if ($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
                 $errors = $this->validation->validate($post, 'Chapter');
@@ -59,38 +44,29 @@ class BackController extends Controller
                     'errors' => $errors
                 ]);
             }
+
+            elseif($post->get('draft')) {
+                $errors = $this->validation->validate($post, 'Chapter');
+                if (!$errors) {
+                    $this->chapterDAO->newDraft($post, $this->session->get('id'));
+                    $this->session->set('new_chapter', 'draft');
+                    header('Location: ../public/index.php?route=administration');
+                }
+                return $this->view->render('new_chapter', [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
+            }
             return $this->view->render('new_chapter', $this->session);
         }
     }
 
     public function modifyChapter(Parameter $post, $chapterId)
-    {
-        /*if($this->checkAdmin()) {
-            $chapter = $this->chapterDAO-> getChapter($chapterId);
-            if($post->get('submit')) {
-                //$this->chapterDAO->modifyChapter($post, $chapterId);
-                $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
-                $this->session->set('modify_chapter', 'Le chapitre a été modifié'); //apparait dans home.php
-                header('Location: ../public/index.php?route=administration');
-            }
-            //require '../templates/modify_chapter.php'; TODOVIEW
-            return $this->view->render('modify_chapter', [
-                'post' => $post,
-                'errors' => $errors
-            ]);
-        }
-        $post->set('id', $chapter->getId());
-        $post->set('title', $chapter->getTitle());
-        $post->set('content', $chapter->getContent());
-        $post->set('author', $chapter->getAuthor());
-
-        return $this->view->render('modify_chapter', [
-            'post' => $post
-        ]); */
-        
+    {        
         if($this->checkAdmin()) {
             $chapter = $this->chapterDAO->getChapter($chapterId);
             
+
             if($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
@@ -103,8 +79,22 @@ class BackController extends Controller
                     'errors' => $errors
                 ]);
             }
+            
+            elseif($post->get('draft')) {
+                $errors = $this->validation->validate($post, 'Chapter');
+                if (!$errors) {
+                    $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
+                    $this->session->set('modify_chapter', 'draft');
+                    header('Location: ../public/index.php?route=administration');
+                }
+                return $this->view->render('modify_chapter', $this->session, [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
+            }
 
             $post->set('id', $chapter->getId());
+            $post->set('chapterNumber', $chapter->getChapterNumber());
             $post->set('title', $chapter->getTitle());
             $post->set('content', $chapter->getContent());
             $post->set('author', $chapter->getAuthor());
@@ -112,6 +102,15 @@ class BackController extends Controller
             return $this->view->render('modify_chapter', $this->session, [
                 'post' => $post
             ]);
+        }
+    }
+
+    public function publishChapter($chapterId)
+    {
+        if($this->checkAdmin()) {
+            $this->chapterDAO->publishChapter($chapterId);
+            $this->session->set('unflag_comment', 'publié');
+            header('Location: ../public/index.php?route=administration');
         }
     }
 
@@ -203,14 +202,35 @@ class BackController extends Controller
     {
         if($this->checkAdmin()) {
             $chapters = $this->chapterDAO->getChapters();
+            $drafts = $this->chapterDAO->getDrafts();
             $comments = $this->commentDAO->getFlagComments();
             $users = $this->userDAO->getUsers();
            // require '../templates/administration.php'; TODOVIEW
             return $this->view->render('administration', $this->session, [
             'chapters' => $chapters,
+            'drafts' => $drafts,
             'comments' => $comments,
             'users' => $users
             ]);
         }     
+    }
+
+    public function modifyAuthor(Parameter $post)
+    {
+        $author = $this->authorDAO->getAuthor();
+
+        if($this->checkAdmin()) {
+            if ($post->get('submit')) { 
+                
+                    $this->authorDAO->modifyAuthor($post, $this->session);
+                    $this->session->set('modify_author', 'La page auteur a bien été modifiée'); //TODO
+                    header('Location: ../public/index.php?route=administration');              
+            }
+            
+            $post->set('content', $author->getContent());
+            return $this->view->render('modify_author', $this->session, [
+                'post' => $post
+            ]);
+        }
     }
 }

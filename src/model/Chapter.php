@@ -4,6 +4,7 @@ namespace App\src\model;
 class Chapter
 {
     private $id;
+    private $chapterNumber;
     private $title;
     private $content;
     private $author;
@@ -17,6 +18,16 @@ class Chapter
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function getChapterNumber()
+    {
+        return $this->chapterNumber;
+    }
+
+    public function setChapterNumber($chapterNumber)
+    {
+        $this->chapterNumber = $chapterNumber;
     }
 
     public function getTitle()

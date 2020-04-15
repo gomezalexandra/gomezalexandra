@@ -5,6 +5,7 @@ namespace App\src\controller;
 use App\src\model\View;
 use App\src\DAO\ChapterDAO;
 use App\src\DAO\CommentDAO;
+use App\src\DAO\AuthorDAO;
 use App\config\Parameter;
 
 
@@ -41,7 +42,10 @@ class FrontController extends Controller
 
     public function author()
     {
-            return $this->view->render('author', $this->session);  
+        $author = $this->authorDAO ->getAuthor();
+        return $this->view->render('author', $this->session, [
+            'author' => $author
+        ]);  
     }
 
     public function addComment(Parameter $post, $chapterId, $pseudo)

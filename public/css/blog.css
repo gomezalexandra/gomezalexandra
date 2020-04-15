@@ -376,11 +376,11 @@ label {
     font-size: 1.1em;
 }
 
-#submit {
+#submit, #draft {
     background-color: #DDC3AC;
     border: 2px solid #DDC3AC;
     padding: 5px;
-    width: 100px;
+    width: 120px;
     margin: auto;
     margin-top: 20px;
     cursor: pointer;
@@ -433,7 +433,7 @@ label {
 
 /*pages administration */
 
-.administrationUser, .administrationComments, .administrationChapter {
+.administrationUser, .administrationComments, .administrationChapter, .administrationAuthor {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -444,14 +444,14 @@ label {
     margin: auto;
 }
 
-.addChapter {
+.addChapter, .modifyAuthor {
     padding: 10px;
     margin: 40px 0px 50px 0px;
     width: 120px;
     background-color: #30536F;
 }
 
-.addChapter a {
+.addChapter a, .modifyAuthor a {
     color: white;
 }
 

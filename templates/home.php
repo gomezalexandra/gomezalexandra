@@ -48,6 +48,7 @@
                     ?>
                     <div class="chapterContent">
                         <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
+                            <p>Chapitre <?= htmlspecialchars_decode($chapter->getChapterNumber());?></p>
                             <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
                             <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
                             <p><?= htmlspecialchars($chapter->getAuthor());?></p>

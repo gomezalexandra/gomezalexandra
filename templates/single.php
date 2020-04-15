@@ -25,7 +25,7 @@
 
 <div>
     <div class="title">
-        <h1>Chapitre <?= htmlspecialchars($chapter->getId());?></h1>
+        <h1>Chapitre <?= htmlspecialchars($chapter->getChapterNumber());?></h1>
     </div>
 
     <div>
@@ -53,6 +53,7 @@
     </div>
     
     <div class="singleChapter">
+        <p>Chapitre <?= htmlspecialchars_decode($chapter->getChapterNumber());?></p>
         <h2><?= htmlspecialchars_decode($chapter->getTitle());?></h2>
         <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
         <p><?= htmlspecialchars($chapter->getAuthor());?></p>
