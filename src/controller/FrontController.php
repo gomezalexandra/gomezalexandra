@@ -57,6 +57,14 @@ class FrontController extends Controller
                 $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
                 header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
             }
+            $chapter = $this->chapterDAO->getChapter($chapterId);
+            $comments = $this->commentDAO->getChapterComment($chapterId);
+            return $this->view->render('single', [
+                'chapter' => $chapter,
+                'comments' => $comments,
+                'post' => $post,
+                'errors' => $errors
+            ]);
         }
     }
 
@@ -70,10 +78,20 @@ class FrontController extends Controller
     public function register(Parameter $post)
     {
         if($post->get('submit')) {
-            //TODO: verifier si speudo existe déjà.
-            $this->userDAO->register($post);
-            $this->session->set('register', 'Votre inscription a bien été effectuée');
-            header('Location: ../public/index.php');    
+            $errors = $this->validation->validate($post, 'User');
+            if($this->userDAO->checkUser($post)) {
+                $errors['pseudo'] = $this->userDAO->checkUser($post);
+            }
+            if(!$errors) {
+                $this->userDAO->register($post);
+                $this->session->set('register', 'Votre inscription a bien été effectuée');
+                header('Location: ../public/index.php');
+            }
+            return $this->view->render('register', $this->session, [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+
         }
         //require '../templates/register.php'; TODOVIEW
         return $this->view->render('register', $this->session);

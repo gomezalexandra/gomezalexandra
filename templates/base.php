@@ -62,6 +62,7 @@
             <?= $this->session->show('password'); ?> <!-- profil-->
             <?= $this->session->show('not_admin'); ?>
             <?= $this->session->show('add_comment'); ?> <!-- single-->
+            <?= $this->session->show('password'); ?> <!-- password-->
         </h4>
 
         <?= $content ?>

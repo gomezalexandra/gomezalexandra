@@ -144,7 +144,6 @@ class BackController extends Controller
     public function profile()
     {
         if($this->checkLoggedIn()) {
-            //require '../templates/profile.php'; TODOVIEW
             return $this->view->render('profile', $this->session);
         }    
     }
@@ -153,11 +152,17 @@ class BackController extends Controller
     {
         if($this->checkLoggedIn()) {
             if($post->get('submit')) {
-                $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
-                $this->session->set('password', 'Le mot de passe a été mis à jour');
-                header('Location: ../public/index.php?route=profile');
+                $errors = $this->validation->validate($post, 'User');
+                if (!$errors) {
+                    $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
+                    $this->session->set('password', 'Le mot de passe a été mis à jour');
+                    header('Location: ../public/index.php?route=profile');
+                }
+                return $this->view->render('password', $this->session, [
+                    'post' => $post,
+                    'errors' => $errors
+                ]);
             }
-            //require '../templates/password.php'; TODOVIEW
             return $this->view->render('password', $this->session);
         }
     }
