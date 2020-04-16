@@ -12,15 +12,6 @@
     <h1>L'Administration</h1>
 </div>
 
-
-    <?= $this->session->show('new_chapter'); ?> <!--fait apparaitre les messages de backcontroller-->
-    <?= $this->session->show('modify_chapter'); ?> 
-    <?= $this->session->show('delete_chapter'); ?>
-    <?= $this->session->show('delete_comment'); ?>
-    <?= $this->session->show('unflag_comment'); ?>
-    <?= $this->session->show('delete_user'); ?>
-    <?= $this->session->show('modify_author'); ?>
-
 <div class="administrationChapter">
     <div class="administrationSubtitle">
         <h2>Les Chapitres</h2>
@@ -49,7 +40,7 @@
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
                 <td><?= htmlspecialchars($chapter->getAuthor());?></td>
-                <td>Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></td>
+                <td>Créé le <?= htmlspecialchars($chapter->getCreatedAt());?></td>
                 <td class="tableActions">
                     <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier</a></br>
                     <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
@@ -84,7 +75,7 @@
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= htmlspecialchars_decode($draft->getTitle());?></a></td>
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= substr(htmlspecialchars_decode($draft->getContent()), 0, 350);?></a></td>
                 <td><?= htmlspecialchars($draft->getAuthor());?></td>
-                <td>Créé le : <?= htmlspecialchars($draft->getCreatedAt());?></td>
+                <td>Créé le <?= htmlspecialchars($draft->getCreatedAt());?></td>
                 <td class="tableActions">
                     <a href="../public/index.php?route=publish&chapterId=<?= $draft->getId(); ?>">Publier</a></br>
                     <a href="../public/index.php?route=modifyChapter&chapterId=<?= $draft->getId(); ?>">Modifier</a></br>
@@ -119,8 +110,8 @@
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($comment->getChapterId());?>"><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></a></td>
                 <td>Créé le <?= htmlspecialchars($comment->getCreatedAt());?></td>
                 <td class="tableActions">
-                    <a href="../public/index.php?route=unflagComment&commentId=<?= $comment->getId(); ?>">Désignaler le commentaire</a> </br>
-                    <a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a>
+                    <a href="../public/index.php?route=unflagComment&commentId=<?=$comment->getId();?>">Désignaler le commentaire</a> </br>
+                    <a href="../public/index.php?route=deleteComment&commentId=<?=$comment->getId()?>&chapterId=<?= htmlspecialchars($comment->getChapterId());?>">Supprimer le commentaire</a>
                 </td>
             </tr>
             <?php

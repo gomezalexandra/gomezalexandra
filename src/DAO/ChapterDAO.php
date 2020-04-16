@@ -89,8 +89,8 @@ class ChapterDAO extends DAO
             'title' => $post->get('title'),
             'content' => $post->get('content'),
             'userId' => $userId,
-            'chapterId' => $chapterId,
-            'draft' => "0"
+            'draft' => "0",
+            'chapterId' => $chapterId
         ]);
     }
 
@@ -108,8 +108,8 @@ class ChapterDAO extends DAO
             'title' => $post->get('title'),
             'content' => $post->get('content'),
             'userId' => $userId,
-            'chapterId' => $chapterId,
-            'draft' => "1"
+            'draft' => "1",
+            'chapterId' => $chapterId
         ]);
     }
 

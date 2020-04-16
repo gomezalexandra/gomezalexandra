@@ -7,9 +7,7 @@
 	<!--<link rel="stylesheet" href="fontawesome-free/css/all.css"/>-->
 </head>
 
-    <body>
-
-    <?php //$this->title = 'Page d\'erreur'; ?>
+<body>
 
     <div class="error">
         <h1>Oups! Une erreur à été détectée !</h1>

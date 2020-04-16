@@ -28,10 +28,6 @@
         <h1>Chapitre <?= htmlspecialchars($chapter->getChapterNumber());?></h1>
     </div>
 
-    <div>
-        <?= $this->session->show('add_comment'); ?>
-    </div>
-
     <div class="subMenu">
             <?php
             if ($this->session->get('pseudo')) {

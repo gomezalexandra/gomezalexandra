@@ -51,9 +51,12 @@ class FrontController extends Controller
     public function addComment(Parameter $post, $chapterId, $pseudo)
     {
         if($post->get('submit')) {
-            $this->commentDAO->addComment($post, $chapterId, $pseudo);
-            $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
-            header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
+            $errors = $this->validation->validate($post, 'Comment');
+            if(!$errors) {
+                $this->commentDAO->addComment($post, $chapterId, $pseudo);
+                $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
+                header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
+            }
         }
     }
 

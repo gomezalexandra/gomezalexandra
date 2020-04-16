@@ -4,11 +4,6 @@
     <h1>Mon Profil</h1>
 </div>
 
-<div>
-    <?= $this->session->show('password'); ?>
-    <?= $this->session->show('not_admin'); ?>
-</div>
-
 <div class= "profilePseudo">
     <h2> Mon pseudo : <?= $this->session->get('pseudo'); ?> </h2>
 </div>

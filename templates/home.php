@@ -26,14 +26,6 @@
             ?>
         </div>
 
-        <div>        
-            <?= $this->session->show('flag_comment'); ?>
-            <?= $this->session->show('register'); ?>
-            <?= $this->session->show('login'); ?> <!-- a personnaliser avec le pseudo voir frontcontroller-->
-            <?= $this->session->show('logout'); ?> 
-            <?= $this->session->show('delete_account'); ?></br>
-        </div>
-
         <div class="presentation">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui. Nullam venenatis vitae nisi sed laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui.</p>
         </div>

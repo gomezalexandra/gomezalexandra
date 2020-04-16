@@ -11,9 +11,6 @@
     <h1>Connexion</h1>
 </div>
 
-    <?= $this->session->show('error_login'); ?>
-    <?= $this->session->show('need_login'); ?>
-
 <div class="login">
     <div class="formContainer">
         <form method="post" action="../public/index.php?route=login">

@@ -29,31 +29,24 @@ class Router
     {
         $route = $this->request->getGet()->get('route');
         try{
-            if(isset($route)) //(isset($_GET['route']))
+            if(isset($route))
             {
-                if($_GET['route'] === 'chapter'){
-                    //$frontController = new FrontController();
+                if($route === 'chapter'){
                     $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
-                elseif($_GET['route'] === 'allChapters'){
+                elseif($route === 'allChapters'){
                     $this->frontController->allChapters($this->request->getGet()->get('chapterId'));
                 }
-                elseif($_GET['route'] === 'author'){
+                elseif($route === 'author'){
                     $this->frontController->author();
                 }
-                /*elseif($_GET['route'] === 'writteChapter'){
-                    require '../templates/new_chapter.php';
-                }*/
-                elseif($_GET['route'] === 'newChapter'){
+                elseif($route === 'newChapter'){
                     $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
                 }
-                /*elseif($_GET['route'] === 'editChapter'){
-                    require '../templates/modify_chapter.php';
-                }*/
-                elseif($_GET['route'] === 'modifyChapter'){
+                elseif($route === 'modifyChapter'){
                     $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
                 }
-                elseif($_GET['route'] === 'publish'){
+                elseif($route === 'publish'){
                     $this->backController->publishChapter($this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'deleteChapter'){
@@ -95,7 +88,7 @@ class Router
                 elseif($route === 'administration'){
                     $this->backController->administration();
                 }
-                elseif($_GET['route'] === 'modifyAuthor'){
+                elseif($route === 'modifyAuthor'){
                     $this->backController->modifyAuthor($this->request->getPost());
                 }
                 else{

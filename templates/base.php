@@ -42,6 +42,28 @@
     </header>
 
     <div id="content">
+        <h4 class="sessionMessage">  
+            <?= $this->session->show('new_chapter'); ?> <!-- admin-->
+            <?= $this->session->show('publish_chapter'); ?>
+            <?= $this->session->show('modify_chapter'); ?> 
+            <?= $this->session->show('add_comment'); ?>
+            <?= $this->session->show('delete_chapter'); ?>
+            <?= $this->session->show('delete_comment'); ?>
+            <?= $this->session->show('unflag_comment'); ?>
+            <?= $this->session->show('delete_user'); ?>
+            <?= $this->session->show('modify_author'); ?>
+            <?= $this->session->show('flag_comment'); ?> <!-- home-->
+            <?= $this->session->show('register'); ?>
+            <?= $this->session->show('login'); ?> <!-- a personnaliser avec le pseudo voir frontcontroller-->
+            <?= $this->session->show('logout'); ?> 
+            <?= $this->session->show('delete_account'); ?>
+            <?= $this->session->show('error_login'); ?> <!-- login-->
+            <?= $this->session->show('need_login'); ?>
+            <?= $this->session->show('password'); ?> <!-- profil-->
+            <?= $this->session->show('not_admin'); ?>
+            <?= $this->session->show('add_comment'); ?> <!-- single-->
+        </h4>
+
         <?= $content ?>
     </div>
 

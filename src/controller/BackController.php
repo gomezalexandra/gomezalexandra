@@ -5,6 +5,7 @@ use App\src\DAO\ChapterDAO;
 use App\src\DAO\userDAO; 
 use App\src\DAO\authorDAO; 
 use App\config\Parameter;
+use App\src\constraint\Validation;
 
 class BackController extends Controller
 {
@@ -36,10 +37,10 @@ class BackController extends Controller
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
                     $this->chapterDAO->newChapter($post, $this->session->get('id'));
-                    $this->session->set('new_chapter', 'Le nouvel article a bien été ajouté');
+                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié');
                     header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('new_chapter', [
+                return $this->view->render('new_chapter', $this->session, [
                     'post' => $post,
                     'errors' => $errors
                 ]);
@@ -49,10 +50,10 @@ class BackController extends Controller
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
                     $this->chapterDAO->newDraft($post, $this->session->get('id'));
-                    $this->session->set('new_chapter', 'draft');
+                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
                     header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('new_chapter', [
+                return $this->view->render('new_chapter', $this->session, [
                     'post' => $post,
                     'errors' => $errors
                 ]);
@@ -66,12 +67,11 @@ class BackController extends Controller
         if($this->checkAdmin()) {
             $chapter = $this->chapterDAO->getChapter($chapterId);
             
-
             if($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
                     $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
-                    $this->session->set('modify_chapter', 'L\'article a bien été modifié');
+                    $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');
                     header('Location: ../public/index.php?route=administration');
                 }
                 return $this->view->render('modify_chapter', $this->session, [
@@ -84,7 +84,7 @@ class BackController extends Controller
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
                     $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
-                    $this->session->set('modify_chapter', 'draft');
+                    $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
                     header('Location: ../public/index.php?route=administration');
                 }
                 return $this->view->render('modify_chapter', $this->session, [
@@ -109,7 +109,7 @@ class BackController extends Controller
     {
         if($this->checkAdmin()) {
             $this->chapterDAO->publishChapter($chapterId);
-            $this->session->set('unflag_comment', 'publié');
+            $this->session->set('publish_chapter', 'Le chapitre a été publié');
             header('Location: ../public/index.php?route=administration');
         }
     }

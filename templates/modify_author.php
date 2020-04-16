@@ -10,7 +10,6 @@
 
 <?php
     $content = isset($post) && $post->get('content') ? htmlspecialchars($post->get('content')) : '';
-    var_dump($content);
 ?>
 
 <script>
