@@ -6,13 +6,14 @@ use App\src\controller\BackController;
 use App\src\controller\ErrorController;
 use Exception;
 
-
 class Router
 {
     private $request;
     private $frontController;
     private $backController;
     private $errorController;
+    //private $loader;
+    //private $twig;
 
     public function __construct() //pour ne pas répéter l'appel au front controller
     {
@@ -20,9 +21,14 @@ class Router
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
+        //$this->loader = new \Twig\Loader\FilesystemLoader('../templates');
+        //$this->twig = new \Twig\Environment($loader, [
+            //'cache' => false, //'../cache', //modifier pour false quand en dvp
+           // ]);
     }
 
-    public function run()
+
+    public function run($twig)
     {
         $route = $this->request->getGet()->get('route');
         try{
@@ -31,6 +37,9 @@ class Router
                 if($route === 'chapter'){
                     $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
+                elseif($route === 'test')
+                    echo $twig->render('test.php');
+
                 elseif($route === 'allChapters'){
                     $this->frontController->allChapters($this->request->getGet()->get('chapterId'));
                 }
@@ -103,3 +112,5 @@ class Router
         }
     }
 }
+
+
