@@ -6,6 +6,7 @@
         <input type="text"  value= <?//= $this->session->get('pseudo');?> id="pseudo" name="pseudo"><br>-->
         <label for="content">Commentaire :</label><br>
         <textarea class="formTextarea" id="content" name="content"></textarea><br>
+        <?= isset($errors['content']) ? $errors['content'] : ''; ?>
         <input type="submit" value="Ajouter" id="submit" name="submit">
     </form>
 </div> 

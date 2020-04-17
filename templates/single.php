@@ -1,27 +1,4 @@
-<?php
-
-//require '../config/Autoloader.php';
-//require '../src/DAO/ChapterDAO.php';
-//require '../src/DAO/CommentDAO.php';
-
-//use \App\config\Autoloader;
-    //use App\src\DAO\ChapterDAO;
-    //use App\src\DAO\CommentDAO;
-
-//Autoloader::register();
-
-?>
-
-<!--<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mon livre</title>
-</head>-->
-
-
 <?php $this->title = "Chapter"; ?>
-
 
 <div>
     <div class="title">

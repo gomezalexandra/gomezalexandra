@@ -1,6 +1,5 @@
 <?php $this->title = 'mofification'; ?>
 
-
 <?php
 //$route = isset($chapter) && $chapter->getId() ? 'modifyChapter&chapterId='.$chapter->getId() : 'modifyChapter';
 $route = isset($post) && $post->get('id') ? 'modifyChapter&chapterId='.$post->get('id') : 'newChapter';

@@ -1,7 +1,6 @@
-<?php
-
+<?php 
+require '../vendor/autoload.php';
 require '../config/dev.php';
-require '../config/Autoloader.php';
 require '../config/Router.php';
 
 session_start();

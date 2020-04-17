@@ -1,11 +1,7 @@
 <?php
 namespace App\src\controller;
 
-use App\src\DAO\ChapterDAO;
-use App\src\DAO\userDAO; 
-use App\src\DAO\authorDAO; 
 use App\config\Parameter;
-use App\src\constraint\Validation;
 
 class BackController extends Controller
 {

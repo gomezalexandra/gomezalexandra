@@ -1,88 +1,87 @@
 <?php $this->title = "Accueil"; ?>
 
+<div>
+    <div class="title">
+        <h1>Jean Forteroche</h1>
+    </div>
 
-    <div>
-        <div class="title">
-            <h1>Jean Forteroche</h1>
-        </div>
+    <div class="subMenu">
+        <?php
+        if ($this->session->get('pseudo')) {
+            ?>
+            <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
+            <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
 
-        <div class="subMenu">
+            <?php if($this->session->get('role') === 'admin') { ?>
+            <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
+            <?php } 
+
+        } else {
+            ?>
+            <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
+            <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
             <?php
-            if ($this->session->get('pseudo')) {
-                ?>
-                <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
-                <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
+        }
+        ?>
+    </div>
 
-                <?php if($this->session->get('role') === 'admin') { ?>
-                <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
-                <?php } 
+    <div class="presentation">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui. Nullam venenatis vitae nisi sed laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui.</p>
+    </div>
 
-            } else {
+    <section class="lastChapterContainer">
+        <div class="lastChapter">
+            <?php
+            
+                //while($chapters = $allChapters->fetch())
+                foreach ($chapters as $chapter)
+            {
                 ?>
-                <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
-                <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
+                <div class="chapterContent">
+                    <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
+                        <p>Chapitre <?= htmlspecialchars_decode($chapter->getChapterNumber());?></p>
+                        <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
+                        <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
+                        <p><?= htmlspecialchars($chapter->getAuthor());?></p>
+                        <p >Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
+                    </a>
+                </div>
+                
+        </div>
+        <div class="lastChapterLink">
+                <h3> <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">Lire le dernier Chapitre</a> </h3>
                 <?php
             }
             ?>
         </div>
-
-        <div class="presentation">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui. Nullam venenatis vitae nisi sed laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui.</p>
+    </section>
+    
+    <section class="sectionThree">
+        <div class="allChaptersContainer">
+            <div class="whiteBlock">
+                <div class="allChaptersLink"> 
+                    <h3><a href="../public/index.php?route=allChapters">Voir les Chapitres  -></a></h3>
+                </div>
+            </div>
+            <div class="blueBlock"> 
+                <div class="image"> 
+                    <img class="image" src="../public/img/book.jpg" alt="livre ouvert"/>                  
+                </div>                
+            </div>
         </div>
-
-        <section class="lastChapterContainer">
-            <div class="lastChapter">
-                <?php
-                
-                    //while($chapters = $allChapters->fetch())
-                    foreach ($chapters as $chapter)
-                {
-                    ?>
-                    <div class="chapterContent">
-                        <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
-                            <p>Chapitre <?= htmlspecialchars_decode($chapter->getChapterNumber());?></p>
-                            <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
-                            <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
-                            <p><?= htmlspecialchars($chapter->getAuthor());?></p>
-                            <p >Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
-                        </a>
-                    </div>
-                    
-            </div>
-            <div class="lastChapterLink">
-                   <h3> <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">Lire le dernier Chapitre</a> </h3>
-                    <?php
-                }
-                ?>
-            </div>
-        </section>
         
-        <section class="sectionThree">
-            <div class="allChaptersContainer">
-                <div class="whiteBlock">
-                    <div class="allChaptersLink"> 
-                        <h3><a href="../public/index.php?route=allChapters">Voir les Chapitres  -></a></h3>
-                    </div>
+        <div class="authorContainer">
+            <div class="whiteBlock">
+                <div class="authorLink">  
+                    <h3><a href="../public/index.php?route=author">Découvrir l'Auteur  -></a></h3>
                 </div>
-                <div class="blueBlock"> 
-                    <div class="image"> 
-                        <img class="image" src="../public/img/book.jpg" alt="livre ouvert"/>                  
-                    </div>                
-                </div>
+            </div>
+            <div class="blueBlock">
+                <div class="image"> 
+                    <img class="image" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
+                </div>        
             </div>
             
-            <div class="authorContainer">
-                <div class="whiteBlock">
-                    <div class="authorLink">  
-                        <h3><a href="../public/index.php?route=author">Découvrir l'Auteur  -></a></h3>
-                    </div>
-                </div>
-                <div class="blueBlock">
-                    <div class="image"> 
-                        <img class="image" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
-                    </div>        
-                </div>
-                
-            </div> 
-        <section>
-    </div>
+        </div> 
+    <section>
+</div>

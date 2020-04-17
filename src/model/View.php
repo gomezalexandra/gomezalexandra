@@ -1,12 +1,11 @@
 <?php
-
 namespace App\src\model;
 
 class View
 {
     private $file;
     private $title;
-    private $session; //TODOVIEW comment passer autrement la session
+    private $session;
 
     public function render($template, $session, $data = [])
     {

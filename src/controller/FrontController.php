@@ -1,13 +1,7 @@
 <?php
 namespace App\src\controller;
 
-//use App\src\controller\Controller;
-use App\src\model\View;
-use App\src\DAO\ChapterDAO;
-use App\src\DAO\CommentDAO;
-use App\src\DAO\AuthorDAO;
 use App\config\Parameter;
-
 
 class FrontController extends Controller
 {
@@ -59,7 +53,7 @@ class FrontController extends Controller
             }
             $chapter = $this->chapterDAO->getChapter($chapterId);
             $comments = $this->commentDAO->getChapterComment($chapterId);
-            return $this->view->render('single', [
+            return $this->view->render('single', $this->session, [
                 'chapter' => $chapter,
                 'comments' => $comments,
                 'post' => $post,

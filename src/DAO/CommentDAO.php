@@ -2,8 +2,8 @@
 namespace App\src\DAO;
 
 use App\src\model\Comment;
-use App\src\model\Chapter;
-use App\config\Session;
+/*use App\src\model\Chapter;
+use App\config\Session;*/
 use App\config\Parameter;
 
 class CommentDAO extends DAO

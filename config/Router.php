@@ -1,14 +1,11 @@
 <?php
 namespace App\config;
-//require  '..\src\controller\FrontController.php';
 
 use App\src\controller\FrontController;
 use App\src\controller\BackController;
 use App\src\controller\ErrorController;
-use \App\config\Autoloader;
 use Exception;
 
-Autoloader::register();
 
 class Router
 {
