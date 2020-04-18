@@ -12,19 +12,13 @@ class Router
     private $frontController;
     private $backController;
     private $errorController;
-    //private $loader;
-    //private $twig;
 
-    public function __construct() //pour ne pas répéter l'appel au front controller
+    public function __construct()
     {
         $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
-        //$this->loader = new \Twig\Loader\FilesystemLoader('../templates');
-        //$this->twig = new \Twig\Environment($loader, [
-            //'cache' => false, //'../cache', //modifier pour false quand en dvp
-           // ]);
     }
 
 

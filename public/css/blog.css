@@ -13,6 +13,10 @@ h2 {
     font-size: 2em;
 }
 
+#textWhite {
+    color: white;
+}
+
 .title {
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
     font-size: 2.8em;

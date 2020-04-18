@@ -22,25 +22,38 @@
             <td>Date</td>
             <td>Actions</td>
         </tr>
+
         <?php
-      
-        foreach ($chapters as $chapter)
-        {
-            ?>
-            <tr class="tableBody">
-                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getChapterNumber());?></a></td>
-                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
-                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
-                <td><?= htmlspecialchars($chapter->getAuthor());?></td>
-                <td>Créé le <?= htmlspecialchars($chapter->getCreatedAt());?></td>
-                <td class="tableActions">
-                    <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier</a></br>
-                    <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
-                </td>
-            </tr>
-            <?php
-        }
-        ?>
+        if (count($chapters) == 0) {
+                ?>
+                <tr class="tableBody">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <?php
+            } else {
+                foreach ($chapters as $chapter)
+                {
+                    ?>
+                    <tr class="tableBody">
+                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getChapterNumber());?></a></td>
+                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
+                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
+                        <td><?= htmlspecialchars($chapter->getAuthor());?></td>
+                        <td>Créé le <?= htmlspecialchars($chapter->getCreatedAt());?></td>
+                        <td class="tableActions">
+                            <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier</a></br>
+                            <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+                ?>
     </table>
 
     <div class="administrationSubtitle">
@@ -57,10 +70,22 @@
             <td>Date</td>
             <td>Actions</td>
         </tr>
+
         <?php
-      
-        foreach ($drafts as $draft)
-        {
+        if (count($drafts) == 0) {
+            ?>
+            <tr class="tableBody">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <?php
+        } else {
+            foreach ($drafts as $draft)
+            {
             ?>
             <tr class="tableBody">
                 <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($draft->getId());?>"><?= htmlspecialchars_decode($draft->getChapterNumber());?></a></td>
@@ -75,6 +100,7 @@
                 </td>
             </tr>
             <?php
+            }
         }
         ?>
     </table>
@@ -93,20 +119,32 @@
             <td>Date</td>
             <td>Actions</td>
         </tr>
+
         <?php
-        foreach ($comments as $comment)
-        {
+        if (count($comments) == 0) {
             ?>
             <tr class="tableBody">
-                <td><?= htmlspecialchars($comment->getPseudo());?></td>
-                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($comment->getChapterId());?>"><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></a></td>
-                <td>Créé le <?= htmlspecialchars($comment->getCreatedAt());?></td>
-                <td class="tableActions">
-                    <a href="../public/index.php?route=unflagComment&commentId=<?=$comment->getId();?>">Désignaler le commentaire</a> </br>
-                    <a href="../public/index.php?route=deleteComment&commentId=<?=$comment->getId()?>&chapterId=<?= htmlspecialchars($comment->getChapterId());?>">Supprimer le commentaire</a>
-                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <?php
+        } else {
+            foreach ($comments as $comment)
+            {
+                ?>
+                <tr class="tableBody">
+                    <td><?= htmlspecialchars($comment->getPseudo());?></td>
+                    <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($comment->getChapterId());?>"><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></a></td>
+                    <td>Créé le <?= htmlspecialchars($comment->getCreatedAt());?></td>
+                    <td class="tableActions">
+                        <a href="../public/index.php?route=unflagComment&commentId=<?=$comment->getId();?>">Désignaler le commentaire</a> </br>
+                        <a href="../public/index.php?route=deleteComment&commentId=<?=$comment->getId()?>&chapterId=<?= htmlspecialchars($comment->getChapterId());?>">Supprimer le commentaire</a>
+                    </td>
+                </tr>
+                <?php
+            }
         }
         ?>
     </table>
@@ -118,7 +156,7 @@
     </div>
 
     <div class="modifyAuthor">
-        <a href="../public/index.php?route=modifyAuthor">Modifier la Page Auteur</a>
+        <a href="../public/index.php?route=modifyAuthor">Modifier la page</a>
     </div>
 </div>
 
@@ -134,27 +172,39 @@
             <td>Rôle</td>
             <td>Actions</td>
         </tr>
+
         <?php
-        foreach ($users as $user)
-        {
+        if (count($users) == 0) {
             ?>
             <tr class="tableBody">
-                <td><?= htmlspecialchars($user->getPseudo());?></td>
-                <td>Créé le : <?= htmlspecialchars($user->getCreatedAt());?></td>
-                <td><?= htmlspecialchars($user->getRole());?></td>
-                <td class="tableActions">  <?php
-                    if($user->getRole() != 'admin') {
-                    ?>
-                    <a href="../public/index.php?route=deleteUser&userId=<?= $user->getId(); ?>">Supprimer</a>
-                    <?php }
-                    else {
-                        ?>
-                    Suppression impossible
-                    <?php
-                    } ?>
-                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <?php
+        } else {
+            foreach ($users as $user)
+            {
+                ?>
+                <tr class="tableBody">
+                    <td><?= htmlspecialchars($user->getPseudo());?></td>
+                    <td>Créé le : <?= htmlspecialchars($user->getCreatedAt());?></td>
+                    <td><?= htmlspecialchars($user->getRole());?></td>
+                    <td class="tableActions">  <?php
+                        if($user->getRole() != 'admin') {
+                        ?>
+                        <a href="../public/index.php?route=deleteUser&userId=<?= $user->getId(); ?>">Supprimer</a>
+                        <?php }
+                        else {
+                            ?>
+                        Suppression impossible
+                        <?php
+                        } ?>
+                    </td>
+                </tr>
+                <?php
+            }
         }
         ?>
     </table>
