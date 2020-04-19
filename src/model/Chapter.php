@@ -60,9 +60,14 @@ class Chapter
         $this->author = $author;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt($format = "")
     {
-        return $this->createdAt;
+        if ($format == "")
+        {
+            return $this->createdAt;
+        }
+        $date = date_create($this->createdAt);
+        return date_format($date, $format);
     }
 
     public function setCreatedAt($createdAt)

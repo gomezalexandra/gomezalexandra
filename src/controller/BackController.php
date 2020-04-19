@@ -32,9 +32,10 @@ class BackController extends Controller
             if ($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
+
                     $this->chapterDAO->newChapter($post, $this->session->get('id'));
-                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié');
-                    header('Location: ../public/index.php?route=administration');
+                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié');                  
+                    header('Location: ../public/index.php?route=administration');                  
                 }
                 return $this->view->render('new_chapter', $this->session, [
                     'post' => $post,
@@ -62,6 +63,7 @@ class BackController extends Controller
     {        
         if($this->checkAdmin()) {
             $chapter = $this->chapterDAO->getChapter($chapterId);
+            $post->set('id', $chapter->getId());
             
             if($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
@@ -89,7 +91,6 @@ class BackController extends Controller
                 ]);
             }
 
-            $post->set('id', $chapter->getId());
             $post->set('chapterNumber', $chapter->getChapterNumber());
             $post->set('title', $chapter->getTitle());
             $post->set('content', $chapter->getContent());
@@ -122,7 +123,7 @@ class BackController extends Controller
     public function unflagComment($commentId)
     {
         if($this->checkAdmin()) {
-            $this->commentDAO->unflagComment($commentId);
+            $this->commentDAO->unflagComment($commentId); 
             $this->session->set('unflag_comment', 'Le commentaire a bien été désignalé');
             header('Location: ../public/index.php?route=administration');
         }

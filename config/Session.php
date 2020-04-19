@@ -26,9 +26,9 @@ class Session
     {
         if(isset($_SESSION[$name]))
         {
-            $key = $this->get($name);
+            $value = $this->get($name);
             $this->remove($name);
-            return $key;
+            return $value;
         }
     }
 

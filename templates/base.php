@@ -45,7 +45,7 @@
         <h4 class="sessionMessage">  
             <?= $this->session->show('new_chapter'); ?> <!-- admin-->
             <?= $this->session->show('publish_chapter'); ?>
-            <?= $this->session->show('modify_chapter'); ?> 
+             
             <?= $this->session->show('add_comment'); ?>
             <?= $this->session->show('delete_chapter'); ?>
             <?= $this->session->show('delete_comment'); ?>
@@ -64,7 +64,7 @@
             <?= $this->session->show('add_comment'); ?> <!-- single-->
             <?= $this->session->show('password'); ?> <!-- password-->
         </h4>
-
+        <?= var_dump( $this->session);?>        
         <?= $content ?>
     </div>
 

@@ -11,7 +11,8 @@ class Constraint
     }
     public function minLength($name, $value, $minSize)
     {
-        if(strlen($value) < $minSize) {
+        var_dump("longeur de value ($value) : " . strlen($value));
+        if(strlen($value) <= $minSize) {
             return '<p>Le champ '.$name.' doit contenir au moins '.$minSize.' caractères</p>';
         }
     }

@@ -3,6 +3,7 @@
 <div class="title">
     <h1>L'Administration</h1>
 </div>
+<?= $this->session->show('modify_chapter'); ?>
 
 <div class="administrationChapter">
     <div class="administrationSubtitle">

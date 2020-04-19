@@ -43,7 +43,7 @@
                         <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
                         <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
                         <p><?= htmlspecialchars($chapter->getAuthor());?></p>
-                        <p >Créé le : <?= htmlspecialchars($chapter->getCreatedAt());?></p>
+                        <p >Créé le <?= htmlspecialchars($chapter->getCreatedAt("d/m/Y à H:i:s"));?></p>
                     </a>
                 </div>
                 

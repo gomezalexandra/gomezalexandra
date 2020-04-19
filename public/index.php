@@ -5,9 +5,9 @@ require '../config/Router.php';
 
 
 
-if (isset($_GET['route'])){
-    $page = $_GET['route'];
-}
+//if (isset($_GET['route'])){
+//    $page = $_GET['route'];
+//}
 
 session_start();
 
