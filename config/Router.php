@@ -22,7 +22,7 @@ class Router
     }
 
 
-    public function run($twig)
+    public function run()
     {
         $route = $this->request->getGet()->get('route');
         try{
@@ -31,9 +31,6 @@ class Router
                 if($route === 'chapter'){
                     $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
-                elseif($route === 'test')
-                    echo $twig->render('test.php');
-
                 elseif($route === 'allChapters'){
                     $this->frontController->allChapters($this->request->getGet()->get('chapterId'));
                 }
@@ -102,6 +99,7 @@ class Router
         }
         catch (Exception $e)
         {
+            var_dump($e);
             $this->errorController->error500();
         }
     }

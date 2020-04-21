@@ -20,6 +20,7 @@ abstract class Controller
     protected $session;
     protected $userDAO;
     protected $validation;
+    protected $twig;
     private $request;
 
     public function __construct()
@@ -34,5 +35,15 @@ abstract class Controller
         $this->get = $this->request->getGet();
         $this->post = $this->request->getPost();
         $this->session = $this->request->getSession();
+        $this->getTwig();
     }
+
+    private function getTwig() 
+    {
+        $loader = new \Twig\Loader\FilesystemLoader('../templates');
+        $this->twig = new \Twig\Environment($loader, [
+            'cache' => false, //'../cache', //modifier pour false quand en dvp
+        ]);
+    }
+   
 }
