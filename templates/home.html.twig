@@ -9,7 +9,23 @@
     </div>
 
     <div class="subMenu">
-        <?php
+
+        {% if session.get('pseudo') %}
+            <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
+            <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
+            
+            {#{% if session.get('role') === 'admin' %}#}
+                <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
+            {#{% endif %}#}
+
+        {% else %}
+
+            <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
+            <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
+
+        {% endif %}
+
+       {# <?php
         if ($this->session->get('pseudo')) {
             ?>
             <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
@@ -25,7 +41,7 @@
             <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
             <?php
         }
-        ?>
+        ?>#}
     </div>
 
     <div class="presentation">
@@ -33,30 +49,26 @@
     </div>
 
     <section class="lastChapterContainer">
-        <div class="lastChapter">
-            <?php
-            
-                //while($chapters = $allChapters->fetch())
-                foreach ($chapters as $chapter)
-            {
-                ?>
+        
+
+        {% for chapter in chapters %}
+
+            <div class="lastChapter">
                 <div class="chapterContent">
-                    <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">
-                        <p>Chapitre <?= htmlspecialchars_decode($chapter->getChapterNumber());?></p>
-                        <h2><?= htmlspecialchars_decode($chapter->GetTitle());?></h2>
-                        <p><?= htmlspecialchars_decode($chapter->getContent());?></p>
-                        <p><?= htmlspecialchars($chapter->getAuthor());?></p>
-                        <p >Créé le <?= htmlspecialchars($chapter->getCreatedAt("d/m/Y à H:i:s"));?></p>
+                    <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                        <p>Chapitre {{chapter.chapterNumber}} </p>
+                        <h2> {{chapter.title}} </h2>
+                        {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
+                        <p> {{chapter.author}} </p>
+                        <p> Créé le {{chapter.createdAt("d/m/Y à H:i:s")}} </p>
                     </a>
-                </div>
-                
-        </div>
-        <div class="lastChapterLink">
-                <h3> <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>">Lire le dernier Chapitre</a> </h3>
-                <?php
-            }
-            ?>
-        </div>
+                </div>           
+            </div>
+            <div class="lastChapterLink">
+                    <h3> <a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getChapterId);?>">A MODIFIER Lire le dernier Chapitre</a> </h3>
+                    <?php    
+            </div>
+        {% endfor %}
     </section>
     
     <section class="sectionThree">

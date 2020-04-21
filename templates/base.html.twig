@@ -44,27 +44,24 @@
     <div id="content">
         <h4 class="sessionMessage">
 
-            {{session.show('new_chapter')}} 
-            <?= $this->session->show('new_chapter'); ?> <!-- admin-->
-            <?= $this->session->show('publish_chapter'); ?>
-             
-            <?= $this->session->show('add_comment'); ?>
-            <?= $this->session->show('delete_chapter'); ?>
-            <?= $this->session->show('delete_comment'); ?>
-            <?= $this->session->show('unflag_comment'); ?>
-            <?= $this->session->show('delete_user'); ?>
-            <?= $this->session->show('modify_author'); ?>
-            <?= $this->session->show('flag_comment'); ?> <!-- home-->
-            <?= $this->session->show('register'); ?>
-            <?= $this->session->show('login'); ?> <!-- a personnaliser avec le pseudo voir frontcontroller-->
-            <?= $this->session->show('logout'); ?> 
-            <?= $this->session->show('delete_account'); ?>
-            <?= $this->session->show('error_login'); ?> <!-- login-->
-            <?= $this->session->show('need_login'); ?>
-            <?= $this->session->show('password'); ?> <!-- profil-->
-            <?= $this->session->show('not_admin'); ?>
-            <?= $this->session->show('add_comment'); ?> <!-- single-->
-            <?= $this->session->show('password'); ?> <!-- password-->
+            {{session.show('new_chapter')}}
+            {{session.show('publish_chapter')}} 
+            {{session.show('add_comment')}} 
+            {{session.show('delete_chapter')}} 
+            {{session.show('delete_comment')}} 
+            {{session.show('unflag_comment')}} 
+            {{session.show('delete_user')}} 
+            {{session.show('modify_author')}}
+            {{session.show('flag_comment')}} 
+            {{session.show('register')}} 
+            {{session.show('login')}} 
+            {{session.show('logout')}} 
+            {{session.show('delete_account')}} 
+            {{session.show('error_login')}} 
+            {{session.show('need_login')}}
+            {{session.show('password')}} 
+            {{session.show('not_admin')}} 
+          
         </h4>
         {% block content %} {% endblock %}       
         <?= $content ?>
