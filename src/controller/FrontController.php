@@ -17,28 +17,30 @@ class FrontController extends Controller
     public function allChapters()
     {
         $chapters = $this->chapterDAO ->getChapters();
-        return $this->view->render('all_chapters', $this->session, [
-            'chapters' => $chapters
-        ]);
+        //return $this->view->render('all_chapters', $this->session, [
+        //    'chapters' => $chapters
+        //]);
+        echo $this->twig->render('all_chapters.html.twig', ['chapters'=>$chapters]);
     }
 
     public function chapter($chapterId)
     {
         $chapter = $this->chapterDAO-> getChapter($chapterId);
         $comments = $this->commentDAO-> getChapterComment($chapterId);
-        //require '../templates/single.php'; TODOVIEW
-        return $this->view->render('single', $this->session, [
-            'chapter' => $chapter,
-            'comments' => $comments
-        ]);
+        //return $this->view->render('single', $this->session, [
+            //'chapter' => $chapter,
+            //'comments' => $comments
+        //]);
+        echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments]);
     }
 
     public function author()
     {
         $author = $this->authorDAO ->getAuthor();
-        return $this->view->render('author', $this->session, [
-            'author' => $author
-        ]);  
+        //return $this->view->render('author', $this->session, [
+        //    'author' => $author
+        //]); 
+        echo $this->twig->render('author.html.twig', ['author'=>$author]);
     }
 
     public function addComment(Parameter $post, $chapterId, $pseudo)
