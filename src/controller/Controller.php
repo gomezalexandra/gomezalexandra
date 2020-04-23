@@ -45,8 +45,13 @@ abstract class Controller
             'cache' => false, //'../cache', //modifier pour false quand en dvp
             'debug' => true,
             ]);
+        $filter = new \Twig\TwigFilter('extract', function ($string) {
+            return substr(htmlspecialchars_decode($string), 0, 100);
+        });
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         //$this->twig->addGlobal('session', $_SESSION); //TODO: passer directement par session?
         $this->twig->addGlobal('session', $this->session);
+        $this->twig->addFilter($filter);
+        
     }
 }

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Modification {% endblock %}
+
+{% block content %} 
+
+    <div class="title">
+        <h1>Modifier le Chapitre</h1>
+    </div>
+
+    <div class="routeChapter">
+        <a href="../public/index.php?route=chapter&chapterId={{post.get('id')}}">Revenir au chapitre -> </a>
+    </div>
+
+    <div>
+        {{include('form_chapter.html.twig')}}
+    </div>
+
+{% endblock %} 

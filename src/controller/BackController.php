@@ -37,10 +37,11 @@ class BackController extends Controller
                     $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié');                  
                     header('Location: ../public/index.php?route=administration');                  
                 }
-                return $this->view->render('new_chapter', $this->session, [
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+                //return $this->view->render('new_chapter', $this->session, [
+                //    'post' => $post,
+                //    'errors' => $errors
+                //]);
+                echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
 
             elseif($post->get('draft')) {
@@ -50,12 +51,14 @@ class BackController extends Controller
                     $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
                     header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('new_chapter', $this->session, [
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+                //return $this->view->render('new_chapter', $this->session, [
+                //    'post' => $post,
+                //    'errors' => $errors
+                //]);
+                echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
-            return $this->view->render('new_chapter', $this->session);
+            //return $this->view->render('new_chapter', $this->session);
+            echo $this->twig->render('new_chapter.html.twig');
         }
     }
 
@@ -72,10 +75,11 @@ class BackController extends Controller
                     $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');
                     header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('modify_chapter', $this->session, [
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+                //return $this->view->render('modify_chapter', $this->session, [
+                //    'post' => $post,
+                //    'errors' => $errors
+                //]);
+                echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
             
             elseif($post->get('draft')) {
@@ -85,10 +89,11 @@ class BackController extends Controller
                     $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
                     header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('modify_chapter', $this->session, [
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+                //return $this->view->render('modify_chapter', $this->session, [
+                //    'post' => $post,
+                //    'errors' => $errors
+                //]);
+                echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
 
             $post->set('chapterNumber', $chapter->getChapterNumber());
@@ -96,9 +101,10 @@ class BackController extends Controller
             $post->set('content', $chapter->getContent());
             $post->set('author', $chapter->getAuthor());
 
-            return $this->view->render('modify_chapter', $this->session, [
-                'post' => $post
-            ]);
+            //return $this->view->render('modify_chapter', $this->session, [
+            //    'post' => $post
+            //]);
+            echo $this->twig->render('modify_chapter.html.twig', ['post' => $post]);
         }
     }
 
@@ -234,9 +240,10 @@ class BackController extends Controller
             }
             
             $post->set('content', $author->getContent());
-            return $this->view->render('modify_author', $this->session, [
-                'post' => $post
-            ]);
+            //return $this->view->render('modify_author', $this->session, [
+            //    'post' => $post
+            //]);
+            echo $this->twig->render('modify_author.html.twig', ['post' => $post]);
         }
     }
 }
