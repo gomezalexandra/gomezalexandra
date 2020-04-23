@@ -43,7 +43,10 @@ abstract class Controller
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $this->twig = new \Twig\Environment($loader, [
             'cache' => false, //'../cache', //modifier pour false quand en dvp
-        ]);
+            'debug' => true,
+            ]);
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
+        //$this->twig->addGlobal('session', $_SESSION); //TODO: passer directement par session?
+        $this->twig->addGlobal('session', $this->session);
     }
-   
 }

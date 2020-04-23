@@ -9,6 +9,10 @@
 </head>
 
 <body>
+	
+{{ dump(session) }}
+
+
     <header class="menu">
         <div class="menuTab">
             <a href="../public/index.php">L'Accueil</a>
@@ -43,7 +47,7 @@
 
     <div id="content">
         <h4 class="sessionMessage">
-
+            
             {{session.show('new_chapter')}}
             {{session.show('publish_chapter')}} 
             {{session.show('add_comment')}} 
@@ -64,7 +68,7 @@
           
         </h4>
         {% block content %} {% endblock %}       
-        <?= $content ?>
+                                                                                {#<?= $content ?>#}
     </div>
 
     <footer>

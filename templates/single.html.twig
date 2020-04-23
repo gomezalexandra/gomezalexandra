@@ -14,9 +14,9 @@
                 <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
                 <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
                 
-                {#{% if session.get('role') === 'admin' %}#}
+                {% if session.get('role') == 'admin' %}
                     <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
-                {#{% endif %}#}
+                {% endif %}
 
             {% else %}
 
@@ -34,7 +34,7 @@
             <p>Créé le {{chapter.createdAt}}</p>
         </div>
 
-        {% if session.get('role')  %}                            {# ==='admin' #}
+        {% if session.get('role') == 'admin' %}
             <div class="actions">
                 <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier le chapitre</a> </br>
                 <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer le chapitre</a>
@@ -44,11 +44,11 @@
         
         <div id="commentContainer">
 
-            {% if session.get('pseudo')  %}
+            {% if session.get('pseudo') %}
                 <div class="addCommentContainer">
                     <h2>Ajouter un commentaire</h2>
                     <div class="addComment">
-                        <?php include('form_comment.php'); ?>
+                        {{include('form_comment.html.twig')}}
                     </div>
                 </div>
             {% endif %}
@@ -63,11 +63,7 @@
                                                     <?php } ?>#}
 
             <div class="allComments">
-
                 <h2>Commentaires</h2>
-
-               
-
                     {% for comment in comments %}
                         <div class="singleComment">
                             <div class="comment">
@@ -75,7 +71,6 @@
                                 <p> {{comment.content}} </p>
                                 <p>Posté le {{comment.createdAt}} </p>
                             </div>
-
 
                             <div class="flagCommentContainer">
                                 <div class="flagComment">
@@ -85,25 +80,23 @@
                                         <p><a href="../public/index.php?route=flagComment&commentId={{comment.id}}&chapterId={{chapter.id}}">Signaler le commentaire</a></p>
                                     {% endif  %}
                                 </div>
-                                
-                                
-                                
-                                {#
-                                {% if session.get('role') === 'admin' %}
+                                     
+                                {% if session.get('role') == 'admin' %}
                                     <div class="flagComment">
                                         <p><a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{chapter.id}}">Supprimer le commentaire</a></p>
                                     </div>
                                 {% endif  %}
-                                                                            <?php if($this->session->get('role') === 'admin') { ?>
+                            </div>
+                        </div>
+                    {% endfor %}
+                                                                            {#<?php if($this->session->get('role') === 'admin') { ?>
                                                                                 <div class="flagComment">
                                                                                     <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId()?>&chapterId=<?= $chapter->getId(); ?>">Supprimer le commentaire</a></p>
                                                                                 </div>
                                                                             <?php
-                                                                            } ?>
-                                #}  
-                            </div>
-                        </div>
-                    {% endfor %}
+                                                                            } ?>#}
+                                  
+                            
 
 
 

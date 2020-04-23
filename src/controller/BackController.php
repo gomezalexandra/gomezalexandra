@@ -141,7 +141,8 @@ class BackController extends Controller
     public function profile()
     {
         if($this->checkLoggedIn()) {
-            return $this->view->render('profile', $this->session);
+            //return $this->view->render('profile', $this->session);
+            echo $this->twig->render('profile.html.twig');
         }    
     }
 
@@ -155,12 +156,14 @@ class BackController extends Controller
                     $this->session->set('password', 'Le mot de passe a été mis à jour');
                     header('Location: ../public/index.php?route=profile');
                 }
-                return $this->view->render('password', $this->session, [
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+                //return $this->view->render('password', $this->session, [
+                //    'post' => $post,
+                //    'errors' => $errors
+                //]);
+                echo $this->twig->render('password.html.twig', ['post'=>$post, 'errors'=>$errors]);
             }
-            return $this->view->render('password', $this->session);
+           // return $this->view->render('password', $this->session);
+           echo $this->twig->render('password.html.twig');
         }
     }
 
@@ -208,12 +211,13 @@ class BackController extends Controller
             $comments = $this->commentDAO->getFlagComments();
             $users = $this->userDAO->getUsers();
            // require '../templates/administration.php'; TODOVIEW
-            return $this->view->render('administration', $this->session, [
-            'chapters' => $chapters,
-            'drafts' => $drafts,
-            'comments' => $comments,
-            'users' => $users
-            ]);
+            //return $this->view->render('administration', $this->session, [
+            //'chapters' => $chapters,
+            //'drafts' => $drafts,
+            //'comments' => $comments,
+            //'users' => $users
+            //]);
+            echo $this->twig->render('administration.html.twig', ['chapters'=>$chapters, 'drafts' => $drafts, 'comments'=>$comments, 'users' => $users]);
         }     
     }
 

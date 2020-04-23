@@ -54,12 +54,13 @@ class FrontController extends Controller
             }
             $chapter = $this->chapterDAO->getChapter($chapterId);
             $comments = $this->commentDAO->getChapterComment($chapterId);
-            return $this->view->render('single', $this->session, [
-                'chapter' => $chapter,
-                'comments' => $comments,
-                'post' => $post,
-                'errors' => $errors
-            ]);
+            //return $this->view->render('single', $this->session, [
+            //    'chapter' => $chapter,
+            //    'comments' => $comments,
+            //    'post' => $post,
+            //    'errors' => $errors
+            //]);
+            echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments, 'post'=>$post, 'errors'=>$errors]);
         }
     }
 
@@ -80,16 +81,16 @@ class FrontController extends Controller
             if(!$errors) {
                 $this->userDAO->register($post);
                 $this->session->set('register', 'Votre inscription a bien été effectuée');
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?route=login');
             }
-            return $this->view->render('register', $this->session, [
-                'post' => $post,
-                'errors' => $errors
-            ]);
-
+                //return $this->view->render('register', $this->session, [
+            //    'post' => $post,
+            //    'errors' => $errors
+            //]);
+            echo $this->twig->render('register.html.twig', ['post'=>$post, 'errors'=>$errors]);
         }
-        //require '../templates/register.php'; TODOVIEW
-        return $this->view->render('register', $this->session);
+        //return $this->view->render('register', $this->session);
+        echo $this->twig->render('register.html.twig');
     }
 
     public function login(Parameter $post)
@@ -107,7 +108,7 @@ class FrontController extends Controller
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
             }
         }
-        //require '../templates/login.php'; TODOVIEW
-        return $this->view->render('login', $this->session);
+        //return $this->view->render('login', $this->session);
+        echo $this->twig->render('login.html.twig');
     }
 }

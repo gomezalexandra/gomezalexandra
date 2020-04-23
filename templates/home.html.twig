@@ -14,9 +14,9 @@
             <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
             <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
             
-            {#{% if session.get('role') === 'admin' %}#}
+            {% if session.get('role') == 'admin' %}
                 <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
-            {#{% endif %}#}
+            {% endif %}
 
         {% else %}
 

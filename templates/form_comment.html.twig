@@ -1,0 +1,14 @@
+{% block content %} 
+
+<div class="formContainerComment" >
+    <form method="post" action="../public/index.php?route=addComment&chapterId={{chapter.id}}">
+                
+        <label for="content">Commentaire :</label><br>
+        <textarea class="formTextarea" id="content" name="content"></textarea><br>
+        {#<?= isset($errors['content']) ? $errors['content'] : ''; ?>#}
+        <input type="submit" value="Ajouter" id="submit" name="submit">
+        
+    </form>
+</div> 
+
+{% endblock %}
