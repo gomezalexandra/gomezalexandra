@@ -12,9 +12,11 @@
         <a href="../public/index.php?route=administration">Retour à l'Administration -> </a>
     </div>
 
-    <?php
-        $content = isset($post) && $post->get('content') ? htmlspecialchars($post->get('content')) : '';
-    ?>
+                                        {#<?php
+                                            $content = isset($post) && $post->get('content') ? htmlspecialchars($post->get('content')) : '';
+                                        ?>#}
+
+    {% set content =  post.get('content') %}   
 
     <script>
         tinymce.init({
@@ -26,7 +28,7 @@
     <div class="formContainer">
         <form class="formAuthor" method="post" action="../public/index.php?route=modifyAuthor">
             <label for="content">Contenu</label><br>
-            <textarea id="content" name="content"><?= $content; ?></textarea><br>
+            <textarea id="content" name="content">{{content}}</textarea><br>
             <input type="submit" value="modifier"  id="submit" name="submit">
         </form>
     </div>

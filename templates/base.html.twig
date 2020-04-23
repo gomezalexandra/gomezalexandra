@@ -28,23 +28,35 @@
             <div><a>Mon Compte</a> </div>
             
             <div class="hidenMenuTab">
-                <?php if ($this->session->get('pseudo')) { ?>
+                {% if session.get('pseudo') %}
                     <a href="../public/index.php?route=profile">Profil</a>
-
-                    <?php if ($this->session->get('role') === 'admin') { ?>
-                        <a href="../public/index.php?route=administration">Administration</a>
-                    <?php } ?>
-
                     <a href="../public/index.php?route=logout">Déconnexion</a>
-                <?php } else { ?>
+
+                    {% if session.get('role') == 'admin' %}
+                        <a href="../public/index.php?route=administration">Administration</a>
+                    {% endif %}
+                {% else %}
                     <a href="../public/index.php?route=register">S'inscrire</a>
                     <a href="../public/index.php?route=login">Se Connecter</a>
-                <?php } ?>
-
+                {% endif %}
             </div>
         </div>
     </header>
 
+                                                        {#<?php if ($this->session->get('pseudo')) { ?>
+                                                            <a href="../public/index.php?route=profile">Profil</a>
+
+                                                            <?php if ($this->session->get('role') === 'admin') { ?>
+                                                                <a href="../public/index.php?route=administration">Administration</a>
+                                                            <?php } ?>
+
+                                                            <a href="../public/index.php?route=logout">Déconnexion</a>
+                                                        <?php } else { ?>
+                                                            <a href="../public/index.php?route=register">S'inscrire</a>
+                                                            <a href="../public/index.php?route=login">Se Connecter</a>
+                                                        <?php } ?>#}
+
+        
     <div id="content">
         <h4 class="sessionMessage">
             
