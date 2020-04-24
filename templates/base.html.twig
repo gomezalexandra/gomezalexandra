@@ -13,32 +13,35 @@
 {{ dump(session) }}
 
 
-    <header class="menu">
-        <div class="menuTab">
-            <a href="../public/index.php">L'Accueil</a>
-        </div>
-        <div class="menuTab">
-            <a href="../public/index.php?route=allChapters">Les Chapitres</a>
-        </div>
+    <header>
         <div class= "logo">JF</div>
-        <div class="menuTab">
-            <a href="../public/index.php?route=author">L'Auteur</a>
-        </div>
-        <div id="hidenMenu" class="menuTab">
-            <div><a>Mon Compte</a> </div>
+        <div class="menu">
+            <div class="menuTab">
+                <a href="../public/index.php">L'Accueil</a>
+            </div>
+            <div class="menuTab">
+                <a href="../public/index.php?route=allChapters">Les Chapitres</a>
+            </div>
             
-            <div class="hidenMenuTab">
-                {% if session.get('pseudo') %}
-                    <a href="../public/index.php?route=profile">Profil</a>
-                    <a href="../public/index.php?route=logout">Déconnexion</a>
+            <div class="menuTab">
+                <a href="../public/index.php?route=author">L'Auteur</a>
+            </div>
+            <div id="hidenMenu" class="menuTab">
+                <div><a>Mon Compte</a> </div>
+                
+                <div class="hidenMenuTab">
+                    {% if session.get('pseudo') %}
+                        <a href="../public/index.php?route=profile">Profil</a>
+                        <a href="../public/index.php?route=logout">Déconnexion</a>
 
-                    {% if session.get('role') == 'admin' %}
-                        <a href="../public/index.php?route=administration">Administration</a>
+                        {% if session.get('role') == 'admin' %}
+                            <a href="../public/index.php?route=administration">Administration</a>
+                        {% endif %}
+                    {% else %}
+                        <a href="../public/index.php?route=register">S'inscrire</a>
+                        <a href="../public/index.php?route=login">Se Connecter</a>
                     {% endif %}
-                {% else %}
-                    <a href="../public/index.php?route=register">S'inscrire</a>
-                    <a href="../public/index.php?route=login">Se Connecter</a>
-                {% endif %}
+                </div>
             </div>
         </div>
     </header>
@@ -84,7 +87,9 @@
     </div>
 
     <footer>
+
             <p>Site réalisé dans le cadre d'une formation OpenClassrooms</br>par Alexandra Gomez.</p>
+ 
     </footer>
 </body>
 </html>

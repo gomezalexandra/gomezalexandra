@@ -29,7 +29,7 @@ class BackController extends Controller
     public function newChapter(Parameter $post)
     {
         if($this->checkAdmin()) {
-            if ($post->get('submit')) { //garder le meme post/get que pour fonction modifyChapter et que dans form_chapter.php sinon ko
+            if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
 
@@ -57,8 +57,10 @@ class BackController extends Controller
                 //]);
                 echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
-            //return $this->view->render('new_chapter', $this->session);
-            echo $this->twig->render('new_chapter.html.twig');
+            else { //else à laisser sinon doublon visuel en cas de errors
+                //return $this->view->render('new_chapter', $this->session);
+                echo $this->twig->render('new_chapter.html.twig');
+            }
         }
     }
 
@@ -95,16 +97,17 @@ class BackController extends Controller
                 //]);
                 echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
+            else { //else à laisser sinon doublon visuel en cas de errors
+                $post->set('chapterNumber', $chapter->getChapterNumber());
+                $post->set('title', $chapter->getTitle());
+                $post->set('content', $chapter->getContent());
+                $post->set('author', $chapter->getAuthor());
 
-            $post->set('chapterNumber', $chapter->getChapterNumber());
-            $post->set('title', $chapter->getTitle());
-            $post->set('content', $chapter->getContent());
-            $post->set('author', $chapter->getAuthor());
-
-            //return $this->view->render('modify_chapter', $this->session, [
-            //    'post' => $post
-            //]);
-            echo $this->twig->render('modify_chapter.html.twig', ['post' => $post]);
+                //return $this->view->render('modify_chapter', $this->session, [
+                //    'post' => $post
+                //]);
+                echo $this->twig->render('modify_chapter.html.twig', ['post' => $post]);
+            }
         }
     }
 
@@ -140,7 +143,7 @@ class BackController extends Controller
         if($this->checkAdmin()) {
             $this->commentDAO->deleteComment($commentId);
             $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
-            header('Location: ../public/index.php?route=chapter&chapterId='.$chapterId);
+            header('Location: ../public/index.php?route=administration');
         }
     }
 

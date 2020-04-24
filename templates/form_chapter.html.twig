@@ -40,9 +40,9 @@
         <form class="formChapter" method="post" action="../public/index.php?route={{ route ~ id }}">
             <label for="title">Numéro du Chapitre</label><br><input type="text" id="chapterNumber" name="chapterNumber" value={{chapterNumber}}><br>
             <label for="title">Titre</label><br><input type="text" id="title" name="title" value={{title}}><br>
-            {#<?= isset($errors['title']) ? $errors['title'] : ''; ?>#}
+            {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %}
             <label for="content">Contenu</label><br><textarea id="content" name="content"> {{content}}</textarea><br>
-            {#<?= isset($errors['content']) ? $errors['content'] : ''; ?>#}
+            {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %}
             <input type="submit" value={{submit}}  id="submit" name="submit">
             <input type="submit" value="Brouillon"  id="draft" name="draft">
         </form>

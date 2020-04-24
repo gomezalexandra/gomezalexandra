@@ -17,45 +17,39 @@
             <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
         </div>
 
-        <table>
-            <tr class="tableHead">
-                <td>Numéro</td>
-                <td>Titre</td>
-                <td>Contenu</td>
-                <td>Auteur</td>
-                <td>Date</td>
-                <td>Actions</td>
-            </tr>
+        
 
-            {#{% if count(chapters) == 0 %}
+            {% if (chapters | blankTable) == 0 %}
             
-                    <tr class="tableBody">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <p> Il n'y a pas de chapitre publié. </p>
                  
                 
-                {% else %}   #} 
-
-                    {% for chapter in chapters %}
-                        <tr class="tableBody">
-                            <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
-                            <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
-                            <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{ chapter.content | extract }}</a></td>
-                            <td>{{chapter.author}}</td>
-                            <td>Créé le {{chapter.createdAt}}</td>
-                            <td class="tableActions">
-                                <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
-                                <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
-                            </td>
+                {% else %}
+                    <table>
+                        <tr class="tableHead">
+                            <td>Numéro</td>
+                            <td>Titre</td>
+                            <td>Contenu</td>
+                            <td>Auteur</td>
+                            <td>Date</td>
+                            <td>Actions</td>
                         </tr>
-                     {% endfor %}
 
-                {#{% endif %}  #}           
+                        {% for chapter in chapters %}
+                            <tr class="tableBody">
+                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
+                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
+                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
+                                <td>{{chapter.author}}</td>
+                                <td>Créé le {{chapter.createdAt}}</td>
+                                <td class="tableActions">
+                                    <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
+                                    <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}     
                                                                                           {#foreach ($chapters as $chapter)
                                                                                                         {
                                                                                                             ?>
@@ -74,55 +68,48 @@
                                                                                                         }
                                                                                                     }
                                                                                                         ?>#}
-        </table>
+        
 
         <div class="administrationSubtitle">
             <h2>Les Brouillons</h2>
         </div>
 
 
-        <table>
-            <tr class="tableHead">
-                <td>Numéro</td>
-                <td>Titre</td>
-                <td>Contenu</td>
-                <td>Auteur</td>
-                <td>Date</td>
-                <td>Actions</td>
-            </tr>
+        
 
-            <?php
-            if (count($drafts) == 0) {
-                ?>
-                <tr class="tableBody">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <?php
-            } else {
-
-                {% for draft in drafts %}
-                    <tr class="tableBody">
-                        <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.chapterNumber}}</a></td>
-                        <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
-                        <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{ draft.content | extract }}</a></td>
-                        <td>{{draft.author}}</td>
-                        <td>Créé le {{draft.createdAt}}</td>
-                        <td class="tableActions">
-                            <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
-                            <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
-                            <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-
+            {% if (drafts | blankTable) == 0 %}
             
+                <p> Il n'y a pas de chapitre mis en brouillon. </p>
+                
+            {% else %}
+                    <table>
+                        <tr class="tableHead">
+                            <td>Numéro</td>
+                            <td>Titre</td>
+                            <td>Contenu</td>
+                            <td>Auteur</td>
+                            <td>Date</td>
+                            <td>Actions</td>
+                        </tr>
+
+                        {% for draft in drafts %}
+                            <tr class="tableBody">
+                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.chapterNumber}}</a></td>
+                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
+                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
+                                <td>{{draft.author}}</td>
+                                <td>Créé le {{draft.createdAt}}</td>
+                                <td class="tableActions">
+                                    <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
+                                    <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
+                                    <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+            {% endif %}
             
-        </table>
+        
     </div>
 
 
@@ -131,39 +118,35 @@
         <div class="administrationSubtitle">
             <h2>Les Commentaires signalés</h2>
         </div>
-        <table>
-            <tr class="tableHead">
-                <td>Pseudo</td>
-                <td>Message</td>
-                <td>Date</td>
-                <td>Actions</td>
-            </tr>
+                   
+            {% if (comments | blankTable) == 0 %}
 
-            <?php
-            if (count($comments) == 0) {
-                ?>
-                <tr class="tableBody">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <?php
-            } else {
-
-                {% for comment in comments %}
-                    <tr class="tableBody">
-                        <td>{{comment.pseudo}}</td>
-                        <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
-                        <td>Créé le {{comment.createdAt}}</td>
-                        <td class="tableActions">
-                            <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
-                            <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
-                        </td>
+                <p> Il n'y a pas de commentaires signalé. </p>
+               
+            {% else %}
+                <table>
+                    <tr class="tableHead">
+                        <td>Pseudo</td>
+                        <td>Message</td>
+                        <td>Date</td>
+                        <td>Actions</td>
                     </tr>
-                {% endfor %}
 
-        </table>
+                    {% for comment in comments %}
+                        <tr class="tableBody">
+                            <td>{{comment.pseudo}}</td>
+                            <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
+                            <td>Créé le {{comment.createdAt}}</td>
+                            <td class="tableActions">
+                                <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
+                                <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+
+        
     </div>
 
     <div class="administrationAuthor">
@@ -181,42 +164,35 @@
             <h2>Les Utilisateurs</h2>
         </div>
 
-        <table>
-            <tr class="tableHead">
-                <td>Pseudo</td>
-                <td>Date</td>
-                <td>Rôle</td>
-                <td>Actions</td>
-            </tr>
+            {% if (users | blankTable) == 0 %}
 
-            <?php
-            if (count($users) == 0) {
-                ?>
-                <tr class="tableBody">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <?php
-            } else {
+                <p> Il n'y a pas d'utilisateur enregistré.  </p>
+             
+            {% else %}
 
-                {% for user in users %}
-                    <tr class="tableBody">
-                        <td>{{user.pseudo}}</td>
-                        <td>Créé le : {{user.createdAt}}</td>
-                        <td>{{user.role}}</td>
-                        <td class="tableActions">
-                            {% if user.role == 'admin' %}
-                                Suppression impossible   
-                            {% else %}
-                                 <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer</a>
-                            {% endif %}
-                        </td>
+                <table>
+                    <tr class="tableHead">
+                        <td>Pseudo</td>
+                        <td>Date</td>
+                        <td>Rôle</td>
+                        <td>Actions</td>
                     </tr>
-                {% endfor %}
-            
-            
-        </table>
+
+                    {% for user in users %}
+                        <tr class="tableBody">
+                            <td>{{user.pseudo}}</td>
+                            <td>Créé le : {{user.createdAt}}</td>
+                            <td>{{user.role}}</td>
+                            <td class="tableActions">
+                                {% if user.role == 'admin' %}
+                                    Suppression impossible   
+                                {% else %}
+                                    <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
     </div>
 {% endblock %} 

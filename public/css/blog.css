@@ -39,6 +39,14 @@ a {
     background-color: #F0F0F0;
 }
 
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #F0F0F0;
+    flex-direction: column;
+}
+
 .hidenMenuTab {
     display: none; 
     position: absolute; 
@@ -67,7 +75,7 @@ color: #30536F;
 
 .menuTab {
     padding: 10px;
-    margin: 40px 10px 10px 10px;
+    margin: 0px 10px 10px 10px;
     width: 100px;
     background-color: #DDC3AC;
     text-align: center;
@@ -83,7 +91,9 @@ color: #30536F;
 .logo{
     font-weight: 300;
     font-size: 3em;
-    margin: 60px 30px 10px 30px;
+    text-align: center;
+    margin-top: 10px;
+     /*60px 30px 10px 30px; TODO effacer*/
     color: #707070;
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
 }
@@ -538,8 +548,8 @@ table td {
 /*part footer*/
 
 footer {
-    margin-top: 100px;
     height: 100px;
+    margin-top: 100px;
     background-color: #F0F0F0;
     display: flex;
     justify-content: center;

@@ -42,16 +42,20 @@ abstract class Controller
     {
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $this->twig = new \Twig\Environment($loader, [
-            'cache' => false, //'../cache', //modifier pour false quand en dvp
+            'cache' => false, //'../cache', TODO modifier pour false quand en dvp
             'debug' => true,
             ]);
-        $filter = new \Twig\TwigFilter('extract', function ($string) {
+        $filterExtract = new \Twig\TwigFilter('extract', function ($string) {
             return substr(htmlspecialchars_decode($string), 0, 100);
+        });
+        $filterBlankTable = new \Twig\TwigFilter('blankTable', function ($string) {
+            return count($string);
         });
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
         //$this->twig->addGlobal('session', $_SESSION); //TODO: passer directement par session?
         $this->twig->addGlobal('session', $this->session);
-        $this->twig->addFilter($filter);
+        $this->twig->addFilter($filterExtract);
+        $this->twig->addFilter($filterBlankTable);
         
     }
 }
