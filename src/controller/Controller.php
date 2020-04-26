@@ -46,7 +46,7 @@ abstract class Controller
             'debug' => true,
             ]);
         $filterExtract = new \Twig\TwigFilter('extract', function ($string) {
-            return substr(htmlspecialchars_decode($string), 0, 100);
+            return substr(htmlspecialchars_decode($string), 0, 200);
         });
         $filterBlankTable = new \Twig\TwigFilter('blankTable', function ($string) {
             return count($string);

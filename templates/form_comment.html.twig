@@ -5,7 +5,7 @@
                 
         <label for="content">Commentaire :</label><br>
         <textarea class="formTextarea" id="content" name="content"></textarea><br>
-        {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %}
+        <div class="formError"> {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %} </div>
                                                         {#<?= isset($errors['content']) ? $errors['content'] : ''; ?>#}
         <input type="submit" value="Ajouter" id="submit" name="submit">
         

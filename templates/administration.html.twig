@@ -29,9 +29,9 @@
                         <tr class="tableHead">
                             <td>Numéro</td>
                             <td>Titre</td>
-                            <td>Contenu</td>
-                            <td>Auteur</td>
-                            <td>Date</td>
+                            <td class="chapterExtract">Contenu</td>
+                            <td class="chapterDetails">Auteur</td>
+                            <td class="chapterDetails">Date</td>
                             <td>Actions</td>
                         </tr>
 
@@ -39,9 +39,9 @@
                             <tr class="tableBody">
                                 <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
                                 <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
-                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
-                                <td>{{chapter.author}}</td>
-                                <td>Créé le {{chapter.createdAt}}</td>
+                                <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
+                                <td class="chapterDetails">{{chapter.author}}</td>
+                                <td class="chapterDetails">Créé le {{chapter.createdAt}}</td>
                                 <td class="tableActions">
                                     <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
                                     <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
@@ -86,9 +86,9 @@
                         <tr class="tableHead">
                             <td>Numéro</td>
                             <td>Titre</td>
-                            <td>Contenu</td>
-                            <td>Auteur</td>
-                            <td>Date</td>
+                            <td class="chapterExtract">Contenu</td>
+                            <td class="chapterDetails">Auteur</td>
+                            <td class="chapterDetails">Date</td>
                             <td>Actions</td>
                         </tr>
 
@@ -96,9 +96,9 @@
                             <tr class="tableBody">
                                 <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.chapterNumber}}</a></td>
                                 <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
-                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
-                                <td>{{draft.author}}</td>
-                                <td>Créé le {{draft.createdAt}}</td>
+                                <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
+                                <td class="chapterDetails">{{draft.author}}</td>
+                                <td class="chapterDetails">Créé le {{draft.createdAt}}</td>
                                 <td class="tableActions">
                                     <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
                                     <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>

@@ -18,7 +18,7 @@
                 {% if   route  == 'newChapter' %}
                     {% set submit = "Publier" %}
                 {% else %}
-                    {% set submit = "ModifieretPublier" %}
+                    {% set submit = 'ModifieretPublier' %}
                 {% endif %}
 
                 {% set chapterNumber =  post.get('chapterNumber') %}
@@ -26,9 +26,6 @@
                 {% set content =  post.get('content') %}    
                 {% set id =  post.get('id') %}
            
-
-    {{ dump(post) }}
-
     <script>
         tinymce.init({
         selector: 'textarea',
@@ -40,10 +37,10 @@
         <form class="formChapter" method="post" action="../public/index.php?route={{ route ~ id }}">
             <label for="title">Numéro du Chapitre</label><br><input type="text" id="chapterNumber" name="chapterNumber" value={{chapterNumber}}><br>
             <label for="title">Titre</label><br><input type="text" id="title" name="title" value={{title}}><br>
-            {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %}
+            <div class="formError"> {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %} </div>
             <label for="content">Contenu</label><br><textarea id="content" name="content"> {{content}}</textarea><br>
-            {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %}
-            <input type="submit" value={{submit}}  id="submit" name="submit">
+            <div class="formError"> {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %} </div>
+            <input type="submit" value= {{submit}}  id="submit" name="submit">
             <input type="submit" value="Brouillon"  id="draft" name="draft">
         </form>
     </div>

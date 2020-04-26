@@ -32,15 +32,13 @@
             {% for chapter in chapters %}
 
                 <div class="chapterContainer">
-                    <div class="chapterDescription">
-                        <div class= "content">
+                    <div class="chapterDescription">       
                             <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
                                 <h2>{{chapter.title}}</h2>
                                 {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
                                 <p>{{chapter.author}}</p>
                                 <p>Créé le {{chapter.createdAt}}</p>
-                            </a>
-                        </div>
+                            </a>            
                     </div>
 
                     {% if chapter.chapterNumber % 2 == 0 %}

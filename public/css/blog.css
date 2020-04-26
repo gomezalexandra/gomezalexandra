@@ -24,6 +24,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
     margin-top: 20px;
 }
 
@@ -52,7 +53,8 @@ header {
     position: absolute; 
     left: 120px; 
     top: 0px;
-     background-color: #DDC3AC
+    background-color: #DDC3AC;
+    width: 120px;
 }
 
 
@@ -147,19 +149,18 @@ color: #30536F;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    max-width: 1000px;
-    height: 400px;
     margin: auto;
     margin-bottom: 200px;
 }
 
 .lastChapter {
-    width: 50%;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     background-color: #F0F0F0;
-    height: 400px;
 }
 
 .chapterContent {
@@ -167,12 +168,13 @@ color: #30536F;
 }
 
 .lastChapterLink{
-    width: 50%;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: #DDC3AC;
-    height: 400px;
+    background-color: #DDC3AC; 
 }
 
 .sectionThree{ 
@@ -191,7 +193,7 @@ color: #30536F;
 .whiteBlock {
     background-color: white;
     height: 180px;
-    width: 400px;
+    width: 250px;
     position: relative;
     left: 45px;
     z-index: 1;
@@ -234,8 +236,6 @@ color: #30536F;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    border: 1px solid #707070;
 }
 
 .chapterDescription{
@@ -245,8 +245,9 @@ color: #30536F;
     justify-content: center;
     align-items: center;
     background-color: #F0F0F0;
-    height: 340px;
-    width: 50%;
+    height: 400px;
+    width: 500px;
+    border: 1px solid #707070;
 }
 
 .chapterLinkBlue, .chapterLinkBrown{
@@ -254,8 +255,9 @@ color: #30536F;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 340px;
-    width: 50%;
+    height: 400px;
+    width: 500px;
+    border: 1px solid #707070;
 }
 
 .chapterLinkBlue {
@@ -373,6 +375,7 @@ color: #30536F;
     justify-content: center;
     padding: 50px;
     background-color:#30536F;
+    width: 80%;
 }
 
 .addComment
@@ -501,6 +504,7 @@ table {
 table td {
     border: 1px solid #30536F;
     padding: 8px;
+    max-width: 350px;
 }
 
 .tableActions {
@@ -545,6 +549,15 @@ table td {
     margin-top: 40px;
 }
 
+.formError {
+    color: #ff5f5f;
+    font-size: 1.1em;
+}
+
+.formError p {
+    margin-top: 0px;
+}
+
 /*part footer*/
 
 footer {
@@ -554,4 +567,88 @@ footer {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 1134px)
+{
+	.whiteBlock {
+        background-color: white;
+        position: static;
+        z-index: 1;
+        height: 80px;
+    }
+
+    .blueBlock {
+        height: 300px;
+        width: 300px;
+        position: static;
+    }
+
+    .image {
+        left: 100px;
+        position: static;
+    }
+
+    .lastChapterContainer {
+        margin-bottom: 0px;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    h1 {
+        margin: 0px;
+    }
+
+    .title{
+        font-size: 1.8em;
+    }
+
+    .subMenuTab {
+        margin-bottom: 10px;
+    }
+
+    .presentation {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .chapterLinkBlue, .chapterLinkBrown, .chapterDescription {
+        width: 400px;
+    }
+
+    .chapterExtract {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 856px)
+{
+    .hidenMenuTab {
+            left: 0px;
+            top: 30px;
+    }
+}
+
+@media screen and (max-width: 670px)
+{
+    table td {
+        padding: 3px;
+        max-width: 200px;
+    }
+
+    .tableHead td {
+        padding: 3px; 
+    }
+}
+
+@media screen and (max-width: 500px)
+{
+    .chapterDetails {
+        display: none;
+    }
+
 }
