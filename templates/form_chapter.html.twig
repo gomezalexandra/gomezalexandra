@@ -36,6 +36,7 @@
     <div class="formContainer">
         <form class="formChapter" method="post" action="../public/index.php?route={{ route ~ id }}">
             <label for="title">Numéro du Chapitre</label><br><input type="text" id="chapterNumber" name="chapterNumber" value={{chapterNumber}}><br>
+            <div class="formError"> {% autoescape 'html' %} {{errors.chapterNumber | raw}} {% endautoescape %} </div>
             <label for="title">Titre</label><br><input type="text" id="title" name="title" value={{title}}><br>
             <div class="formError"> {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %} </div>
             <label for="content">Contenu</label><br><textarea id="content" name="content"> {{content}}</textarea><br>

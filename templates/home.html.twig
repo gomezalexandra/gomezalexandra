@@ -25,23 +25,23 @@
 
         {% endif %}
 
-       {# <?php
-        if ($this->session->get('pseudo')) {
-            ?>
-            <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
-            <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
+                                                                {# <?php
+                                                                    if ($this->session->get('pseudo')) {
+                                                                        ?>
+                                                                        <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
+                                                                        <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
 
-            <?php if($this->session->get('role') === 'admin') { ?>
-            <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
-            <?php } 
+                                                                        <?php if($this->session->get('role') === 'admin') { ?>
+                                                                        <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
+                                                                        <?php } 
 
-        } else {
-            ?>
-            <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
-            <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
-            <?php
-        }
-        ?>#}
+                                                                    } else {
+                                                                        ?>
+                                                                        <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
+                                                                        <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
+                                                                        <?php
+                                                                    }
+                                                                    ?>#}
     </div>
 
     <div class="presentation">
@@ -60,7 +60,7 @@
                         <h2> {{chapter.title}} </h2>
                         {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
                         <p> {{chapter.author}} </p>
-                        <p> Créé le {{chapter.createdAt("d/m/Y à H:i:s")}} </p>
+                        <p> Créé le {{chapter.createdAt("d/m/Y")}} </p>
                     </a>
                 </div>           
             </div>

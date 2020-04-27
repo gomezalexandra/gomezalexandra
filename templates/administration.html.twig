@@ -41,7 +41,7 @@
                                 <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
                                 <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
                                 <td class="chapterDetails">{{chapter.author}}</td>
-                                <td class="chapterDetails">Créé le {{chapter.createdAt}}</td>
+                                <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
                                 <td class="tableActions">
                                     <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
                                     <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
@@ -98,7 +98,7 @@
                                 <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
                                 <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
                                 <td class="chapterDetails">{{draft.author}}</td>
-                                <td class="chapterDetails">Créé le {{draft.createdAt}}</td>
+                                <td class="chapterDetails">Créé le {{draft.createdAt("d/m/Y")}}</td>
                                 <td class="tableActions">
                                     <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
                                     <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
@@ -136,7 +136,7 @@
                         <tr class="tableBody">
                             <td>{{comment.pseudo}}</td>
                             <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
-                            <td>Créé le {{comment.createdAt}}</td>
+                            <td>Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</td>
                             <td class="tableActions">
                                 <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
                                 <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
@@ -181,7 +181,7 @@
                     {% for user in users %}
                         <tr class="tableBody">
                             <td>{{user.pseudo}}</td>
-                            <td>Créé le : {{user.createdAt}}</td>
+                            <td>Créé le {{user.createdAt("d/m/Y à H:i:s")}}</td>
                             <td>{{user.role}}</td>
                             <td class="tableActions">
                                 {% if user.role == 'admin' %}

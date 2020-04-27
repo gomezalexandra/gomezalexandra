@@ -31,6 +31,10 @@ class ChapterValidation extends Validation
             $error = $this->checkContent($name, $value);
             $this->addError($name, $error);
         }
+        elseif ($name === 'chapterNumber') {
+            $error = $this->checkNumber($name, $value);
+            $this->addError($name, $error);
+        }
     }
 
     private function addError($name, $error) {
@@ -49,9 +53,6 @@ class ChapterValidation extends Validation
         if($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('titre', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 100)) {
-            return $this->constraint->maxLength('titre', $value, 100);
-        }
     }
 
     private function checkContent($name, $value)
@@ -61,6 +62,13 @@ class ChapterValidation extends Validation
         }
         if($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('contenu', $value, 2);
+        }
+    }
+
+    private function checkNumber($name, $value)
+    {
+        if($this->constraint->notBlank($name, $value)) {
+            return $this->constraint->notBlank('numéro', $value);
         }
     }
 }

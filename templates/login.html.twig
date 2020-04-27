@@ -15,6 +15,7 @@
                 <input type="text" id="pseudo" name="pseudo"><br>
                 <label for="password">Mot de passe</label><br>
                 <input type="password" id="password" name="password"><br>
+                <div class = "formError"> {{session.show('error_login')}} </div>
                 <input type="submit" value="Connexion" id="submit" name="submit">
             </form>
         </div>

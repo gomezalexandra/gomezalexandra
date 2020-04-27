@@ -31,7 +31,7 @@
             <h2>{{chapter.title}}</h2>
             {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
             <p>{{chapter.author}}</p>
-            <p>Créé le {{chapter.createdAt}}</p>
+            <p>Créé le {{chapter.createdAt("d/m/Y")}}</p>
         </div>
 
         {% if session.get('role') == 'admin' %}
@@ -69,7 +69,7 @@
                             <div class="comment">
                                 <h4> {{comment.pseudo}} </h4>
                                 <p> {{comment.content}} </p>
-                                <p>Posté le {{comment.createdAt}} </p>
+                                <p>Posté le {{comment.createdAt("d/m/Y à H:i:s")}} </p>
                             </div>
 
                             <div class="flagCommentContainer">

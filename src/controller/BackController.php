@@ -29,36 +29,22 @@ class BackController extends Controller
     public function newChapter(Parameter $post)
     {
         if($this->checkAdmin()) {
-            if ($post->get('submit')) {
+            if ( ($post->get('submit')) || ($post->get('draft')) ){
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
-
-                    $this->chapterDAO->newChapter($post, $this->session->get('id'));
-                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié');                  
+                    if ($post->get('submit')) {
+                        $this->chapterDAO->newChapter($post, $this->session->get('id'));
+                        $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié'); 
+                    }
+                    elseif($post->get('draft')) {
+                        $this->chapterDAO->newDraft($post, $this->session->get('id'));
+                        $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
+                    }                   
                     header('Location: ../public/index.php?route=administration');                  
                 }
-                //return $this->view->render('new_chapter', $this->session, [
-                //    'post' => $post,
-                //    'errors' => $errors
-                //]);
-                echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
-            }
-
-            elseif($post->get('draft')) {
-                $errors = $this->validation->validate($post, 'Chapter');
-                if (!$errors) {
-                    $this->chapterDAO->newDraft($post, $this->session->get('id'));
-                    $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
-                    header('Location: ../public/index.php?route=administration');
-                }
-                //return $this->view->render('new_chapter', $this->session, [
-                //    'post' => $post,
-                //    'errors' => $errors
-                //]);
                 echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
             else { //else à laisser sinon doublon visuel en cas de errors
-                //return $this->view->render('new_chapter', $this->session);
                 echo $this->twig->render('new_chapter.html.twig');
             }
         }
@@ -70,31 +56,19 @@ class BackController extends Controller
             $chapter = $this->chapterDAO->getChapter($chapterId);
             $post->set('id', $chapter->getId());
             
-            if($post->get('submit')) {
+            if ( ($post->get('submit')) || ($post->get('draft')) ){
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
-                    $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
-                    $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');
+                    if ($post->get('submit')) {
+                        $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
+                        $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');     
+                    }
+                    elseif($post->get('draft')) {
+                        $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
+                        $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
+                    }
                     header('Location: ../public/index.php?route=administration');
                 }
-                //return $this->view->render('modify_chapter', $this->session, [
-                //    'post' => $post,
-                //    'errors' => $errors
-                //]);
-                echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
-            }
-            
-            elseif($post->get('draft')) {
-                $errors = $this->validation->validate($post, 'Chapter');
-                if (!$errors) {
-                    $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
-                    $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
-                    header('Location: ../public/index.php?route=administration');
-                }
-                //return $this->view->render('modify_chapter', $this->session, [
-                //    'post' => $post,
-                //    'errors' => $errors
-                //]);
                 echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
             else { //else à laisser sinon doublon visuel en cas de errors
@@ -103,9 +77,6 @@ class BackController extends Controller
                 $post->set('content', $chapter->getContent());
                 $post->set('author', $chapter->getAuthor());
 
-                //return $this->view->render('modify_chapter', $this->session, [
-                //    'post' => $post
-                //]);
                 echo $this->twig->render('modify_chapter.html.twig', ['post' => $post]);
             }
         }

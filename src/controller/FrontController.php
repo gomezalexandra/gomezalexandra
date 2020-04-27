@@ -105,7 +105,7 @@ class FrontController extends Controller
                 header('Location: ../public/index.php');
             }
             else {
-                $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
+                $this->session->set('error_login', '* Erreur de pseudo ou de mot de passe');
             }
         }
         //return $this->view->render('login', $this->session);
