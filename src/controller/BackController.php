@@ -29,20 +29,32 @@ class BackController extends Controller
     public function newChapter(Parameter $post)
     {
         if($this->checkAdmin()) {
-            if ( ($post->get('submit')) || ($post->get('draft')) ){
+            if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
-                    if ($post->get('submit')) {
-                        $this->chapterDAO->newChapter($post, $this->session->get('id'));
-                        $this->session->set('new_chapter', 'Le nouveau chapitre a bien été publié'); 
+                    if ($post->get('draft')) {
+                        $this->chapterDAO->newDraft($post, $this->session->get('id'));
+                        $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
                     }
+                    else { 
+                    $this->chapterDAO->newChapter($post, $this->session->get('id'));
+                    $this->session->set('add_chapter', 'Le nouveau chapitre a bien été publié'); 
+                    }
+                    /*}
                     elseif($post->get('draft')) {
                         $this->chapterDAO->newDraft($post, $this->session->get('id'));
                         $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
-                    }                   
-                    header('Location: ../public/index.php?route=administration');                  
+                        var_dump('passe ici  draft'); 
+                    }  */  
+                    $chapters = $this->chapterDAO->getChapters();
+                    $drafts = $this->chapterDAO->getDrafts();
+                    $comments = $this->commentDAO->getFlagComments();
+                    $users = $this->userDAO->getUsers();
+                    echo $this->twig->render('administration.html.twig', ['chapters'=>$chapters, 'drafts' => $drafts, 'comments'=>$comments, 'users' => $users]);
                 }
-                echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
+                else {
+                    echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
+                }
             }
             else { //else à laisser sinon doublon visuel en cas de errors
                 echo $this->twig->render('new_chapter.html.twig');
@@ -54,22 +66,38 @@ class BackController extends Controller
     {        
         if($this->checkAdmin()) {
             $chapter = $this->chapterDAO->getChapter($chapterId);
-            $post->set('id', $chapter->getId());
-            
-            if ( ($post->get('submit')) || ($post->get('draft')) ){
+            if ($chapter) {
+                $post->set('id', $chapter->getId());
+            }
+            else {
+                $this->session->set('error_chapter', 'Désolé, ce chapitre n\'existe pas');
+                header('Location: ../public/index.php?route=administration');
+            }         
+            if ($post->get('submit')){
                 $errors = $this->validation->validate($post, 'Chapter');
                 if (!$errors) {
-                    if ($post->get('submit')) {
-                        $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
-                        $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');     
-                    }
-                    elseif($post->get('draft')) {
+                    if ($post->get('draft')) {
                         $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
                         $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
                     }
-                    header('Location: ../public/index.php?route=administration');
+                    else {
+                        $this->chapterDAO->modifyChapter($post, $chapterId, $this->session->get('id'));
+                        $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');
+                    }
+
+                   /* elseif($post->get('draft')) {
+                        $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
+                        $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
+                    }*/
+                    $chapters = $this->chapterDAO->getChapters();
+                    $drafts = $this->chapterDAO->getDrafts();
+                    $comments = $this->commentDAO->getFlagComments();
+                    $users = $this->userDAO->getUsers();
+                    echo $this->twig->render('administration.html.twig', ['chapters'=>$chapters, 'drafts' => $drafts, 'comments'=>$comments, 'users' => $users]);
+                   // header('Location: ../public/index.php?route=administration');
+                } else {
+                    echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
                 }
-                echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
             }
             else { //else à laisser sinon doublon visuel en cas de errors
                 $post->set('chapterNumber', $chapter->getChapterNumber());

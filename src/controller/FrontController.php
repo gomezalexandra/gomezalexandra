@@ -31,7 +31,14 @@ class FrontController extends Controller
             //'chapter' => $chapter,
             //'comments' => $comments
         //]);
-        echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments]);
+        if ($chapter) {
+            echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments]);
+        }
+        else {
+            $this->session->set('error_chapter', 'Désolé, ce chapitre n\'existe pas');
+            header('Location: ../public/index.php');
+        }
+        
     }
 
     public function author()

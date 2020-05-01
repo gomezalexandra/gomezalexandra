@@ -29,7 +29,7 @@ class ChapterDAO extends DAO
             $chapters[$chapterId] = $this->buildObject($row);
         }
         $result->closeCursor();
-        return $chapters;
+        return $chapters;        
     }
 
     public function getDrafts()
@@ -66,7 +66,9 @@ class ChapterDAO extends DAO
         $result = $this->createQuery($sql, [$chapterId]);
         $chapter = $result->fetch();
         $result->closeCursor();
-        return $this->buildObject($chapter);
+        if ($chapter) {
+            return $this->buildObject($chapter);
+        }
     }
 
     public function newChapter(Parameter $post, $userId)
@@ -100,7 +102,7 @@ class ChapterDAO extends DAO
         $this->createQuery($sql, [0, $chapterId]);
     }
 
-    public function modifyDraft(Parameter $post, $chapterId, $userId) //TODO à tester
+    public function modifyDraft(Parameter $post, $chapterId, $userId)
     {
         $sql = 'UPDATE chapter SET chapterNumber=:chapterNumber, title=:title, content=:content, userId=:userId, draft=:draft WHERE id=:chapterId';
         $this->createQuery($sql, [

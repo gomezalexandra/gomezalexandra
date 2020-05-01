@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="../public/css/blog.css"/>
+    <link rel="stylesheet" href="../public/css/maintest.css"/>
     <script src="https://cdn.tiny.cloud/1/cw4q64aokxm6bpoqnqo3ll1stp1bwm7285a3jsoyczyjp3dm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 	<!--<link rel="stylesheet" href="fontawesome-free/css/all.css"/>-->
 </head>
 
 <body>
-
 
     <header>
         <div class= "logo">JF</div>
@@ -61,8 +61,10 @@
         
     <div id="content">
         <h4 class="sessionMessage">
-            
+            {{session.show('add_chapter')}}
             {{session.show('new_chapter')}}
+            {{session.show('error_chapter')}}
+            {{session.show('modify_chapter')}}
             {{session.show('publish_chapter')}} 
             {{session.show('add_comment')}} 
             {{session.show('delete_chapter')}} 

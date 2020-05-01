@@ -25,12 +25,12 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
-        $isChapterId = empty ( $this->request->getGet()->get('chapterId') );       
+        //$isChapterId = empty ( $this->request->getGet()->get('chapterId') );       
 
         try{
             if(isset($route))
             {
-                if(($route === 'chapter') && ($isChapterId == false) ){
+                if($route === 'chapter') {
                     $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
                 }
                 elseif($route === 'allChapters'){
@@ -42,25 +42,25 @@ class Router
                 elseif($route === 'newChapter'){
                     $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
                 }
-                elseif(($route === 'modifyChapter') && ($isChapterId == false) ){
+                elseif($route === 'modifyChapter'){
                     $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
                 }
-                elseif(($route === 'publish') && ($isChapterId == false)){
+                elseif($route === 'publish'){
                     $this->backController->publishChapter($this->request->getGet()->get('chapterId'));
                 }
-                elseif(($route === 'deleteChapter') && ($isChapterId == false)){
+                elseif($route === 'deleteChapter'){
                     $this->backController->deleteChapter($this->request->getGet()->get('chapterId'));
                 }
-                elseif(($route === 'addComment') && ($isChapterId == false)){
+                elseif($route === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('chapterId'), $this->request->getSession()->get('pseudo'));
                 }
-                elseif(($route === 'flagComment') && ($isChapterId == false)){
+                elseif($route === 'flagComment'){
                     $this->frontController->flagComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'unflagComment'){
                     $this->backController->unflagComment($this->request->getGet()->get('commentId'));
                 }
-                elseif(($route === 'deleteComment') && ($isChapterId == false)){
+                elseif($route === 'deleteComment'){
                     $this->backController->deleteComment($this->request->getGet()->get('commentId'), $this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'register'){
