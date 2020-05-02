@@ -4,6 +4,10 @@
 	src: url('../fonts/MrsSaintDelafield-Regular.ttf');
 }
 
+body {
+    margin: 0px;
+}
+
 h1 {
     margin: 40px;
 }
@@ -30,30 +34,39 @@ h2 {
 
 a {
     text-decoration: none;
-    color: #707070;
+    color: black;
 }
 
 .menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #F0F0F0;
 }
 
 header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #F0F0F0;
     flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    top: 0;
+}
+
+#content {
+    position: relative;
+    top: 150px;
 }
 
 .hidenMenuTab {
     display: none; 
     position: absolute; 
-    left: 120px; 
+    left: 110px;
+    border-radius: 3px;
     top: 0px;
-    background-color: #DDC3AC;
+    /*background-color: #DDC3AC;*/
+    background-color: #ded4cbb8;
     width: 120px;
 }
 
@@ -77,11 +90,12 @@ color: #30536F;
 
 .menuTab {
     padding: 10px;
-    margin: 0px 10px 10px 10px;
+    margin: 10px;
     width: 100px;
-    background-color: #DDC3AC;
+    background-color: #ded4cbb8;
     text-align: center;
     height: 18px;
+    border-radius: 4px;
 }
 
 .menuTab a {
@@ -95,9 +109,15 @@ color: #30536F;
     font-size: 3em;
     text-align: center;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
      /*60px 30px 10px 30px; TODO effacer*/
     color: #707070;
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
+}
+
+.logo p{
+    margin: 0px;
 }
 
 .subMenu {
@@ -482,8 +502,13 @@ label {
     color: white;
 }
 
-.addChapter:hover, .tableHead {
+.addChapter:hover {
     background-color: #DDC3AC;
+}
+
+.tableHead{
+    background-color: #30536F;
+    color: white;
 }
 
 .tableHead td{
@@ -561,10 +586,12 @@ table td {
 footer {
     height: 100px;
     margin-top: 100px;
-    background-color: #F0F0F0;
+    background-color: #ccb39d;
     display: flex;
     justify-content: center;
     text-align: center;
+    position: relative;
+    top: 150px;
 }
 
 /*media queries*/

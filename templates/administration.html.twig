@@ -2,197 +2,215 @@
 
 {% block title %} Administration {% endblock %}
 
-{% block content %} 
+{% block content %}
 
-    <div class="title">
-        <h1>L'Administration</h1>
-    </div>
+    <div class="administration">
+        
+            <div class="sidebar">
+ 
+                    <p>Nouveau Chapitre</p>
+                    <p>Les Chapitres</p>
+                    <p>Les Brouillons</p>
+                    <p>Les Commentaires Signalées</p>
+                    <p>L'auteur</p>
+                    <p>Les Utilisateurs</p>
 
-    <div class="administrationChapter">
-        <div class="administrationSubtitle">
-            <h2>Les Chapitres</h2>
-        </div>
-
-        <div class="addChapter">
-            <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
-        </div>
-
+            </div>
+            
         
 
-            {% if (chapters | blankTable) == 0 %}
-            
-                    <p> Il n'y a pas de chapitre publié. </p>
-                 
+        <div class="administration_content">
+            <div class="title">
+                <h1>L'Administration</h1>
+            </div>
+
+            <div class="administrationChapter">
+                <div class="administrationSubtitle">
+                    <h2>Les Chapitres</h2>
+                </div>
+
+                <div class="addChapter">
+                    <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
+                </div>
+
+                
+
+                    {% if (chapters | blankTable) == 0 %}
+                    
+                            <p> Il n'y a pas de chapitre publié. </p>
+                        
+                        
+                        {% else %}
+                            <table>
+                                <tr class="tableHead">
+                                    <td>Numéro</td>
+                                    <td>Titre</td>
+                                    <td class="chapterExtract">Contenu</td>
+                                    <td class="chapterDetails">Auteur</td>
+                                    <td class="chapterDetails">Date</td>
+                                    <td>Actions</td>
+                                </tr>
+
+                                {% for chapter in chapters %}
+                                    <tr class="tableBody">
+                                        <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
+                                        <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
+                                        <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
+                                        <td class="chapterDetails">{{chapter.author}}</td>
+                                        <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
+                                        <td class="tableActions">
+                                            <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
+                                            <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% endif %}     
+                                                                                                {#foreach ($chapters as $chapter)
+                                                                                                                {
+                                                                                                                    ?>
+                                                                                                                    <tr class="tableBody">
+                                                                                                                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getChapterNumber());?></a></td>
+                                                                                                                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
+                                                                                                                        <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
+                                                                                                                        <td><?= htmlspecialchars($chapter->getAuthor());?></td>
+                                                                                                                        <td>Créé le <?= htmlspecialchars($chapter->getCreatedAt());?></td>
+                                                                                                                        <td class="tableActions">
+                                                                                                                            <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier</a></br>
+                                                                                                                            <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                    <?php
+                                                                                                                }
+                                                                                                            }
+                                                                                                                ?>#}
+                
+
+                <div class="administrationSubtitle">
+                    <h2>Les Brouillons</h2>
+                </div>
+
+
+                
+
+                    {% if (drafts | blankTable) == 0 %}
+                    
+                        <p> Il n'y a pas de chapitre mis en brouillon. </p>
+                        
+                    {% else %}
+                            <table>
+                                <tr class="tableHead">
+                                    <td>Numéro</td>
+                                    <td>Titre</td>
+                                    <td class="chapterExtract">Contenu</td>
+                                    <td class="chapterDetails">Auteur</td>
+                                    <td class="chapterDetails">Date</td>
+                                    <td>Actions</td>
+                                </tr>
+
+                                {% for draft in drafts %}
+                                    <tr class="tableBody">
+                                        <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.chapterNumber}}</a></td>
+                                        <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
+                                        <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
+                                        <td class="chapterDetails">{{draft.author}}</td>
+                                        <td class="chapterDetails">Créé le {{draft.createdAt("d/m/Y")}}</td>
+                                        <td class="tableActions">
+                                            <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
+                                            <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
+                                            <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                    {% endif %}
+                    
+                
+            </div>
+
+
+
+            <div class="administrationComments">
+                <div class="administrationSubtitle">
+                    <h2>Les Commentaires signalés</h2>
+                </div>
+                        
+                    {% if (comments | blankTable) == 0 %}
+
+                        <p> Il n'y a pas de commentaires signalé. </p>
+                    
+                    {% else %}
+                        <table>
+                            <tr class="tableHead">
+                                <td>Pseudo</td>
+                                <td>Message</td>
+                                <td>Date</td>
+                                <td>Actions</td>
+                            </tr>
+
+                            {% for comment in comments %}
+                                <tr class="tableBody">
+                                    <td>{{comment.pseudo}}</td>
+                                    <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
+                                    <td>Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</td>
+                                    <td class="tableActions">
+                                        <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
+                                        <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+
+                
+            </div>
+
+            <div class="administrationAuthor">
+                <div class="administrationSubtitle">
+                        <h2>L'Auteur</h2>
+                </div>
+
+                <div class="modifyAuthor">
+                    <a href="../public/index.php?route=modifyAuthor">Modifier la page</a>
+                </div>
+            </div>
+
+            <div class="administrationUser">
+                <div class="administrationSubtitle">
+                    <h2>Les Utilisateurs</h2>
+                </div>
+
+                {% if (users | blankTable) == 0 %}
+
+                    <p> Il n'y a pas d'utilisateur enregistré.  </p>
                 
                 {% else %}
+
                     <table>
                         <tr class="tableHead">
-                            <td>Numéro</td>
-                            <td>Titre</td>
-                            <td class="chapterExtract">Contenu</td>
-                            <td class="chapterDetails">Auteur</td>
-                            <td class="chapterDetails">Date</td>
+                            <td>Pseudo</td>
+                            <td>Date</td>
+                            <td>Rôle</td>
                             <td>Actions</td>
                         </tr>
 
-                        {% for chapter in chapters %}
+                        {% for user in users %}
                             <tr class="tableBody">
-                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
-                                <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
-                                <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
-                                <td class="chapterDetails">{{chapter.author}}</td>
-                                <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
+                                <td>{{user.pseudo}}</td>
+                                <td>Créé le {{user.createdAt("d/m/Y à H:i:s")}}</td>
+                                <td>{{user.role}}</td>
                                 <td class="tableActions">
-                                    <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
-                                    <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
+                                    {% if user.role == 'admin' %}
+                                        Suppression impossible   
+                                    {% else %}
+                                        <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer</a>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
                     </table>
-                {% endif %}     
-                                                                                          {#foreach ($chapters as $chapter)
-                                                                                                        {
-                                                                                                            ?>
-                                                                                                            <tr class="tableBody">
-                                                                                                                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getChapterNumber());?></a></td>
-                                                                                                                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= htmlspecialchars_decode($chapter->getTitle());?></a></td>
-                                                                                                                <td><a href="../public/index.php?route=chapter&chapterId=<?= htmlspecialchars($chapter->getId());?>"><?= substr(htmlspecialchars_decode($chapter->getContent()), 0, 350);?></a></td>
-                                                                                                                <td><?= htmlspecialchars($chapter->getAuthor());?></td>
-                                                                                                                <td>Créé le <?= htmlspecialchars($chapter->getCreatedAt());?></td>
-                                                                                                                <td class="tableActions">
-                                                                                                                    <a href="../public/index.php?route=modifyChapter&chapterId=<?= $chapter->getId(); ?>">Modifier</a></br>
-                                                                                                                    <a href="../public/index.php?route=deleteChapter&chapterId=<?= $chapter->getId(); ?>">Supprimer</a>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <?php
-                                                                                                        }
-                                                                                                    }
-                                                                                                        ?>#}
-        
-
-        <div class="administrationSubtitle">
-            <h2>Les Brouillons</h2>
+                {% endif %}
+            </div>
         </div>
-
-
-        
-
-            {% if (drafts | blankTable) == 0 %}
-            
-                <p> Il n'y a pas de chapitre mis en brouillon. </p>
-                
-            {% else %}
-                    <table>
-                        <tr class="tableHead">
-                            <td>Numéro</td>
-                            <td>Titre</td>
-                            <td class="chapterExtract">Contenu</td>
-                            <td class="chapterDetails">Auteur</td>
-                            <td class="chapterDetails">Date</td>
-                            <td>Actions</td>
-                        </tr>
-
-                        {% for draft in drafts %}
-                            <tr class="tableBody">
-                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.chapterNumber}}</a></td>
-                                <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
-                                <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
-                                <td class="chapterDetails">{{draft.author}}</td>
-                                <td class="chapterDetails">Créé le {{draft.createdAt("d/m/Y")}}</td>
-                                <td class="tableActions">
-                                    <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
-                                    <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
-                                    <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-            {% endif %}
-            
-        
-    </div>
-
-
-
-    <div class="administrationComments">
-        <div class="administrationSubtitle">
-            <h2>Les Commentaires signalés</h2>
-        </div>
-                   
-            {% if (comments | blankTable) == 0 %}
-
-                <p> Il n'y a pas de commentaires signalé. </p>
-               
-            {% else %}
-                <table>
-                    <tr class="tableHead">
-                        <td>Pseudo</td>
-                        <td>Message</td>
-                        <td>Date</td>
-                        <td>Actions</td>
-                    </tr>
-
-                    {% for comment in comments %}
-                        <tr class="tableBody">
-                            <td>{{comment.pseudo}}</td>
-                            <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
-                            <td>Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</td>
-                            <td class="tableActions">
-                                <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
-                                <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
-
-        
-    </div>
-
-    <div class="administrationAuthor">
-        <div class="administrationSubtitle">
-                <h2>L'Auteur</h2>
-        </div>
-
-        <div class="modifyAuthor">
-            <a href="../public/index.php?route=modifyAuthor">Modifier la page</a>
-        </div>
-    </div>
-
-    <div class="administrationUser">
-        <div class="administrationSubtitle">
-            <h2>Les Utilisateurs</h2>
-        </div>
-
-            {% if (users | blankTable) == 0 %}
-
-                <p> Il n'y a pas d'utilisateur enregistré.  </p>
-             
-            {% else %}
-
-                <table>
-                    <tr class="tableHead">
-                        <td>Pseudo</td>
-                        <td>Date</td>
-                        <td>Rôle</td>
-                        <td>Actions</td>
-                    </tr>
-
-                    {% for user in users %}
-                        <tr class="tableBody">
-                            <td>{{user.pseudo}}</td>
-                            <td>Créé le {{user.createdAt("d/m/Y à H:i:s")}}</td>
-                            <td>{{user.role}}</td>
-                            <td class="tableActions">
-                                {% if user.role == 'admin' %}
-                                    Suppression impossible   
-                                {% else %}
-                                    <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer</a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
     </div>
 {% endblock %} 

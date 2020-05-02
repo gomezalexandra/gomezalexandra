@@ -6,6 +6,7 @@
     <title> {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="../public/css/blog.css"/>
     <link rel="stylesheet" href="../public/css/maintest.css"/>
+    <link rel="stylesheet" href="../public/fonts/fontawesome-free/css/all.css"/>
     <script src="https://cdn.tiny.cloud/1/cw4q64aokxm6bpoqnqo3ll1stp1bwm7285a3jsoyczyjp3dm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 	<!--<link rel="stylesheet" href="fontawesome-free/css/all.css"/>-->
 </head>
@@ -13,36 +14,40 @@
 <body>
 
     <header>
-        <div class= "logo">JF</div>
-        <div class="menu">
-            <div class="menuTab">
-                <a href="../public/index.php">L'Accueil</a>
+        
+            <div class= "logo">
+                <p>JF</p>
             </div>
-            <div class="menuTab">
-                <a href="../public/index.php?route=allChapters">Les Chapitres</a>
-            </div>
-            
-            <div class="menuTab">
-                <a href="../public/index.php?route=author">L'Auteur</a>
-            </div>
-            <div id="hidenMenu" class="menuTab">
-                <div><a>Mon Compte</a> </div>
+            <div class="menu">
+                <div class="menuTab">
+                    <a href="../public/index.php">L'Accueil</a>
+                </div>
+                <div class="menuTab">
+                    <a href="../public/index.php?route=allChapters">Les Chapitres</a>
+                </div>
                 
-                <div class="hidenMenuTab">
-                    {% if session.get('pseudo') %}
-                        <a href="../public/index.php?route=profile">Profil</a>
-                        <a href="../public/index.php?route=logout">Déconnexion</a>
+                <div class="menuTab">
+                    <a href="../public/index.php?route=author">L'Auteur</a>
+                </div>
+                <div id="hidenMenu" class="menuTab">
+                    <div><a>Mon Compte</a> </div>
+                    
+                    <div class="hidenMenuTab">
+                        {% if session.get('pseudo') %}
+                            <a href="../public/index.php?route=profile">Profil</a>
+                            <a href="../public/index.php?route=logout">Déconnexion</a>
 
-                        {% if session.get('role') == 'admin' %}
-                            <a href="../public/index.php?route=administration">Administration</a>
+                            {% if session.get('role') == 'admin' %}
+                                <a href="../public/index.php?route=administration">Administration</a>
+                            {% endif %}
+                        {% else %}
+                            <a href="../public/index.php?route=register">S'inscrire</a>
+                            <a href="../public/index.php?route=login">Se Connecter</a>
                         {% endif %}
-                    {% else %}
-                        <a href="../public/index.php?route=register">S'inscrire</a>
-                        <a href="../public/index.php?route=login">Se Connecter</a>
-                    {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
+        
     </header>
 
                                                         {#<?php if ($this->session->get('pseudo')) { ?>
