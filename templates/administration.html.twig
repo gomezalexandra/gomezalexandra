@@ -4,36 +4,56 @@
 
 {% block content %}
 
+
     <div class="administration">
+
         
             <div class="sidebar">
- 
-                    <p>Nouveau Chapitre</p>
-                    <p>Les Chapitres</p>
-                    <p>Les Brouillons</p>
-                    <p>Les Commentaires Signalées</p>
-                    <p>L'auteur</p>
-                    <p>Les Utilisateurs</p>
-
+                <div id="show">
+                    <p>Nouveau Chapitre <i class="fas fa-caret-right"></i> </p>
+                    <p>Les Chapitres <i class="fas fa-caret-right"></i> </p>
+                    <p>Les Brouillons <i class="fas fa-caret-right"></i></p>
+                    <p>Les Commentaires <i class="fas fa-caret-right"></i> </p>
+                    <p>L'auteur <i class="fas fa-caret-right"></i> </p>
+                    <p>Les Utilisateurs <i class="fas fa-caret-right"></i> </p>
+                </div>
             </div>
             
         
 
         <div class="administration_content">
+
             <div class="title">
-                <h1>L'Administration</h1>
+                   <h1>
+                        <ul class="text hidden">
+                            <li>L'</li>
+                            <li class="spaced">A</li>
+                            <li class="ghost">d</li>
+                            <li class="ghost">m</li>
+                            <li class="ghost">i</li>
+                            <li class="ghost">n</li>
+                            <li class="ghost">i</li>
+                            <li class="ghost">s</li>
+                            <li class="ghost">t</li>
+                            <li class="ghost">r</li>
+                            <li class="ghost">a</li>
+                            <li class="ghost">t</li>
+                            <li class="ghost">i</li>
+                            <li class="ghost">o</li>
+                            <li class="ghost">n</li>
+                            <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                        </ul> 
+                    </h1>           
             </div>
 
             <div class="administrationChapter">
-                <div class="administrationSubtitle">
-                    <h2>Les Chapitres</h2>
-                </div>
-
-                <div class="addChapter">
+                <div class="subMenuTab">
                     <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
                 </div>
 
-                
+                <div class="administrationSubtitle">
+                    <h2>Les Chapitres</h2>
+                </div>              
 
                     {% if (chapters | blankTable) == 0 %}
                     
@@ -59,8 +79,8 @@
                                         <td class="chapterDetails">{{chapter.author}}</td>
                                         <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
                                         <td class="tableActions">
-                                            <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier</a></br>
-                                            <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer</a>
+                                            <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier <i class="fas fa-caret-right"></i></a></br>
+                                            <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer  <i class="fas fa-caret-right"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -117,8 +137,8 @@
                                         <td class="chapterDetails">Créé le {{draft.createdAt("d/m/Y")}}</td>
                                         <td class="tableActions">
                                             <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier</a></br>
-                                            <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier</a></br>
-                                            <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer</a>
+                                            <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier  <i class="fas fa-caret-right"></i> </a></br>
+                                            <a href="../public/index.php?route=deleteChapter&chapterId={{draft.id}}">Supprimer  <i class="fas fa-caret-right"></i> </a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -154,8 +174,8 @@
                                     <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
                                     <td>Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</td>
                                     <td class="tableActions">
-                                        <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire</a> </br>
-                                        <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire</a>
+                                        <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire  <i class="fas fa-caret-right"></i> </a> </br>
+                                        <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire  <i class="fas fa-caret-right"></i> </a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -170,7 +190,7 @@
                         <h2>L'Auteur</h2>
                 </div>
 
-                <div class="modifyAuthor">
+                <div class="subMenuTab">
                     <a href="../public/index.php?route=modifyAuthor">Modifier la page</a>
                 </div>
             </div>
@@ -203,7 +223,7 @@
                                     {% if user.role == 'admin' %}
                                         Suppression impossible   
                                     {% else %}
-                                        <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer</a>
+                                        <a href="../public/index.php?route=deleteUser&userId={{user.id}}">Supprimer  <i class="fas fa-caret-right"></i> </a>
                                     {% endif %}
                                 </td>
                             </tr>

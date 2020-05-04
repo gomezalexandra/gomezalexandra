@@ -9,7 +9,7 @@ body {
 }
 
 h1 {
-    margin: 40px;
+    font-size: 2em;
 }
 
 h2 {
@@ -29,7 +29,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    margin-top: 20px;
+    margin-top: -60px;
 }
 
 a {
@@ -41,6 +41,11 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: rgba(255, 255, 255, 0.43);
+    margin: auto;
+    position: relative;
+    bottom: 10px;
+    margin-top: 10px;
 }
 
 header {
@@ -54,7 +59,7 @@ header {
     top: 0;
 }
 
-#content {
+#pageContent {
     position: relative;
     top: 150px;
 }
@@ -66,7 +71,7 @@ header {
     border-radius: 3px;
     top: 0px;
     /*background-color: #DDC3AC;*/
-    background-color: #ded4cbb8;
+    background-color: #ddc3accf;
     width: 120px;
 }
 
@@ -76,7 +81,7 @@ header {
 }
 
 .hidenMenuTab a:hover {
-color: #30536F;
+    color: #30536F;
 }
 
 #hidenMenu {
@@ -92,7 +97,7 @@ color: #30536F;
     padding: 10px;
     margin: 10px;
     width: 100px;
-    background-color: #ded4cbb8;
+    background-color: #ddc3accf;
     text-align: center;
     height: 18px;
     border-radius: 4px;
@@ -112,7 +117,7 @@ color: #30536F;
     display: flex;
     justify-content: center;
      /*60px 30px 10px 30px; TODO effacer*/
-    color: #707070;
+    color: #30536F;
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
 }
 
@@ -167,9 +172,8 @@ color: #30536F;
 .lastChapterContainer{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
-    margin: auto;
     margin-bottom: 200px;
 }
 
@@ -180,7 +184,7 @@ color: #30536F;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    background-color: #F0F0F0;
+    background-color: #30536F; 
 }
 
 .chapterContent {
@@ -198,7 +202,7 @@ color: #30536F;
 }
 
 .sectionThree{ 
-    position: absolue;
+    /*position: absolute;*/
 }
 
 .allChaptersContainer, .authorContainer {
@@ -491,21 +495,6 @@ label {
     margin: auto;
 }
 
-.addChapter, .modifyAuthor {
-    padding: 10px;
-    margin: 40px 0px 50px 0px;
-    width: 120px;
-    background-color: #30536F;
-}
-
-.addChapter a, .modifyAuthor a {
-    color: white;
-}
-
-.addChapter:hover {
-    background-color: #DDC3AC;
-}
-
 .tableHead{
     background-color: #30536F;
     color: white;
@@ -586,7 +575,7 @@ table td {
 footer {
     height: 100px;
     margin-top: 100px;
-    background-color: #ccb39d;
+    background-color: #ddc3ac;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -616,20 +605,9 @@ footer {
         position: static;
     }
 
-    .lastChapterContainer {
-        margin-bottom: 0px;
-    }
 
     .logo {
         font-size: 1.5em;
-    }
-
-    h1 {
-        margin: 0px;
-    }
-
-    .title{
-        font-size: 1.8em;
     }
 
     .subMenuTab {

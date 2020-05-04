@@ -3,10 +3,31 @@
 {% block title %} Accueil {% endblock %}
 
 {% block content %} 
+ 
 <div>
+
     <div class="title">
-        <h1>Jean Forteroche</h1>
+        <h1 >
+            <ul class="text hidden">
+                <li>J</li>
+                <li class="ghost">e</li>
+                <li class="ghost">a</li>
+                <li class="ghost">n</li>
+                <li class="spaced">F</li>
+                <li class="ghost">o</li>
+                <li class="ghost">r</li>
+                <li class="ghost">t</li>
+                <li class="ghost">e</li>
+                <li class="ghost">r</li>
+                <li class="ghost">o</li>
+                <li class="ghost">c</li>
+                <li class="ghost">h</li>
+                <li class="ghost">e</li>
+                <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+            </ul> 
+        </h1>
     </div>
+
 
     <div class="subMenu">
 
@@ -48,28 +69,61 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui. Nullam venenatis vitae nisi sed laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at vulputate elit. Nunc mollis consequat tristique. Praesent at ornare massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac lorem et ante elementum ullamcorper. Integer quis sapien rhoncus, mattis nulla in, scelerisque dui.</p>
     </div>
 
-    <section class="lastChapterContainer">
-        
-
-        {% for chapter in chapters %}
-
-            <div class="lastChapter">
-                <div class="chapterContent">
-                    <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
-                        <p>Chapitre {{chapter.chapterNumber}} </p>
-                        <h2> {{chapter.title}} </h2>
-                        {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
-                        <p> {{chapter.author}} </p>
-                        <p> Créé le {{chapter.createdAt("d/m/Y")}} </p>
-                    </a>
-                </div>           
+    <div class="lastChapterContainer">
+        <div class="bookContainer">
+            <div class="book">
+                <div class="front">
+                    <div class="cover">
+                        <p class="bookAuthor">
+                            {% for chapter in chapters %}       
+                                <div class="lastChapterTest">
+                                    <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                                        <p class="lastChapterTitle">Chapitre {{chapter.chapterNumber}} </p>
+                                        <p> {{chapter.title}} </p>
+                                    </a>
+                                </div>             
+                            {% endfor %}      
+                            
+                        </p>
+                    </div>
+                </div>
+                <div class="left-side">
+                    <h2>
+                        <span>Jean Forteroche</span>
+                        <span>2020</span>
+                    </h2>
+                </div>
             </div>
-            <div class="lastChapterLink">
-                    <h3> <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </h3>
-                    <?php    
-            </div>
-        {% endfor %}
-    </section>
+        </div>
+
+        <div class="lastChapterLinkTest">
+            <h3> <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </h3>             
+        </div>
+    </div>
+
+
+                                                            {#<section class="lastChapterContainer">
+                                                                
+
+                                                                {% for chapter in chapters %}
+
+                                                                    <div class="lastChapter">
+                                                                        <div class="chapterContent">
+                                                                            <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                                                                                <p>Chapitre {{chapter.chapterNumber}} </p>
+                                                                                <h2> {{chapter.title}} </h2>
+                                                                                {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
+                                                                                <p> {{chapter.author}} </p>
+                                                                                <p> Créé le {{chapter.createdAt("d/m/Y")}} </p>
+                                                                            </a>
+                                                                        </div>           
+                                                                    </div>
+                                                                    <div class="lastChapterLink">
+                                                                            <h3> <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </h3>
+                                                                            <?php    
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </section>#}
     
     <section class="sectionThree">
         <div class="allChaptersContainer">
