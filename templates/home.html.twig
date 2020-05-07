@@ -70,35 +70,34 @@
     </div>
 
     <div class="lastChapterContainer">
-        <div class="bookContainer">
-            <div class="book">
-                <div class="front">
-                    <div class="cover">
-                        <p class="bookAuthor">
-                            {% for chapter in chapters %}       
+        {% for chapter in chapters %} 
+            <a class="bookContainer" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                <div class="book">
+                    <div class="front">
+                        <div class="cover">
+                            <p class="bookAuthor">  
                                 <div class="lastChapterTest">
-                                    <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
                                         <p class="lastChapterTitle">Chapitre {{chapter.chapterNumber}} </p>
                                         <p> {{chapter.title}} </p>
-                                    </a>
+                                        <p class="bottomDate"> Publié le {{chapter.createdAt("d/m/Y")}} </p>
                                 </div>             
-                            {% endfor %}      
-                            
-                        </p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="left-side">
+                        <h2>
+                            <span>Jean Forteroche</span>
+                            <span>2020</span>
+                        </h2>
                     </div>
                 </div>
-                <div class="left-side">
-                    <h2>
-                        <span>Jean Forteroche</span>
-                        <span>2020</span>
-                    </h2>
-                </div>
-            </div>
-        </div>
+            </a>
+        
 
-        <div class="lastChapterLinkTest">
-            <h3> <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </h3>             
-        </div>
+            <div class="lastChapterLinkTest">
+                <p> <a id="textWhite" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </p>             
+            </div>
+        {% endfor %} 
     </div>
 
 

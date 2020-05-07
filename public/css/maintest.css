@@ -207,7 +207,7 @@
         border-radius: 3px;
     }
 
-    .subMenuTab::before {
+    .subMenuTab::before, .lastChapterLinkTest p::before {
         position: absolute;
         top: 0;
         left: -22%;
@@ -221,7 +221,7 @@
         -webkit-transform: skewX(-10deg);
         transform: skewX(-10deg);
     }
-    .subMenuTab:hover::before {
+    .subMenuTab:hover::before, .lastChapterLinkTest p:hover::before {
         -webkit-animation: shine .75s;
         animation: shine .75s;
     }
@@ -260,20 +260,23 @@ header {
     /*background-color:#707070;*/
     background-image: linear-gradient(125deg, #f0f0f0  30%, #f0f0f0 75%, #30536F 75%, #30536F 100%);
     position: fixed;
-    top: 150px;
+    top: 100px;
     height: 100%;
     border-right: 5px #30536F solid;
 }
 
-.sidebar p {
+.sidebar a {
     color: #707070;
     font-size: 1.1em;
     font-weight: 900;
-    margin: 50px 0px 50px 15px;
+    margin: 50px 0px 0px 15px;
 }
 
 #show {
     opacity: 0;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
 }
 
 .administration_content {
@@ -359,18 +362,17 @@ header {
   }
   
   .bookContainer .book {
-    position: relative;
-    display: block;
+   /*position: relative;
+    display: block;*/
     width: 230px;
     height: 300px;
     border-radius: 2px 4px 4px 2px;
     background: linear-gradient(45deg,  #DAD5DC 0%, #f2ebf4 100%);
   
     -webkit-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
-  -moz-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
-  box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
-    font-weight: 400;
-    color: #2b2b2b;
+    -moz-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
+    box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
+    color: #1e3140;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -387,7 +389,7 @@ header {
   
   .bookContainer .book > div,
   .bookContainer .front > div {
-    display: block;
+    /*display: block;*/
     position: absolute;
   }
   
@@ -487,7 +489,7 @@ header {
   .bookContainer h2 {
     width: 280px;
     height: 40px;
-    color: #2b2b2b;
+    color: #1e3140;
     font-size: 15px;
     line-height: 40px;
     padding-right: 10px;
@@ -523,18 +525,38 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 250px;
   }
 
-  .lastChapterLinkTest h3 {
+  .lastChapterLinkTest p {
     padding: 15px;
-    border: 2px #30536F solid;
+    background-color: #30536F;
     position: absolute;
+    border-radius: 5px;
   }
 
   .lastChapterTitle {
-      text-align: center;
+    font-size: 1.7em;
+    text-decoration: underline;
   }
 
-  .lastChapterContainer:hover .lastChapterLinkTest h3 {
-      background-color: #30536F;
-  } 
+  .bottomDate {
+    position: absolute;
+    bottom: 0px;
+    right: 7px;
+    font-size: 1em;
+}
+
+  .addChapter {
+    margin: 20px 0px 30px 0px;
+  }
+
+  .anchor {
+    position: relative;
+    top: -140px;
+  }
+
+  .bottomSpace{
+    padding-bottom: 200px;
+  }
+

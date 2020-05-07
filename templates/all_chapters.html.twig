@@ -41,32 +41,25 @@
             {% endif %}
         </div>
 
-        <div>
-            
-               
-                    <section class="tiles">
-                        {% for chapter in chapters %}
-                            <article class="style1">
-                                <div class="image">
-                                    <img src="../public/img/book.jpg" alt="book" />
-                                </div>
-                                
-                                <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
-                                    <h2 class="chapterTitle">Chapitre {{chapter.chapterNumber}} </h2>
-                                    <div class="content">
-                                       
-                                            <h2>{{chapter.title}}</h2>
-                                            {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
-                                            <p>{{chapter.author}}</p>
-                                            <p>Créé le {{chapter.createdAt("d/m/Y")}}</p>
-                                        
-                                    </div>
-                                </a>
-                            </article>
-                        {% endfor %}
-                    </section>
-              
-            
+        <div>   
+            <section class="tiles">
+                {% for chapter in chapters %}
+                    <article class="style1">
+                        <div class="image">
+                            <img src="../public/img/book.jpg" alt="book" />
+                        </div>
+                        
+                        <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                            <h2 class="chapterTitle">Chapitre {{chapter.chapterNumber}} </h2>
+                            <div class="content">
+                                    <h3>{{chapter.title}}</h3>
+                                    <p>{{chapter.author}}</p>
+                                    <p>Créé le {{chapter.createdAt("d/m/Y")}}</p>
+                            </div>
+                        </a>
+                    </article>
+                {% endfor %}
+            </section>   
         </div>
     </div>
 {% endblock %}

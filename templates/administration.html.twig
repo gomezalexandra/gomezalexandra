@@ -10,12 +10,11 @@
         
             <div class="sidebar">
                 <div id="show">
-                    <p>Nouveau Chapitre <i class="fas fa-caret-right"></i> </p>
-                    <p>Les Chapitres <i class="fas fa-caret-right"></i> </p>
-                    <p>Les Brouillons <i class="fas fa-caret-right"></i></p>
-                    <p>Les Commentaires <i class="fas fa-caret-right"></i> </p>
-                    <p>L'auteur <i class="fas fa-caret-right"></i> </p>
-                    <p>Les Utilisateurs <i class="fas fa-caret-right"></i> </p>
+                    <a href="#anchorChapters">Les Chapitres <i class="fas fa-caret-right"></i> </a>
+                    <a href="#anchorDrafts">Les Brouillons <i class="fas fa-caret-right"></i></a>
+                    <a href="#anchorComments">Les Commentaires <i class="fas fa-caret-right"></i> </a>
+                    <a href="#anchorAuthor">L'auteur <i class="fas fa-caret-right"></i> </a>
+                    <a href="#anchorUsers">Les Utilisateurs <i class="fas fa-caret-right"></i> </a>
                 </div>
             </div>
             
@@ -47,45 +46,46 @@
             </div>
 
             <div class="administrationChapter">
-                <div class="subMenuTab">
+                <div id="anchorChapters" class="anchor"></div>
+                <div class="administrationSubtitle">
+                    <h2>Les Chapitres</h2>
+                </div>   
+
+                <div class="subMenuTab addChapter">
                     <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
                 </div>
 
-                <div class="administrationSubtitle">
-                    <h2>Les Chapitres</h2>
-                </div>              
-
-                    {% if (chapters | blankTable) == 0 %}
+                {% if (chapters | blankTable) == 0 %}
+                
+                        <p> Il n'y a pas de chapitre publié. </p>
                     
-                            <p> Il n'y a pas de chapitre publié. </p>
-                        
-                        
-                        {% else %}
-                            <table>
-                                <tr class="tableHead">
-                                    <td>Numéro</td>
-                                    <td>Titre</td>
-                                    <td class="chapterExtract">Contenu</td>
-                                    <td class="chapterDetails">Auteur</td>
-                                    <td class="chapterDetails">Date</td>
-                                    <td>Actions</td>
-                                </tr>
+                    
+                    {% else %}
+                        <table>
+                            <tr class="tableHead">
+                                <td>Numéro</td>
+                                <td>Titre</td>
+                                <td class="chapterExtract">Contenu</td>
+                                <td class="chapterDetails">Auteur</td>
+                                <td class="chapterDetails">Date</td>
+                                <td>Actions</td>
+                            </tr>
 
-                                {% for chapter in chapters %}
-                                    <tr class="tableBody">
-                                        <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
-                                        <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
-                                        <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
-                                        <td class="chapterDetails">{{chapter.author}}</td>
-                                        <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
-                                        <td class="tableActions">
-                                            <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier <i class="fas fa-caret-right"></i></a></br>
-                                            <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer  <i class="fas fa-caret-right"></i></a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
-                        {% endif %}     
+                            {% for chapter in chapters %}
+                                <tr class="tableBody">
+                                    <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.chapterNumber}}</a></td>
+                                    <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
+                                    <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
+                                    <td class="chapterDetails">{{chapter.author}}</td>
+                                    <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
+                                    <td class="tableActions">
+                                        <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier <i class="fas fa-caret-right"></i></a></br>
+                                        <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer  <i class="fas fa-caret-right"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}     
                                                                                                 {#foreach ($chapters as $chapter)
                                                                                                                 {
                                                                                                                     ?>
@@ -105,7 +105,7 @@
                                                                                                             }
                                                                                                                 ?>#}
                 
-
+                <div id="anchorDrafts" class="anchor"></div>
                 <div class="administrationSubtitle">
                     <h2>Les Brouillons</h2>
                 </div>
@@ -151,6 +151,7 @@
 
 
             <div class="administrationComments">
+                <div id="anchorComments" class="anchor"></div>
                 <div class="administrationSubtitle">
                     <h2>Les Commentaires signalés</h2>
                 </div>
@@ -186,6 +187,7 @@
             </div>
 
             <div class="administrationAuthor">
+                <div id="anchorAuthor" class="anchor"></div>
                 <div class="administrationSubtitle">
                         <h2>L'Auteur</h2>
                 </div>
@@ -196,6 +198,7 @@
             </div>
 
             <div class="administrationUser">
+                <div id="anchorUsers" class="anchor"></div>
                 <div class="administrationSubtitle">
                     <h2>Les Utilisateurs</h2>
                 </div>
