@@ -93,7 +93,7 @@ header {
     border-radius: 3px;
     top: 0px;
     /*background-color: #DDC3AC;*/
-    background-color: #ddc3accf;
+    background-color: #ddc3ac;
     width: 120px;
 }
 
@@ -244,8 +244,20 @@ header {
     height: 180px;
     width: 250px;
     position: relative;
-    left: 45px;
+    left: -55px;
     z-index: 1;
+}
+
+.whiteBlock h3{
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+    font-size: 1.3em;
+}
+
+.whiteBlock:hover h3{
+    color: #30536F;
+    border-left: 2px #30536F solid;
 }
 
 .allChaptersLink, .authorLink{
@@ -258,20 +270,21 @@ header {
     align-items: center;
 }
 
-.blueBlock {
+.blueBlockChapter, .blueBlockAuthor  {
     height: 300px;
     width: 600px;
     background-color: #30536F;
     position: relative;
-    right: 105px;
-    z-index: 0;  
+    right: 100px;
+    z-index: 0;
+    opacity: 0;
 }
 
-.imageHome {
+.imageHomeChapter, .imageHomeAuthor {
     height: 250px;
     width: 250px;
     position: relative;
-    left: 200px;
+    left: 300px;
     bottom: 28px;
     z-index: 3;
 }
@@ -479,6 +492,11 @@ label {
     color: white;
 }
 
+.alreadyMember a, .notMember a {
+    display: flex;
+    align-items: center;
+}
+
 .routeChapter, .routeAdministration {
     justify-content: center;
     margin: 20px 0px 40px 0px;
@@ -543,7 +561,7 @@ table {
 table td {
     border: 1px solid #30536F;
     padding: 8px;
-    max-width: 350px;
+    max-width: 380px;
 }
 
 .tableActions {
@@ -552,7 +570,8 @@ table td {
 }
 
 .tableActions a {
-    vertical-align: 40%;
+    display: flex;
+    align-items: center;
 }
 
 .tableActions a:hover{
