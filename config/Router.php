@@ -90,6 +90,9 @@ class Router
                 elseif($route === 'modifyAuthor'){
                     $this->backController->modifyAuthor($this->request->getPost());
                 }
+                elseif($route === 'modifyPresentation'){
+                    $this->backController->modifyPresentation($this->request->getPost());
+                }
                 else{
                     $this->errorController->error404();
                 }

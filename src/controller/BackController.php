@@ -248,4 +248,24 @@ class BackController extends Controller
             echo $this->twig->render('modify_author.html.twig', ['post' => $post]);
         }
     }
+
+    public function modifyPresentation(Parameter $post)
+    {
+        $presentation = $this->presentationDAO->getPresentation();
+
+        if($this->checkAdmin()) {
+            if ($post->get('submit')) { 
+                
+                    $this->presentationDAO->modifyPresentation($post, $this->session);
+                    $this->session->set('modify_presentation', 'Le texte de la page Accueil a bien été modifié'); //TODO
+                    header('Location: ../public/index.php?route=administration');              
+            }
+            
+            $post->set('content', $presentation->getContent());
+            //return $this->view->render('modify_author', $this->session, [
+            //    'post' => $post
+            //]);
+            echo $this->twig->render('modify_presentation.html.twig', ['post' => $post]);
+        }
+    }
 }

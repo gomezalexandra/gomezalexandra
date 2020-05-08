@@ -1,8 +1,17 @@
 window.onload = () => {
 
         $(".text").removeClass("hidden");
-        $('#show').show().animate({opacity:1}, 1300)
+        
+        //$('#textPresentation').show().animate({opacity:1}, 3000);
+        
 };
+
+$(document).ready(function(){
+        //$('#textPresentation').slideDown( 1200 );
+        $('#textPresentation').delay( 300 ).show().animate({opacity:1}, 1000);
+        $('.tiles').delay( 300 ).show().animate({opacity:1}, 1500);
+        $('#show').show().animate({opacity:1}, 1300);
+        });
 
 
 $(window).scroll(function() {

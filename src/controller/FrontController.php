@@ -8,10 +8,11 @@ class FrontController extends Controller
     public function home()
     {
         $chapters = $this->chapterDAO ->getLastChapter();
+        $presentation = $this->presentationDAO ->getPresentation();
         /*return $this->view->render('home', $this->session, [
             'chapters' => $chapters
         ]);*/
-        echo $this->twig->render('home.html.twig', ['chapters'=>$chapters]);
+        echo $this->twig->render('home.html.twig', ['chapters'=>$chapters, 'presentation'=>$presentation]);
     }
 
     public function allChapters()
