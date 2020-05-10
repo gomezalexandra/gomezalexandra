@@ -1,57 +1,67 @@
 window.onload = () => {
 
         $(".text").removeClass("hidden");
-        
+
         //$('#textPresentation').show().animate({opacity:1}, 3000);
-        
+
 };
 
-$(document).ready(function(){
+$(document).ready(function () {
         //$('#textPresentation').slideDown( 1200 );
-        $('#textPresentation').delay( 300 ).show().animate({opacity:1}, 1000);
-        $('.tiles').delay( 300 ).show().animate({opacity:1}, 1500);
-        $('#show').show().animate({opacity:1}, 1300);
-        });
+        $('#textPresentation').delay(300).show().animate({ opacity: 1 }, 1000);
+        $('.tiles').delay(300).show().animate({ opacity: 1 }, 1500);
+        $('#show').show().animate({ opacity: 1 }, 1300);
+});
 
 
-$(window).scroll(function() {
+$(window).scroll(function () {
         if (checkVisible($('#blockAllChapter'))) {
-                $('.blueBlockChapter').fadeTo( 1000, 1 );
-                $('#blockAllChapter').animate({left: '45px'}, 1000);
-                $('.imageHomeChapter').animate({left: '200px'}, 1000);
+                $('.blueBlockChapter').fadeTo(1000, 1);
+                $('#blockAllChapter').animate({ left: '45px' }, 1000);
+                $('.imageHomeChapter').animate({ left: '200px' }, 1000);
         }
 
         if (checkVisible($('#blockAuthor'))) {
-                $('.blueBlockAuthor').fadeTo( 1000, 1 );
-                $('#blockAuthor').animate({left: '45px'}, 1000);
-                $('.imageHomeAuthor').animate({left: '200px'}, 1000);
-        } 
+                $('.blueBlockAuthor').fadeTo(1000, 1);
+                $('#blockAuthor').animate({ left: '45px' }, 1000);
+                $('.imageHomeAuthor').animate({ left: '200px' }, 1000);
+        }
 });
 
-function checkVisible( elm, evalType ) {
-        evalType = evalType || "visible";
-    
-        var vpH = $(window).height(), // Viewport Height
-            st = $(window).scrollTop(), // Scroll Top
-            y = $(elm).offset().top,
-            elementHeight = $(elm).height();
-    
-        if (evalType === "visible") return ((y < (vpH + st)) && (y > (st - elementHeight)));
+let checkVisible = (element) => {
+        if (element.length !== 0) {
+                let viewportHeight = $(window).height();
+                let scrollTop = $(window).scrollTop();
+                let top = element.offset().top;
+                let elementHeight = element.height();
 
-        if (evalType === "above") return ((y < (vpH + st)));
-      
+                return ((top < (viewportHeight + scrollTop)) && (top > (scrollTop - elementHeight)));
+        }
 }
 
+let isChapterVisible = false;
+let chapterButton = "";
 
-
-
-/*action.addEventListenner("mouseover", function() {   
-        // on met l'accent sur la cible de mouseover
-        action.style.backgroundColor= "red";
-        
-      
+$(document).ready(() => {
+        $("#chapterButtonContainer").click(function () {
+                isChapterVisible = !isChapterVisible;
+                console.log(isChapterVisible);
+                $(".singleChapterContent").toggle();
+                if (isChapterVisible == true){
+                        $("#chapterButton").html('vu reduite<i class="fas fa-angle-double-up"></i>');
+                        $("#singleChapterExtract").css("display", "none")
+                } else {
+                        $("#chapterButton").html('tout lire<i class="fas fa-angle-double-down"></i>');
+                        $("#singleChapterExtract").css("display", "block")
+                }
+                
+        });
 });
 
-  let action = document.getElementsByClassName("jstest");
+console.log(isChapterVisible);
+
+
+
+/*let action = document.getElementsByClassName("jstest");
 console.log(action);
 action.style.backgroundColor= "red";*/

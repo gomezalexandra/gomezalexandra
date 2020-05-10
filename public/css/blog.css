@@ -348,12 +348,18 @@ header {
     margin: auto;
 }
 
-.singleChapter {
+.singleChapter{
     border: 2px solid #30536F;
     max-width: 1100px;
     width: 80%;
     padding: 20px;
     background-color: #F0F0F0;
+}
+
+.singleChapterContent {
+    display: none;
+    overflow: scroll;
+    max-height: 70vh;
 }
 
 .addComment, .singleComment, .addCommentContainer, .allComments, .singleChapter {

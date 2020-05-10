@@ -51,6 +51,9 @@ abstract class Controller
         $filterExtract = new \Twig\TwigFilter('extract', function ($string) {
             return substr(htmlspecialchars_decode($string), 0, 200);
         });
+        $filterLongExtract = new \Twig\TwigFilter('longExtract', function ($string) {
+            return substr(htmlspecialchars_decode($string), 0, 500);
+        });
         $filterBlankTable = new \Twig\TwigFilter('blankTable', function ($string) {
             return count($string);
         });
@@ -58,6 +61,7 @@ abstract class Controller
         //$this->twig->addGlobal('session', $_SESSION); //TODO: passer directement par session?
         $this->twig->addGlobal('session', $this->session);
         $this->twig->addFilter($filterExtract);
+        $this->twig->addFilter($filterLongExtract);
         $this->twig->addFilter($filterBlankTable);
         
     }
