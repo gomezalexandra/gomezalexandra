@@ -10,7 +10,7 @@
         
             <div class="sidebar">
                 <div id="show">
-                    <a id="showbis" href="#anchorChapters">Les Chapitres <i class="fas fa-caret-right"></i> </a>
+                    <a href="#anchorChapters">Les Chapitres <i class="fas fa-caret-right"></i> </a>
                     <a href="#anchorDrafts">Les Brouillons <i class="fas fa-caret-right"></i></a>
                     <a href="#anchorComments">Les Commentaires <i class="fas fa-caret-right"></i> </a>
                     <a href="#anchorAuthor">L'auteur <i class="fas fa-caret-right"></i> </a>
@@ -26,22 +26,26 @@
             <div class="title">
                    <h1>
                         <ul class="text hidden">
-                            <li>L'</li>
-                            <li class="spaced">A</li>
-                            <li class="ghost">d</li>
-                            <li class="ghost">m</li>
-                            <li class="ghost">i</li>
-                            <li class="ghost">n</li>
-                            <li class="ghost">i</li>
-                            <li class="ghost">s</li>
-                            <li class="ghost">t</li>
-                            <li class="ghost">r</li>
-                            <li class="ghost">a</li>
-                            <li class="ghost">t</li>
-                            <li class="ghost">i</li>
-                            <li class="ghost">o</li>
-                            <li class="ghost">n</li>
-                            <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                            <div>
+                                <li>L'</li>
+                            </div>
+                            <div>
+                                <li class="spaced">A</li>
+                                <li class="ghost">d</li>
+                                <li class="ghost">m</li>
+                                <li class="ghost">i</li>
+                                <li class="ghost">n</li>
+                                <li class="ghost">i</li>
+                                <li class="ghost">s</li>
+                                <li class="ghost">t</li>
+                                <li class="ghost">r</li>
+                                <li class="ghost">a</li>
+                                <li class="ghost">t</li>
+                                <li class="ghost">i</li>
+                                <li class="ghost">o</li>
+                                <li class="ghost">n</li>
+                                <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                            </div>
                         </ul> 
                     </h1>           
             </div>
@@ -53,12 +57,12 @@
                 </div>   
 
                 <div class="subMenuTab addChapter">
-                    <a href="../public/index.php?route=newChapter">Nouveau chapitre</a>
+                    <a href="../public/index.php?route=newChapter">Nouveau chapitre<i class="fas fa-plus"></i></a>
                 </div>
 
                 {% if (chapters | blankTable) == 0 %}
                 
-                        <p> Il n'y a pas de chapitre publié. </p>
+                        <p class="empty"> Il n'y a pas de chapitre publié. </p>
                     
                     
                     {% else %}
@@ -78,7 +82,7 @@
                                     <td><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{{chapter.title}}</a></td>
                                     <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">{% autoescape 'html' %}{{ chapter.content | extract | raw}}{% endautoescape %}</a></td>
                                     <td class="chapterDetails">{{chapter.author}}</td>
-                                    <td class="chapterDetails">Créé le {{chapter.createdAt("d/m/Y")}}</td>
+                                    <td class="chapterDetails">Ecrit le {{chapter.createdAt("d/m/Y")}}</td>
                                     <td class="tableActions">
                                         <a href="../public/index.php?route=modifyChapter&chapterId={{chapter.id}}">Modifier <i class="fas fa-caret-right"></i></a></br>
                                         <a href="../public/index.php?route=deleteChapter&chapterId={{chapter.id}}">Supprimer  <i class="fas fa-caret-right"></i></a>
@@ -116,7 +120,7 @@
 
                     {% if (drafts | blankTable) == 0 %}
                     
-                        <p> Il n'y a pas de chapitre mis en brouillon. </p>
+                        <p class="empty"> Il n'y a pas de chapitre mis en brouillon. </p>
                         
                     {% else %}
                             <table>
@@ -135,7 +139,7 @@
                                         <td><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{{draft.title}}</a></td>
                                         <td class="chapterExtract"><a href="../public/index.php?route=chapter&chapterId={{draft.id}}">{% autoescape 'html' %}{{ draft.content | extract | raw}}{% endautoescape %}</a></td>
                                         <td class="chapterDetails">{{draft.author}}</td>
-                                        <td class="chapterDetails">Créé le {{draft.createdAt("d/m/Y")}}</td>
+                                        <td class="chapterDetails">Ecrit le {{draft.createdAt("d/m/Y")}}</td>
                                         <td class="tableActions">
                                             <a href="../public/index.php?route=publish&chapterId={{draft.id}}">Publier <i class="fas fa-caret-right"></i></a></br>
                                             <a href="../public/index.php?route=modifyChapter&chapterId={{draft.id}}">Modifier  <i class="fas fa-caret-right"></i> </a></br>
@@ -159,7 +163,7 @@
                         
                     {% if (comments | blankTable) == 0 %}
 
-                        <p> Il n'y a pas de commentaires signalé. </p>
+                        <p class="empty"> Il n'y a pas de commentaires signalé. </p>
                     
                     {% else %}
                         <table>
@@ -194,7 +198,7 @@
                 </div>
 
                 <div class="subMenuTab">
-                    <a href="../public/index.php?route=modifyAuthor">Modifier le texte</a>
+                    <a href="../public/index.php?route=modifyAuthor">Modifier le texte<i class="fas fa-pencil-alt"></i></a>
                 </div>
             </div>
 
@@ -205,7 +209,7 @@
                 </div>
 
                 <div class="subMenuTab">
-                    <a href="../public/index.php?route=modifyPresentation">Modifier le texte</a>
+                    <a href="../public/index.php?route=modifyPresentation">Modifier le texte<i class="fas fa-pencil-alt"></i></a>
                 </div>
             </div>
 
@@ -217,14 +221,14 @@
 
                 {% if (users | blankTable) == 0 %}
 
-                    <p> Il n'y a pas d'utilisateur enregistré.  </p>
+                    <p class="empty"> Il n'y a pas d'utilisateur enregistré.  </p>
                 
                 {% else %}
 
                     <table>
                         <tr class="tableHead">
                             <td>Pseudo</td>
-                            <td>Date</td>
+                            <td class="userDetails">Date</td>
                             <td>Rôle</td>
                             <td>Actions</td>
                         </tr>
@@ -232,7 +236,7 @@
                         {% for user in users %}
                             <tr class="tableBody">
                                 <td>{{user.pseudo}}</td>
-                                <td>Créé le {{user.createdAt("d/m/Y à H:i:s")}}</td>
+                                <td class="userDetails">Créé le {{user.createdAt("d/m/Y à H:i:s")}}</td>
                                 <td>{{user.role}}</td>
                                 <td class="tableActions">
                                     {% if user.role == 'admin' %}

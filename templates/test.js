@@ -48,10 +48,10 @@ $(document).ready(() => {
                 console.log(isChapterVisible);
                 $(".singleChapterContent").toggle();
                 if (isChapterVisible == true){
-                        $("#chapterButton").html('vu reduite<i class="fas fa-angle-double-up"></i>');
+                        $("#chapterButton").html('Vu Réduite<i class="fas fa-angle-double-up"></i>');
                         $("#singleChapterExtract").css("display", "none")
                 } else {
-                        $("#chapterButton").html('tout lire<i class="fas fa-angle-double-down"></i>');
+                        $("#chapterButton").html('Tout Lire<i class="fas fa-angle-double-down"></i>');
                         $("#singleChapterExtract").css("display", "block")
                 }
                 

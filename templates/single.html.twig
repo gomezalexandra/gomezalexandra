@@ -8,16 +8,20 @@
         <div class="title">
             <h1>
                 <ul class="text hidden">
-                    <li>C</li>
-                    <li class="ghost">h</li>
-                    <li class="ghost">a</li>
-                    <li class="ghost">p</li>
-                    <li class="ghost">i</li>
-                    <li class="ghost">t</li>
-                    <li class="ghost">r</li>
-                    <li class="ghost">e</li>
-                    <li class="spaced">{{chapter.chapterNumber}}</li>
-                    <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                    <div>
+                        <li>C</li>
+                        <li class="ghost">h</li>
+                        <li class="ghost">a</li>
+                        <li class="ghost">p</li>
+                        <li class="ghost">i</li>
+                        <li class="ghost">t</li>
+                        <li class="ghost">r</li>
+                        <li class="ghost">e</li>
+                    </div>
+                    <div>
+                        <li class="spaced">{{chapter.chapterNumber}}</li>
+                        <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                    </div>
                 </ul>
             </h1>
         </div>
@@ -40,19 +44,21 @@
         </div>
         
         <div class="singleChapter">
-            <p>Chapitre {{chapter.chapterNumber}}</p>
+            <h2>Chapitre {{chapter.chapterNumber}}</h2>
             <h2>{{chapter.title}}</h2>
             <div id="chapterButtonContainer">
-                <button id="chapterButton">Tout Lire<i class="fas fa-angle-double-down"></i></button>
+                <p id="chapterButton">Tout Lire<i class="fas fa-angle-double-down"></i></p>
             </div>
             <div id="singleChapterExtract">
-                {% autoescape 'html' %} <p> EXTRACT {{ chapter.content | longExtract | raw}} </p> {% endautoescape %}
+                {% autoescape 'html' %} <p> EXTRACT {{ chapter.content | longExtract | raw}}  [...]</p> {% endautoescape %}
             </div>
             <div class="singleChapterContent">
                 {% autoescape 'html' %} <p> TOTAL {{chapter.content | raw}} </p> {% endautoescape %}
             </div>
-            <p>{{chapter.author}}</p>
-            <p>Créé le {{chapter.createdAt("d/m/Y")}}</p>
+            <div class="singleChapterDetails">
+                <p>Ecrit par {{chapter.author}}</p>
+                <p>Publié le {{chapter.createdAt("d/m/Y")}}</p>
+            </div>
         </div>
 
         {% if session.get('role') == 'admin' %}
@@ -88,8 +94,8 @@
                     {% for comment in comments %}
                         <div class="singleComment">
                             <div class="comment">
-                                <h4> {{comment.pseudo}} </h4>
-                                <p> {{comment.content}} </p>
+                                <h4> {{comment.pseudo}} : </h4>
+                                <p>" {{comment.content}} "</p>
                                 <p>Posté le {{comment.createdAt("d/m/Y à H:i:s")}} </p>
                             </div>
 

@@ -19,6 +19,7 @@
 body {
     margin: 0px;
     min-height: 100vh;
+    font-family: 'CormorantUpright-Regular', arial, sans-serif;
 }
 
 h1 {
@@ -27,16 +28,16 @@ h1 {
 
 h2 {
     color: #707070;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.author p, .presentation p, #singleChapterExtract p, .singleChapterContent p, .comment p, .empty {
+    font-size: 1.2em;
 }
 
 #textWhite {
     color: white;
-}
-
-p {
-    font-family: 'CormorantUpright-Regular', arial, sans-serif;
-    font-size: 1.2em;
 }
 
 .title {
@@ -47,10 +48,10 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    margin-top: -60px;
+    margin-top: 100px;
 }
 
-a {
+a{
     text-decoration: none;
     color: #616161;
     font-family: 'Kurale-Regular', arial, sans-serif;
@@ -82,7 +83,7 @@ header {
 
 #pageContent {
     position: relative;
-    top: 150px;
+    top: 80px;
     min-height: calc(100vh - 150px);
 }
 
@@ -168,6 +169,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .sessionMessage {
@@ -176,9 +178,10 @@ header {
     margin: auto;
     justify-content: center;
     max-width: 500px;
-    margin-top: 10px;
+    margin-top: 70px;
     background-color: #30536F;
     color: white;
+    font-family: 'Kurale-Regular', arial, sans-serif;
 }
 
 /*page home*/
@@ -353,13 +356,54 @@ header {
     max-width: 1100px;
     width: 80%;
     padding: 20px;
-    background-color: #F0F0F0;
+    background-color: #ecf1f5;
+    text-align: center;
+}
+
+.singleChapter h2, .singleChapterDetails {
+    color: #30536F;
+}
+
+.singleChapter h2:first-of-type {
+    font-size: 3em;
+}
+
+.singleChapterDetails {
+    font-weight: 700;
+    text-align: center;
 }
 
 .singleChapterContent {
     display: none;
     overflow: scroll;
     max-height: 70vh;
+    text-align: justify;
+    padding: 15px;
+}
+
+#singleChapterExtract {
+    text-align: justify;
+    padding: 15px;
+}
+
+#chapterButton {
+    background-color: #30536F;
+    border-style: none;
+    border-radius: 5px;    
+    color: white;
+    padding: 8px;
+    margin: 20px;
+}
+
+
+#chapterButton i {
+    padding-left: 10px;
+}
+
+#chapterButton:hover, #chapterButton:hover i{
+    background-color: #DDC3AC;
+    color:#30536F;
+    cursor: pointer;
 }
 
 .addComment, .singleComment, .addCommentContainer, .allComments, .singleChapter {
@@ -368,12 +412,14 @@ header {
 
 .addComment {
     background-color: #30536F;
+    width: 80%;
+    display: flex;
 }
 
 .singleComment {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 80%;
     max-width: 1000px;
@@ -383,11 +429,14 @@ header {
 .comment {
     width: 65%;
     background-color: #DDC3AC;
+    border: 2px #30536f solid;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    text-align: center;
 }
 
 .flagCommentContainer{
@@ -406,13 +455,18 @@ header {
 
 .flagComment, .actions a{
     border: 2px solid #30536F;
-    background-color: #f0f0f0;
+    background-color: #ecf1f5;
     padding: 0px 5px 0px 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 4px;
     border-radius: 10px;
+}
+
+.flagComment p {
+    font-size: 1em;
+    margin: 12px;
 }
 
 .actions a {
@@ -426,12 +480,16 @@ header {
     color: white;
 }
 
+.flagComment:hover a{
+    color: white;
+}
+
 /*part form*/
 
 .register, .login, .password {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: auto;
     max-width: 600px;
@@ -454,9 +512,10 @@ header {
     width: 80%;
 }
 
-.addComment
-{
-    width: 80%;
+.formContainerComment form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 #password, #pseudo {
@@ -503,9 +562,17 @@ label {
     background-color: #e8f0fe;
 }
 
-.alreadyMember, .notMember, .routeProfile, .routeChapter, .routeAdministration {
+ .routeChapter, .routeAdministration {
     display: flex;
-    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0px 40px 0px;
+}
+
+.alreadyMember, .routeProfile, .notMember {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
 }
 
 .alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a, .routeAdministration a{
@@ -526,11 +593,6 @@ label {
     align-items: center;
 }
 
-.routeChapter, .routeAdministration {
-    justify-content: center;
-    margin: 20px 0px 40px 0px;
-}
-
 /*page password*/
 
 .passwordChange {
@@ -542,6 +604,7 @@ label {
 
 .passwordChange p {
     font-size: 1.1em;
+    text-align: center;
 }
 
 /*page profile */
@@ -566,6 +629,9 @@ label {
     max-width: 1000px;
     margin: auto;
 }
+.administrationUser {
+    margin: auto;
+}
 
 .tableHead{
     background-color: #30536F;
@@ -581,6 +647,10 @@ label {
     background-color: #F0F0F0;
 }
 
+.tableBody td {
+    color: #616161;
+}
+
 table {
     border-spacing: 0px;
     border: 1px solid #30536F;
@@ -591,6 +661,7 @@ table td {
     border: 1px solid #30536F;
     padding: 8px;
     max-width: 380px;
+    font-family: 'Kurale-Regular', arial, sans-serif;
 }
 
 .tableActions {
@@ -601,10 +672,12 @@ table td {
 .tableActions a {
     display: flex;
     align-items: center;
+    padding: 0px 3px 0px 3px;
 }
 
 .tableActions a:hover{
     color:  #30536F;
+    padding: 0px;
 }
 
 /*pages author */
@@ -682,11 +755,6 @@ footer {
         position: static;
     }
 
-
-    .logo {
-        font-size: 1.5em;
-    }
-
     .presentation {
         margin-bottom: 20px;
         margin-top: 20px;
@@ -699,6 +767,23 @@ footer {
     .chapterExtract {
         display: none;
     }
+
+    .sidebar a {
+    margin: 50px 0px 0px 5px !important;
+    }
+}
+
+@media screen and (max-width: 900px)
+{
+    .sidebar {
+        display: none;
+    }
+
+    .administration_content {
+        width: 100% !important;
+        justify-content: center;
+        margin-left: 0% !important;
+    }
 }
 
 @media screen and (max-width: 856px)
@@ -706,6 +791,12 @@ footer {
     .hidenMenuTab {
             left: 0px;
             top: 30px;
+    }
+}
+
+@media screen and (max-width: 687px) {
+    .logo {
+        display: none;
     }
 }
 
@@ -727,4 +818,17 @@ footer {
         display: none;
     }
 
+    .userDetails {
+        display: none;
+    }
+}
+
+@media all and (max-device-width: 687px) {
+    .logo {
+        display: none;
+    }
+    .menu {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }

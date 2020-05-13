@@ -7,19 +7,25 @@
         <div class="title">
             <h1>
                 <ul class="text hidden">
-                    <li>L</li>
-                    <li class="ghost">e</li>
-                    <li class="ghost">s</li>
-                    <li class="spaced">C</li>
-                    <li class="ghost">h</li>
-                    <li class="ghost">a</li>
-                    <li class="ghost">p</li>
-                    <li class="ghost">i</li>
-                    <li class="ghost">t</li>
-                    <li class="ghost">r</li>
-                    <li class="ghost">e</li>
-                    <li class="ghost">s</li>
-                    <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                    <div>
+                        <li>L</li>
+                        <li class="ghost">e</li>
+                        <li class="ghost">s</li>
+                    </div>
+                    <div>
+                        <li class="spaced">C</li>
+                        <li class="ghost">h</li>
+                        <li class="ghost">a</li>
+                        <li class="ghost">p</li>
+                        <li class="ghost">i</li>
+                        <li class="ghost">t</li>
+                        <li class="ghost">r</li>
+                        <li class="ghost">e</li>
+                        <li class="ghost">s</li>
+                        <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                    </div>
+                    
+                    
                 </ul>
             </h1>
         </div>
@@ -53,8 +59,8 @@
                             <h2 class="chapterTitle">Chapitre {{chapter.chapterNumber}} </h2>
                             <div class="content">
                                     <h3>{{chapter.title}}</h3>
-                                    <p>{{chapter.author}}</p>
-                                    <p>Créé le {{chapter.createdAt("d/m/Y")}}</p>
+                                    <p>Ecrit par {{chapter.author}}</p>
+                                    <p>Publié le {{chapter.createdAt("d/m/Y")}}</p>
                             </div>
                         </a>
                     </article>

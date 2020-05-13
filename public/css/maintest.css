@@ -140,11 +140,16 @@
         line-height: 1.5;
         margin-top: 0.35em;
         opacity: 0;
+        text-shadow: 0.05em 0.05em #020202;
     }
 
-    /*.style1 a .content > :last-child {
-            margin-bottom: 0;
-        }*/
+    .style1 a .content > :last-child {
+            margin-top: 0;
+        }
+
+        .style1 a .content > :nth-child(2) {
+          margin-bottom: 0;
+      }
 
     .image:before {
         background-color: #707070;
@@ -158,7 +163,7 @@
         transform: scale(1.1);
     }
 
-    article:hover > .image:before {
+    article:hover > .image:before > .image:before{
         background-color: #333333;
         opacity: 0.35;
     }
@@ -250,6 +255,7 @@ header {
 
 .chapterTitle {
     color: white;
+    text-shadow: 0.05em 0.05em #4a4747;
 }
 
 .administration {
@@ -292,8 +298,7 @@ header {
 }
 
 .tableBody:hover {
-    background-color: #9eacb7;
-
+    background-color: #d7e3ec;
 }
 
 
@@ -310,11 +315,13 @@ header {
     border-bottom: 0;*/
     
     position: relative;
-  
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
     list-style: none;
     border-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
   }
   
   
@@ -567,6 +574,7 @@ header {
 
   .bottomSpace{
     padding-bottom: 200px;
+    margin: 0px 10px 0px 10px;
   }
 
 #show a:hover {
