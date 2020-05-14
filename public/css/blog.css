@@ -24,6 +24,7 @@ body {
 
 h1 {
     font-size: 2em;
+    margin: 0 0 70px 0;
 }
 
 h2 {
@@ -210,7 +211,7 @@ header {
     max-width: 1000px;
 }
 
-.lastChapter {
+/*.lastChapter {
     width: 400px;
     height: 400px;
     display: flex;
@@ -218,13 +219,13 @@ header {
     flex-wrap: wrap;
     align-items: center;
     background-color: #30536F; 
-}
+}*/
 
 .chapterContent {
     padding: 10px;
 }
 
-.lastChapterLink{
+/*.lastChapterLinkTest{
     width: 400px;
     height: 400px;
     display: flex;
@@ -232,7 +233,7 @@ header {
     flex-wrap: wrap;
     align-items: center;
     background-color: #DDC3AC; 
-}
+}*/
 
 .sectionThree{ 
     /*position: absolute;*/
@@ -264,7 +265,7 @@ header {
     font-size: 1.3em;
 }
 
-.whiteBlock:hover h3{
+.whiteBlock:hover h3 {
     color: #30536F;
     border-left: 2px #30536F solid;
 }
@@ -737,22 +738,31 @@ footer {
 
 @media screen and (max-width: 1134px)
 {
+    .sectionThree {
+        margin-top: 0px;
+    }
+
+    .lastChapterContainer {
+        margin-bottom: 0px;
+    }
+
 	.whiteBlock {
         background-color: white;
         position: static;
-        z-index: 1;
+        z-index: 0;
         height: 80px;
     }
 
-    .blueBlock {
+    .blueBlockChapter, .blueBlockAuthor {
         height: 300px;
         width: 300px;
         position: static;
+        margin-right: 30px;
     }
 
-    .image {
-        left: 100px;
-        position: static;
+    .imageHomeChapter, .imageHomeAuthor {
+        left: 55px !important;
+        bottom: 15px !important;
     }
 
     .presentation {
@@ -764,7 +774,7 @@ footer {
         width: 400px;
     }
 
-    .chapterExtract {
+    .chapterExtract, .commentDetails {
         display: none;
     }
 
@@ -814,12 +824,16 @@ footer {
 
 @media screen and (max-width: 500px)
 {
-    .chapterDetails {
+    .chapterDetails, .userDetails {
         display: none;
     }
 
-    .userDetails {
-        display: none;
+    h1 {
+        font-size: 1.1em;
+    }
+
+    .title {
+        margin-top: 50px;
     }
 }
 

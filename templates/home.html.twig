@@ -80,7 +80,7 @@
                     <div class="front">
                         <div class="cover">
                             <p class="bookAuthor">  
-                                <div class="lastChapterTest">
+                                <div class="lastChapter">
                                         <p class="lastChapterTitle">Chapitre {{chapter.chapterNumber}} </p>
                                         <p> {{chapter.title}} </p>
                                         <p class="bottomDate"> Publié le {{chapter.createdAt("d/m/Y")}} </p>
@@ -98,35 +98,11 @@
             </a>
         
 
-            <div class="lastChapterLinkTest">
+            <div class="lastChapterLink">
                 <p> <a id="textWhite" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </p>             
             </div>
         {% endfor %} 
     </div>
-
-
-                                                            {#<section class="lastChapterContainer">
-                                                                
-
-                                                                {% for chapter in chapters %}
-
-                                                                    <div class="lastChapter">
-                                                                        <div class="chapterContent">
-                                                                            <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
-                                                                                <p>Chapitre {{chapter.chapterNumber}} </p>
-                                                                                <h2> {{chapter.title}} </h2>
-                                                                                {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
-                                                                                <p> {{chapter.author}} </p>
-                                                                                <p> Créé le {{chapter.createdAt("d/m/Y")}} </p>
-                                                                            </a>
-                                                                        </div>           
-                                                                    </div>
-                                                                    <div class="lastChapterLink">
-                                                                            <h3> <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </h3>
-                                                                            <?php    
-                                                                    </div>
-                                                                {% endfor %}
-                                                            </section>#}
     
     <section class="sectionThree">
         <div class="allChaptersContainer">
@@ -138,7 +114,7 @@
             </a>
 
             <div class="blueBlockChapter"> 
-                <div > 
+                <div> 
                     <img class="imageHomeChapter" src="../public/img/book.jpg" alt="livre ouvert"/>                  
                 </div>                
             </div>
@@ -154,12 +130,13 @@
             <a/>
           
             <div class="blueBlockAuthor">
-                <div > 
+                <div> 
                     <img class="imageHomeAuthor" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
                 </div>        
             </div>
           
         </div> 
     <section>
+
 </div>
 {% endblock %}  

@@ -53,7 +53,7 @@
             <div class="administrationChapter">
                 <div id="anchorChapters" class="anchor"></div>
                 <div class="administrationSubtitle">
-                    <h2>Les Chapitres</h2>
+                    <h2 id="administrationSubtitleChapter">Les Chapitres</h2>
                 </div>   
 
                 <div class="subMenuTab addChapter">
@@ -169,16 +169,16 @@
                         <table>
                             <tr class="tableHead">
                                 <td>Pseudo</td>
-                                <td>Message</td>
+                                <td class="commentDetails">Message</td>
                                 <td>Date</td>
                                 <td>Actions</td>
                             </tr>
 
                             {% for comment in comments %}
                                 <tr class="tableBody">
-                                    <td>{{comment.pseudo}}</td>
-                                    <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
-                                    <td>Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</td>
+                                    <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{comment.pseudo}}</a></td>
+                                    <td class="commentDetails"><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">{{ comment.content | extract }}</a></td>
+                                    <td><a href="../public/index.php?route=chapter&chapterId={{comment.chapterId}}">Créé le {{comment.createdAt("d/m/Y à H:i:s")}}</a></td>
                                     <td class="tableActions">
                                         <a href="../public/index.php?route=unflagComment&commentId={{comment.id}}">Désignaler le commentaire  <i class="fas fa-caret-right"></i> </a> </br>
                                         <a href="../public/index.php?route=deleteComment&commentId={{comment.id}}&chapterId={{comment.chapterId}}">Supprimer le commentaire  <i class="fas fa-caret-right"></i> </a>

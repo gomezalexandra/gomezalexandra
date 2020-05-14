@@ -163,7 +163,7 @@
         transform: scale(1.1);
     }
 
-    article:hover > .image:before > .image:before{
+    article:hover > .image:before{
         background-color: #333333;
         opacity: 0.35;
     }
@@ -201,6 +201,10 @@
         transform: scale(1.1);
         transition-duration: 0.1s; 
     }
+
+    .menuTab:hover :first-child:not(.hidden) {
+      color: #30536F;
+    }
        
 
     .menuTab:hover {
@@ -213,7 +217,7 @@
         border-radius: 3px;
     }
 
-    .subMenuTab::before, .lastChapterLinkTest p::before {
+    .subMenuTab::before, .lastChapterLink p::before {
         position: absolute;
         top: 0;
         left: -22%;
@@ -227,7 +231,7 @@
         -webkit-transform: skewX(-10deg);
         transform: skewX(-10deg);
     }
-    .subMenuTab:hover::before, .lastChapterLinkTest p:hover::before {
+    .subMenuTab:hover::before, .lastChapterLink p:hover::before {
         -webkit-animation: shine .75s;
         animation: shine .75s;
     }
@@ -375,6 +379,7 @@ header {
   .bookContainer {
     z-index: 1;
     perspective:3000px;
+    padding: 30px;
   }
   
   .bookContainer .book {
@@ -533,18 +538,19 @@ header {
     font-family: acumin-pro, sans-serif;
   } 
 
-  .lastChapterTest {
+  /*.lastChaptertest {
     margin: 50px 20px 20px 20px;
-  }
+  }*/
 
-  .lastChapterLinkTest {
+  .lastChapterLink {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 250px;
+    padding: 30px;
   }
 
-  .lastChapterLinkTest p {
+  .lastChapterLink p {
     padding: 15px;
     background-color: #30536F;
     position: absolute;
@@ -580,4 +586,8 @@ header {
 #show a:hover {
   color: #30536F;
   border-left: 2px #30536F solid;
+}
+
+#administrationSubtitleChapter {
+  margin-top: 0;
 }

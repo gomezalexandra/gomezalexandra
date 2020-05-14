@@ -35,15 +35,15 @@
                     
                     <div class="hidenMenuTab">
                         {% if session.get('pseudo') %}
-                            <a href="../public/index.php?route=profile">Profil</a>
-                            <a href="../public/index.php?route=logout">Déconnexion</a>
+                            <a class="hidden" href="../public/index.php?route=profile">Profil</a>
+                            <a class="hidden" href="../public/index.php?route=logout">Déconnexion</a>
 
                             {% if session.get('role') == 'admin' %}
-                                <a href="../public/index.php?route=administration">Administration</a>
+                                <a class="hidden" href="../public/index.php?route=administration">Administration</a>
                             {% endif %}
                         {% else %}
-                            <a href="../public/index.php?route=register">S'inscrire</a>
-                            <a href="../public/index.php?route=login">Se Connecter</a>
+                            <a class="hidden" href="../public/index.php?route=register">S'inscrire</a>
+                            <a class="hidden" href="../public/index.php?route=login">Se Connecter</a>
                         {% endif %}
                     </div>
                 </div>
