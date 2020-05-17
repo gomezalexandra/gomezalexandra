@@ -1,0 +1,22 @@
+/*page password*/
+
+.passwordChange {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.passwordChange p {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+/*page profile */
+
+.profilePseudo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}

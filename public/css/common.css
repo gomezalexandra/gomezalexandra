@@ -1,0 +1,457 @@
+@font-face 
+{
+	font-family: 'MrsSaintDelafieldregular';
+	src: url('../fonts/MrsSaintDelafield-Regular.ttf');
+}
+
+@font-face 
+{
+	font-family: 'Kurale-Regular';
+	src: url('../fonts/Kurale-Regular.ttf');
+}
+
+@font-face 
+{
+	font-family: 'CormorantUpright-Regular';
+	src: url('../fonts/CormorantUpright-Medium.ttf');
+}
+
+
+@-webkit-keyframes shine {
+    100% {
+        left: 95%;
+    }
+}
+@keyframes shine {
+    100% {
+        left: 95%;
+    }
+}
+
+body {
+    margin: 0px;
+    min-height: 100vh;
+    font-family: 'CormorantUpright-Regular', arial, sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 70px 0;
+}
+
+h2 {
+    color: #707070;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.fas {
+    padding-left: 15px;
+}
+
+.author p, .presentation p, #singleChapterExtract p, .singleChapterContent p, .comment p, .empty {
+    font-size: 1.2em;
+}
+
+#textWhite {
+    color: white;
+}
+
+.title {
+    font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
+    font-size: 2.8em;
+    color: #707070;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* start title animation */
+
+.text {  
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    border-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+ 
+  .text li {
+    float: left;
+    opacity: 1;
+    transition: all 2s ease-in-out;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    
+  }
+  .text.hidden li.spaced {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .text li.spaced {
+    padding-left: 0.5em;
+  }
+  
+  .text.hidden li.ghost {
+    opacity: 0;
+    max-width: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  /* end title animation */
+
+a{
+    text-decoration: none;
+    color: #616161;
+    font-family: 'Kurale-Regular', arial, sans-serif;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.43);
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    top: 0;
+    background-image: url("../img/feather.jpg");
+}
+
+#pageContent {
+    position: relative;
+    top: 80px;
+    min-height: calc(100vh - 150px);
+}
+
+.bottomSpace{
+    padding-bottom: 200px;
+    margin: 0px 10px 0px 10px;
+}
+
+.hidenMenuTab {
+    display: none; 
+    position: absolute; 
+    left: 110px;
+    border-radius: 3px;
+    top: 0px;
+    background-color: #ddc3ac;
+    width: 120px;
+}
+
+
+.hidenMenuTab a{
+    margin: 10px;
+}
+
+.hidenMenuTab a:hover {
+    color: #30536F;
+}
+
+#hidenMenu {
+    list-style-type: none; 
+    position: relative
+}
+
+#hidenMenu:hover .hidenMenuTab{
+    display: block;   
+}
+
+.menuTab {
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+    background-color: #ddc3accf;
+    text-align: center;
+    height: 18px;
+    border-radius: 4px;
+}
+
+.menuTab a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menuTab:hover, .subMenuTab:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    transition-duration: 0.1s; 
+}
+
+.menuTab:hover :first-child:not(.hidden) {
+  color: #30536F;
+}
+   
+.menuTab:hover {
+    background-color: #DDC3AC;
+}
+
+.logo{
+    font-weight: 300;
+    font-size: 3em;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    color: #615b5b;  
+}
+
+.logo p{
+    margin: 0px;
+    font-family: 'MrsSaintDelafieldregular', arial, sans-serif; 
+}
+
+.subMenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subMenuTab {
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    min-width: 100px;
+    background-color: #30536F;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 3px;
+}
+
+.subMenuTab a {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.subMenuTab::before, .lastChapterLink p::before {
+    position: absolute;
+    top: 0;
+    left: -22%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 20%;
+    height: 100%;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    -webkit-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+}
+.subMenuTab:hover::before, .lastChapterLink p:hover::before {
+    -webkit-animation: shine .75s;
+    animation: shine .75s;
+}
+
+.sessionMessage {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    max-width: 500px;
+    margin-top: 70px;
+    background-color: #30536F;
+    color: white;
+    font-family: 'Kurale-Regular', arial, sans-serif;
+}
+
+.chapterTitle {
+    color: white;
+    text-shadow: 0.05em 0.05em #4a4747;
+}
+
+.tableActions a:hover .fas, #show a:hover .fas, .whiteBlock:hover .fas{
+    font-size: 1.5em;
+}
+
+.routeChapter, .routeAdministration {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0px 40px 0px;
+}
+
+.alreadyMember, .routeProfile, .notMember {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a, .routeAdministration a{
+    border: 2px solid #30536F;
+    padding: 8px;
+    background-color: #DDC3AC;
+    border-radius: 10px;
+    color: black;
+}
+
+.alreadyMember a:hover, .notMember a:hover, .routeProfile a:hover, .routeChapter a:hover, .routeAdministration a:hover{
+    background-color: #30536F;
+    color: white;
+}
+
+.alreadyMember a, .notMember a {
+    display: flex;
+    align-items: center;
+}
+
+/*part footer*/
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.footer {
+    height: 100px;
+    background-color: #ddc3ac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 1134px)
+{
+    .sectionThree {
+        margin-top: 0px;
+    }
+
+    .lastChapterContainer {
+        margin-bottom: 0px;
+    }
+
+	.whiteBlock {
+        background-color: white;
+        position: static;
+        z-index: 0;
+        height: 80px;
+    }
+
+    .blueBlockChapter, .blueBlockAuthor {
+        height: 300px;
+        width: 300px;
+        position: static;
+        margin-right: 30px;
+    }
+
+    .imageHomeChapter, .imageHomeAuthor {
+        left: 55px !important;
+        bottom: 15px !important;
+    }
+
+    .presentation {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .chapterExtract, .commentDetails {
+        display: none;
+    }
+
+    .sidebar a {
+    margin: 50px 0px 0px 5px !important;
+    }
+}
+
+@media screen and (max-width: 900px)
+{
+    .sidebar {
+        display: none;
+    }
+
+    .administrationContent {
+        width: 100% !important;
+        justify-content: center;
+        margin-left: 0% !important;
+    }
+}
+
+@media screen and (max-width: 856px)
+{
+    .hidenMenuTab {
+            left: 0px;
+            top: 30px;
+    }
+}
+
+@media screen and (max-width: 687px)
+{
+    .logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 670px)
+{
+    table td {
+        padding: 3px;
+        max-width: 200px;
+    }
+
+    .tableHead td {
+        padding: 3px; 
+    }
+}
+
+@media screen and (max-width: 500px)
+{
+    .chapterDetails, .userDetails {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.1em;
+    }
+
+    .title {
+        margin-top: 50px;
+    }
+}
+
+@media all and (max-device-width: 687px)
+{
+    .logo {
+        display: none;
+    }
+    .menu {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}

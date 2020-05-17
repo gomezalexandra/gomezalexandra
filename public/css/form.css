@@ -1,0 +1,86 @@
+.register, .login, .password {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 600px;
+}
+
+.formContainer, .formContainerComment {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.formContainer form, .formContainerComment {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    background-color:#30536F;
+    width: 80%;
+}
+
+.formContainerComment form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#password, #pseudo {
+    height: 30px;
+    width: 200px;
+}
+
+.formTextarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.formChapter {
+    width: 1000px;
+}
+
+label {
+    color: white;
+    font-size: 1.1em;
+}
+
+#submit {
+    background-color: #DDC3AC;
+    border: 2px solid #DDC3AC;
+    border-radius: 10px;
+    padding: 5px;
+    width: 120px;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.checkbox label {
+    padding-left: 15px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+#submit:hover {
+    background-color: #e8f0fe;
+}
+
+/* Message d'erreur */
+
+.formError {
+    color: #ff5f5f;
+    font-size: 1.1em;
+}
+
+.formError p {
+    margin-top: 0px;
+}

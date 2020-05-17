@@ -31,7 +31,6 @@
                 <label for="pseudo">Pseudo :</label><br>
                 <input type="text" id="pseudo" name="pseudo"><br>
                 <div class= "formError"> {% autoescape 'html' %} {{errors.pseudo | raw}} {% endautoescape %} </div>
-                                                                    {#} <?= isset($errors['pseudo']) ? $errors['pseudo'] : ''; ?> TODO effacer#} 
                 <label for="password">Mot de passe :</label><br>
                 <input type="password" id="password" name="password"><br>
                 <div class= "formError"> {% autoescape 'html' %} {{errors.password | raw}} {% endautoescape %} </div>

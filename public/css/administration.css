@@ -1,0 +1,117 @@
+.administration {
+    display: flex;
+}
+
+.sidebar {
+    width: 18%;
+    /*background-color:#707070;*/
+    background-image: linear-gradient(125deg, #f0f0f0  30%, #f0f0f0 80%, #30536F 80%);
+    position: fixed;
+    top: 100px;
+    height: 100%;
+    border-right: 5px #30536F solid;
+}
+
+.sidebar a {
+    color: #707070;
+    font-size: 1.13em;
+    font-weight: 900;
+    margin: 50px 0px 0px 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.addChapter {
+    margin: 20px 0px 30px 0px;
+  }
+
+  .anchor {
+    position: relative;
+    top: -140px;
+}
+
+#administrationSubtitleChapter {
+  margin-top: 0;
+}
+
+#show {
+    opacity: 0;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#show a:hover {
+    color: #30536F;
+    border-left: 2px #30536F solid;
+}
+
+.administrationContent {
+    display: flex;
+    flex-direction: column;
+    width: 82%;
+    margin-left: 20%;
+}
+
+.administrationUser, .administrationComments, .administrationChapter, .administrationAuthor, .administrationPresentation {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.tableHead{
+    background-color: #30536F;
+    color: white;
+}
+
+.tableHead td{
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+.tableBody {
+    background-color: #F0F0F0;
+}
+
+.tableBody td {
+    color: #616161;
+}
+
+.tableBody:hover {
+    background-color: #d7e3ec;
+}
+
+table {
+    border-spacing: 0px;
+    border: 1px solid #30536F;
+    margin-bottom: 50px;
+}
+
+table td {
+    border: 1px solid #30536F;
+    padding: 8px;
+    max-width: 380px;
+    font-family: 'Kurale-Regular', arial, sans-serif;
+}
+
+.tableActions {
+    background-color: #DDC3AC;
+    font-weight: 800;
+}
+
+.tableActions a {
+    display: flex;
+    align-items: center;
+    padding: 0px 3px 0px 3px;
+}
+
+.tableActions a:hover{
+    color:  #30536F;
+    padding: 0px;
+}

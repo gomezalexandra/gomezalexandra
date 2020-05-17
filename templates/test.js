@@ -1,15 +1,10 @@
 window.onload = () => {
-
         $(".text").removeClass("hidden");
-
-        //$('#textPresentation').show().animate({opacity:1}, 3000);
-
 };
 
 $(document).ready(function () {
-        //$('#textPresentation').slideDown( 1200 );
         $('#textPresentation').delay(300).show().animate({ opacity: 1 }, 1000);
-        $('.tiles').delay(300).show().animate({ opacity: 1 }, 1500);
+        $('.chaptersContainer').delay(300).show().animate({ opacity: 1 }, 1500);
         $('#show').show().animate({ opacity: 1 }, 1300);
 });
 
@@ -57,11 +52,3 @@ $(document).ready(() => {
                 
         });
 });
-
-console.log(isChapterVisible);
-
-
-
-/*let action = document.getElementsByClassName("jstest");
-console.log(action);
-action.style.backgroundColor= "red";*/
