@@ -9,18 +9,12 @@ class FrontController extends Controller
     {
         $chapters = $this->chapterDAO ->getLastChapter();
         $presentation = $this->presentationDAO ->getPresentation();
-        /*return $this->view->render('home', $this->session, [
-            'chapters' => $chapters
-        ]);*/
         echo $this->twig->render('home.html.twig', ['chapters'=>$chapters, 'presentation'=>$presentation]);
     }
 
     public function allChapters()
     {
         $chapters = $this->chapterDAO ->getChapters();
-        //return $this->view->render('all_chapters', $this->session, [
-        //    'chapters' => $chapters
-        //]);
         echo $this->twig->render('all_chapters.html.twig', ['chapters'=>$chapters]);
     }
 
@@ -28,26 +22,19 @@ class FrontController extends Controller
     {
         $chapter = $this->chapterDAO-> getChapter($chapterId);
         $comments = $this->commentDAO-> getChapterComment($chapterId);
-        //return $this->view->render('single', $this->session, [
-            //'chapter' => $chapter,
-            //'comments' => $comments
-        //]);
+
         if ($chapter) {
             echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments]);
         }
         else {
             $this->session->set('error_chapter', 'Désolé, ce chapitre n\'existe pas');
             header('Location: ../public/index.php');
-        }
-        
+        }       
     }
 
     public function author()
     {
         $author = $this->authorDAO ->getAuthor();
-        //return $this->view->render('author', $this->session, [
-        //    'author' => $author
-        //]); 
         echo $this->twig->render('author.html.twig', ['author'=>$author]);
     }
 
@@ -62,12 +49,6 @@ class FrontController extends Controller
             }
             $chapter = $this->chapterDAO->getChapter($chapterId);
             $comments = $this->commentDAO->getChapterComment($chapterId);
-            //return $this->view->render('single', $this->session, [
-            //    'chapter' => $chapter,
-            //    'comments' => $comments,
-            //    'post' => $post,
-            //    'errors' => $errors
-            //]);
             echo $this->twig->render('single.html.twig', ['chapter'=>$chapter, 'comments'=>$comments, 'post'=>$post, 'errors'=>$errors]);
         }
     }
@@ -91,13 +72,8 @@ class FrontController extends Controller
                 $this->session->set('register', 'Votre inscription a bien été effectuée');
                 header('Location: ../public/index.php?route=login');
             }
-                //return $this->view->render('register', $this->session, [
-            //    'post' => $post,
-            //    'errors' => $errors
-            //]);
             echo $this->twig->render('register.html.twig', ['post'=>$post, 'errors'=>$errors]);
         }
-        //return $this->view->render('register', $this->session);
         echo $this->twig->render('register.html.twig');
     }
 
@@ -116,7 +92,6 @@ class FrontController extends Controller
                 $this->session->set('error_login', '* Erreur de pseudo ou de mot de passe');
             }
         }
-        //return $this->view->render('login', $this->session);
         echo $this->twig->render('login.html.twig');
     }
 }

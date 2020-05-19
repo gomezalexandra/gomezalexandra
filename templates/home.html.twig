@@ -4,121 +4,112 @@
 
 {% block content %} 
  
-<div>
+    <div>
+        <div class="title">
+            <h1 >
+                <ul class="text hidden">
+                    <div>
+                        <li>J</li>
+                        <li class="ghost">e</li>
+                        <li class="ghost">a</li>
+                        <li class="ghost">n</li>
+                    </div>
+                    <div>
+                        <li class="spaced">F</li>
+                        <li class="ghost">o</li>
+                        <li class="ghost">r</li>
+                        <li class="ghost">t</li>
+                        <li class="ghost">e</li>
+                        <li class="ghost">r</li>
+                        <li class="ghost">o</li>
+                        <li class="ghost">c</li>
+                        <li class="ghost">h</li>
+                        <li class="ghost">e</li>
+                        <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
+                    </div>
+                </ul> 
+            </h1>
+        </div>
 
-    <div class="title">
-        <h1 >
-            <ul class="text hidden">
-                  <div>
-                    <li>J</li>
-                    <li class="ghost">e</li>
-                    <li class="ghost">a</li>
-                    <li class="ghost">n</li>
-                </div>
-                <div>
-                    <li class="spaced">F</li>
-                    <li class="ghost">o</li>
-                    <li class="ghost">r</li>
-                    <li class="ghost">t</li>
-                    <li class="ghost">e</li>
-                    <li class="ghost">r</li>
-                    <li class="ghost">o</li>
-                    <li class="ghost">c</li>
-                    <li class="ghost">h</li>
-                    <li class="ghost">e</li>
-                    <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
-                </div>
-            </ul> 
-        </h1>
-    </div>
 
+        <div class="subMenu">
+            {% if session.get('pseudo') %}
+                <div class="subMenuTab"><a href="../public/index.php?route=logout">Déconnexion</a></div>
+                <div class="subMenuTab"><a href="../public/index.php?route=profile">Profil</a></div>
+                
+                {% if session.get('role') == 'admin' %}
+                    <div class="subMenuTab"><a href="../public/index.php?route=administration">Administration</a></div>
+                {% endif %}
 
-    <div class="subMenu">
+            {% else %}
 
-        {% if session.get('pseudo') %}
-            <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
-            <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
-            
-            {% if session.get('role') == 'admin' %}
-                <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
+                <div class="subMenuTab"><a href="../public/index.php?route=register">S'inscrire</a></div>
+                <div class="subMenuTab"><a href="../public/index.php?route=login">Se connecter</a></div>
+
             {% endif %}
+        </div>
 
-        {% else %}
+        <div class="presentation" id="textPresentation">
+            <p> {{presentation.content | raw}} </p> 
+        </div>
 
-            <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
-            <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
-
-        {% endif %}
-    </div>
-
-    <div class="presentation" id="textPresentation">
-        <p> {{presentation.content | raw}} </p> 
-    </div>
-
-    <div class="lastChapterContainer">
-        {% for chapter in chapters %} 
-            <a class="bookContainer" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
-                <div class="book">
-                    <div class="front">
-                        <div class="cover">
-                            <p class="bookAuthor">  
-                                <div class="lastChapter">
+        <div class="lastChapterContainer">
+            {% for chapter in chapters %} 
+                <a class="bookContainer" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
+                    <div class="book">
+                        <div class="front">
+                            <div class="cover">
+                                <p class="bookAuthor">  
+                                    <div class="lastChapter">
                                         <p class="lastChapterTitle">Chapitre {{chapter.chapterNumber}} </p>
                                         <p> {{chapter.title}} </p>
                                         <p class="bottomDate"> Publié le {{chapter.createdAt("d/m/Y")}} </p>
-                                </div>             
-                            </p>
+                                    </div>             
+                                </p>
+                            </div>
+                        </div>
+                        <div class="left-side">
+                            <h2>
+                                <span>Jean Forteroche</span>
+                                <span>2020</span>
+                            </h2>
                         </div>
                     </div>
-                    <div class="left-side">
-                        <h2>
-                            <span>Jean Forteroche</span>
-                            <span>2020</span>
-                        </h2>
-                    </div>
+                </a>
+            
+                <div class="lastChapterLink">
+                    <p><a id="textWhite" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a></p>             
                 </div>
-            </a>
-        
-
-            <div class="lastChapterLink">
-                <p> <a id="textWhite" href="../public/index.php?route=chapter&chapterId={{chapter.id}}">Lire le dernier Chapitre</a> </p>             
-            </div>
-        {% endfor %} 
-    </div>
-    
-    <section class="sectionThree">
-        <div class="allChaptersContainer">
-
-            <a class="whiteBlock" id="blockAllChapter" href="../public/index.php?route=allChapters">
-                <div class="allChaptersLink"> 
-                    <h3>Voir les Chapitres <i class="fas fa-caret-right"></i></h3>
-                </div>
-            </a>
-
-            <div class="blueBlockChapter"> 
-                <div> 
-                    <img class="imageHomeChapter" src="../public/img/book.jpg" alt="livre ouvert"/>                  
-                </div>                
-            </div>
-
+            {% endfor %} 
         </div>
         
-        <div class="authorContainer">
-
-            <a class="whiteBlock" id="blockAuthor" href="../public/index.php?route=author">
-                <div class="authorLink">  
-                    <h3>Découvrir l'Auteur <i class="fas fa-caret-right"></i></h3>
+        <section class="sectionThree">
+            <div class="allChaptersContainer">
+                <a class="whiteBlock" id="blockAllChapter" href="../public/index.php?route=allChapters">
+                    <div class="allChaptersLink"> 
+                        <h3>Voir les Chapitres <i class="fas fa-caret-right"></i></h3>
+                    </div>
+                </a>
+                <div class="blueBlockChapter"> 
+                    <div> 
+                        <img class="imageHomeChapter" src="../public/img/book.jpg" alt="livre ouvert"/>                  
+                    </div>                
                 </div>
-            <a/>
-          
-            <div class="blueBlockAuthor">
-                <div> 
-                    <img class="imageHomeAuthor" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
-                </div>        
             </div>
-          
-        </div> 
-    <section>
+            
+            <div class="authorContainer">
+                <a class="whiteBlock" id="blockAuthor" href="../public/index.php?route=author">
+                    <div class="authorLink">  
+                        <h3>Découvrir l'Auteur <i class="fas fa-caret-right"></i></h3>
+                    </div>
+                </a>           
+                <div class="blueBlockAuthor">
+                    <div> 
+                        <img class="imageHomeAuthor" src="../public/img/person.jpg" alt="personne tenant un stylo"/>                 
+                    </div>        
+                </div>           
+            </div> 
+        </section>
 
-</div>
+    </div>
 {% endblock %}  

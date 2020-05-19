@@ -358,17 +358,17 @@ footer {
     }
 
 	.whiteBlock {
-        background-color: white;
-        position: static;
-        z-index: 0;
-        height: 80px;
+        background-color: white !important;
+        position: static !important;
+        z-index: 0 !important;
+        height: 80px !important;
     }
 
     .blueBlockChapter, .blueBlockAuthor {
-        height: 300px;
-        width: 300px;
-        position: static;
-        margin-right: 30px;
+        height: 300px !important;
+        width: 300px !important;
+        position: static !important;
+        margin-right: 30px !important;
     }
 
     .imageHomeChapter, .imageHomeAuthor {

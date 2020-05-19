@@ -24,14 +24,13 @@ class Router
 
     public function run()
     {
-        $route = $this->request->getGet()->get('route');
-        //$isChapterId = empty ( $this->request->getGet()->get('chapterId') );       
+        $route = $this->request->getGet()->get('route');       
 
         try{
             if(isset($route))
             {
                 if($route === 'chapter') {
-                    $this->frontController->chapter($this->request->getGet()->get('chapterId')); // $this->frontController->chapter($_GET['chapterId']);
+                    $this->frontController->chapter($this->request->getGet()->get('chapterId'));
                 }
                 elseif($route === 'allChapters'){
                     $this->frontController->allChapters();
@@ -40,7 +39,7 @@ class Router
                     $this->frontController->author();
                 }
                 elseif($route === 'newChapter'){
-                    $this->backController->newChapter($this->request->getPost());//$this->backController->newChapter($_POST);
+                    $this->backController->newChapter($this->request->getPost());
                 }
                 elseif($route === 'modifyChapter'){
                     $this->backController->modifyChapter($this->request->getPost(), $this->request->getGet()->get('chapterId'));
@@ -98,13 +97,11 @@ class Router
                 }
             }
             else{
-                //$frontController = new FrontController();
                $this->frontController->home();
             }
         }
         catch (Exception $e)
         {
-            var_dump($e);
             $this->errorController->error500();
         }
     }

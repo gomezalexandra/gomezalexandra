@@ -4,7 +4,6 @@ namespace App\src\DAO;
 use App\config\Parameter;
 use App\src\model\Author;
 
-
 class AuthorDAO extends DAO
 {
     private function buildObject($row)

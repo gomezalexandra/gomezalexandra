@@ -35,7 +35,6 @@ let checkVisible = (element) => {
 }
 
 let isChapterVisible = false;
-let chapterButton = "";
 
 $(document).ready(() => {
         $("#chapterButtonContainer").click(function () {
@@ -43,12 +42,11 @@ $(document).ready(() => {
                 console.log(isChapterVisible);
                 $(".singleChapterContent").toggle();
                 if (isChapterVisible == true){
-                        $("#chapterButton").html('Vu Réduite<i class="fas fa-angle-double-up"></i>');
+                        $("#chapterButton").html('Vue Réduite<i class="fas fa-angle-double-up"></i>');
                         $("#singleChapterExtract").css("display", "none")
                 } else {
                         $("#chapterButton").html('Tout Lire<i class="fas fa-angle-double-down"></i>');
                         $("#singleChapterExtract").css("display", "block")
-                }
-                
+                }               
         });
 });

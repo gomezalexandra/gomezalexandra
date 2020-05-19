@@ -27,10 +27,6 @@
         <a href="../public/index.php?route=administration">Retour à l'Administration<i class="fas fa-caret-right"></i> </a>
     </div>
 
-                                        {#<?php
-                                            $content = isset($post) && $post->get('content') ? htmlspecialchars($post->get('content')) : '';
-                                        ?>#}
-
     {% set content =  post.get('content') %}   
 
     <script>
@@ -47,4 +43,5 @@
             <input type="submit" value="modifier"  id="submit" name="submit">
         </form>
     </div>
+    
 {% endblock %} 

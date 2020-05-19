@@ -23,9 +23,7 @@
                         <li class="ghost">e</li>
                         <li class="ghost">s</li>
                         <li class="ghost"><i class="fas fa-feather-alt"> </i> </li>
-                    </div>
-                    
-                    
+                    </div> 
                 </ul>
             </h1>
         </div>
@@ -33,17 +31,15 @@
         <div class="subMenu">
             {% if session.get('pseudo') %}
                 <div class="subMenuTab"> <a href="../public/index.php?route=logout">Déconnexion</a></div>
-                <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a> </div>
+                <div class="subMenuTab"> <a href="../public/index.php?route=profile">Profil</a></div>
                 
                 {% if session.get('role') == 'admin' %}
                     <div class="subMenuTab"> <a href="../public/index.php?route=administration">Administration</a></div>
                 {% endif %}
 
             {% else %}
-
-                <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a> </div>
-                <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a> </div>
-
+                <div class="subMenuTab"> <a href="../public/index.php?route=register">S'inscrire</a></div>
+                <div class="subMenuTab"> <a href="../public/index.php?route=login">Se connecter</a></div>
             {% endif %}
         </div>
 
@@ -58,9 +54,9 @@
                         <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
                             <h2 class="chapterTitle">Chapitre {{chapter.chapterNumber}} </h2>
                             <div class="content">
-                                    <h3>{{chapter.title}}</h3>
-                                    <p>Ecrit par {{chapter.author}}</p>
-                                    <p>Publié le {{chapter.createdAt("d/m/Y")}}</p>
+                                <h3>{{chapter.title}}</h3>
+                                <p>Ecrit par {{chapter.author}}</p>
+                                <p>Publié le {{chapter.createdAt("d/m/Y")}}</p>
                             </div>
                         </a>
                     </article>

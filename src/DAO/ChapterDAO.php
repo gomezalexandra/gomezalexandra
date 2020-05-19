@@ -13,7 +13,6 @@ class ChapterDAO extends DAO
         $chapter->setChapterNumber($row['chapterNumber']);
         $chapter->setTitle($row['title']);
         $chapter->setContent($row['content']);
-        //$chapter->setAuthor($row['author']); car est forcement celui connecté
         $chapter->setAuthor($row['pseudo']);
         $chapter->setCreatedAt($row['createdAt']);
         return $chapter;
@@ -48,7 +47,6 @@ class ChapterDAO extends DAO
     public function getLastChapter()
     {
         $sql = 'SELECT chapter.id, chapter.chapterNumber, chapter.title, chapter.content, user.pseudo, chapter.createdAt, chapter.draft FROM chapter INNER JOIN user ON chapter.userId = user.id WHERE chapter.draft = ? ORDER BY chapter.chapterNumber DESC LIMIT 0, 1';
-        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter ORDER BY id DESC';
         $result = $this->createQuery($sql, [0]);
         $chapters = [];
         foreach ($result as $row){
@@ -62,7 +60,6 @@ class ChapterDAO extends DAO
     public function getChapter($chapterId)
     {
         $sql = 'SELECT chapter.id, chapter.chapterNumber, chapter.title, chapter.content, user.pseudo, chapter.createdAt, chapter.draft FROM chapter INNER JOIN user ON chapter.userId = user.id WHERE chapter.id = ?';
-        //$sql = 'SELECT id, title, content, author, createdAt FROM chapter WHERE id = ?';
         $result = $this->createQuery($sql, [$chapterId]);
         $chapter = $result->fetch();
         $result->closeCursor();
@@ -77,7 +74,7 @@ class ChapterDAO extends DAO
         $this->createQuery($sql, [$post->get('chapterNumber'), $post->get('title'), $post->get('content'), $userId, 0]);
     }
 
-    public function newDraft(Parameter $post, $userId) //TODO refactoriser
+    public function newDraft(Parameter $post, $userId)
     {
         $sql = 'INSERT INTO chapter (chapterNumber, title, content, userId, createdAt, draft) VALUES (?, ?, ?, ?, NOW(), ?)';
         $this->createQuery($sql, [$post->get('chapterNumber'), $post->get('title'), $post->get('content'), $userId, 1]);

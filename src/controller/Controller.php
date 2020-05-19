@@ -58,7 +58,6 @@ abstract class Controller
             return count($string);
         });
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
-        //$this->twig->addGlobal('session', $_SESSION); //TODO: passer directement par session?
         $this->twig->addGlobal('session', $this->session);
         $this->twig->addFilter($filterExtract);
         $this->twig->addFilter($filterLongExtract);

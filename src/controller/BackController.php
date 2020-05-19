@@ -40,12 +40,7 @@ class BackController extends Controller
                     $this->chapterDAO->newChapter($post, $this->session->get('id'));
                     $this->session->set('add_chapter', 'Le nouveau chapitre a bien été publié'); 
                     }
-                    /*}
-                    elseif($post->get('draft')) {
-                        $this->chapterDAO->newDraft($post, $this->session->get('id'));
-                        $this->session->set('new_chapter', 'Le nouveau chapitre a bien été ajouté aux brouillons');
-                        var_dump('passe ici  draft'); 
-                    }  */  
+                    
                     $chapters = $this->chapterDAO->getChapters();
                     $drafts = $this->chapterDAO->getDrafts();
                     $comments = $this->commentDAO->getFlagComments();
@@ -56,7 +51,7 @@ class BackController extends Controller
                     echo $this->twig->render('new_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
                 }
             }
-            else { //else à laisser sinon doublon visuel en cas de errors
+            else {
                 echo $this->twig->render('new_chapter.html.twig');
             }
         }
@@ -85,21 +80,17 @@ class BackController extends Controller
                         $this->session->set('modify_chapter', 'Le chapitre a bien été modifié');
                     }
 
-                   /* elseif($post->get('draft')) {
-                        $this->chapterDAO->modifyDraft($post, $chapterId, $this->session->get('id'));
-                        $this->session->set('modify_chapter', 'Le chapitre a bien été ajouté aux brouillons');
-                    }*/
                     $chapters = $this->chapterDAO->getChapters();
                     $drafts = $this->chapterDAO->getDrafts();
                     $comments = $this->commentDAO->getFlagComments();
                     $users = $this->userDAO->getUsers();
                     echo $this->twig->render('administration.html.twig', ['chapters'=>$chapters, 'drafts' => $drafts, 'comments'=>$comments, 'users' => $users]);
-                   // header('Location: ../public/index.php?route=administration');
+
                 } else {
                     echo $this->twig->render('modify_chapter.html.twig', ['post' => $post, 'errors' => $errors]);
                 }
             }
-            else { //else à laisser sinon doublon visuel en cas de errors
+            else {
                 $post->set('chapterNumber', $chapter->getChapterNumber());
                 $post->set('title', $chapter->getTitle());
                 $post->set('content', $chapter->getContent());
@@ -149,7 +140,6 @@ class BackController extends Controller
     public function profile()
     {
         if($this->checkLoggedIn()) {
-            //return $this->view->render('profile', $this->session);
             echo $this->twig->render('profile.html.twig');
         }    
     }
@@ -164,13 +154,8 @@ class BackController extends Controller
                     $this->session->set('password', 'Le mot de passe a été mis à jour');
                     header('Location: ../public/index.php?route=profile');
                 }
-                //return $this->view->render('password', $this->session, [
-                //    'post' => $post,
-                //    'errors' => $errors
-                //]);
                 echo $this->twig->render('password.html.twig', ['post'=>$post, 'errors'=>$errors]);
             }
-           // return $this->view->render('password', $this->session);
            echo $this->twig->render('password.html.twig');
         }
     }
@@ -218,13 +203,7 @@ class BackController extends Controller
             $drafts = $this->chapterDAO->getDrafts();
             $comments = $this->commentDAO->getFlagComments();
             $users = $this->userDAO->getUsers();
-           // require '../templates/administration.php'; TODOVIEW
-            //return $this->view->render('administration', $this->session, [
-            //'chapters' => $chapters,
-            //'drafts' => $drafts,
-            //'comments' => $comments,
-            //'users' => $users
-            //]);
+
             echo $this->twig->render('administration.html.twig', ['chapters'=>$chapters, 'drafts' => $drafts, 'comments'=>$comments, 'users' => $users]);
         }     
     }
@@ -242,9 +221,7 @@ class BackController extends Controller
             }
             
             $post->set('content', $author->getContent());
-            //return $this->view->render('modify_author', $this->session, [
-            //    'post' => $post
-            //]);
+
             echo $this->twig->render('modify_author.html.twig', ['post' => $post]);
         }
     }
@@ -262,9 +239,7 @@ class BackController extends Controller
             }
             
             $post->set('content', $presentation->getContent());
-            //return $this->view->render('modify_author', $this->session, [
-            //    'post' => $post
-            //]);
+
             echo $this->twig->render('modify_presentation.html.twig', ['post' => $post]);
         }
     }
