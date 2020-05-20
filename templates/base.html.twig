@@ -52,10 +52,7 @@
                     </div>
                 </div>
             </div>
-            
-        </header>
-
-        <div id="pageContent">  
+             
             <h4 class="sessionMessage">
                 {{session.show('add_chapter')}}
                 {{session.show('new_chapter')}}
@@ -78,6 +75,10 @@
                 {{session.show('not_admin')}} 
             </h4>
             
+        </header>
+
+        
+        <div id="pageContent">  
             <div class="bottomSpace">
                 {% block content %} {% endblock %}       
             </div>
@@ -89,7 +90,7 @@
             </footer>
         </div>
 
-        <script src="../templates/main.js" type="text/javascript"></script>
+        <script src="../public/js/main.js" type="text/javascript"></script>
         
     </body>
 </html>

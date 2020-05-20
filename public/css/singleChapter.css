@@ -29,19 +29,6 @@
     text-align: center;
 }
 
-.singleChapterContent {
-    display: none;
-    overflow: scroll;
-    max-height: 70vh;
-    text-align: justify;
-    padding: 15px;
-}
-
-#singleChapterExtract {
-    text-align: justify;
-    padding: 15px;
-}
-
 #chapterButton {
     background-color: #30536F;
     border-style: none;
@@ -51,7 +38,6 @@
     margin: 20px;
 }
 
-
 #chapterButton i {
     padding-left: 10px;
 }
@@ -60,6 +46,18 @@
     background-color: #DDC3AC;
     color:#30536F;
     cursor: pointer;
+}
+#singleChapterExtract {
+    text-align: justify;
+    padding: 15px;
+}
+
+.singleChapterContent {
+    display: none;
+    overflow: scroll;
+    max-height: 70vh;
+    text-align: justify;
+    padding: 15px;
 }
 
 .addComment, .singleComment, .addCommentContainer, .allComments, .singleChapter {

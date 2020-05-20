@@ -16,7 +16,6 @@
 	src: url('../fonts/CormorantUpright-Medium.ttf');
 }
 
-
 @-webkit-keyframes shine {
     100% {
         left: 95%;
@@ -28,9 +27,9 @@
     }
 }
 
+/* start general layout*/
 body {
     margin: 0px;
-    min-height: 100vh;
     font-family: 'CormorantUpright-Regular', arial, sans-serif;
 }
 
@@ -49,91 +48,19 @@ h2 {
     padding-left: 15px;
 }
 
-.author p, .presentation p, #singleChapterExtract p, .singleChapterContent p, .comment p, .empty {
-    font-size: 1.2em;
-}
-
-#textWhite {
-    color: white;
-}
-
-.title {
-    font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
-    font-size: 2.8em;
-    color: #707070;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    margin-top: 100px;
-}
-
-/* start title animation */
-
-.text {  
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    list-style: none;
-    border-bottom: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-  }
- 
-  .text li {
-    float: left;
-    opacity: 1;
-    transition: all 2s ease-in-out;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    margin: auto;
-    
-  }
-  .text.hidden li.spaced {
-    padding-left: 0;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    margin: auto;
-  }
-
-  .text li.spaced {
-    padding-left: 0.5em;
-  }
-  
-  .text.hidden li.ghost {
-    opacity: 0;
-    max-width: 0;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    margin: auto;
-  }
-
-  /* end title animation */
-
-a{
+a {
     text-decoration: none;
     color: #616161;
     font-family: 'Kurale-Regular', arial, sans-serif;
 }
 
-.menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.43);
-    margin: auto;
-    margin-top: 35px;
-    margin-bottom: 35px;
+#textWhite {
+    color: white;
 }
+/* end general layout*/
 
+
+/* start common base layout*/
 header {
     display: flex;
     flex-wrap: wrap;
@@ -156,6 +83,20 @@ header {
     padding-bottom: 200px;
     margin: 0px 10px 0px 10px;
 }
+/* end common base layout */
+
+
+/* start header */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.43);
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
 
 .hidenMenuTab {
     display: none; 
@@ -166,7 +107,6 @@ header {
     background-color: #ddc3ac;
     width: 120px;
 }
-
 
 .hidenMenuTab a{
     margin: 10px;
@@ -233,6 +173,79 @@ header {
     font-family: 'MrsSaintDelafieldregular', arial, sans-serif; 
 }
 
+.sessionMessage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #30536F;
+    color: white;
+    font-family: 'Kurale-Regular', arial, sans-serif;
+    position: relative;
+    margin: 0;
+}
+/* end header */
+
+
+/* start title animation */
+.title {
+    font-family: 'MrsSaintDelafieldregular', arial, sans-serif;
+    font-size: 2.8em;
+    color: #707070;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.text {  
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    border-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+ 
+.text li {
+    float: left;
+    opacity: 1;
+    transition: all 2s ease-in-out;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;   
+}
+
+.text.hidden li.spaced {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.text li.spaced {
+    padding-left: 0.5em;
+}
+  
+.text.hidden li.ghost {
+    opacity: 0;
+    max-width: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+/* end title animation */
+
+
+/* start submenu buttons */
 .subMenu {
     display: flex;
     flex-wrap: wrap;
@@ -275,25 +288,18 @@ header {
     -webkit-animation: shine .75s;
     animation: shine .75s;
 }
+/* end submenu buttons */
 
-.sessionMessage {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: center;
-    max-width: 500px;
-    margin-top: 70px;
-    background-color: #30536F;
-    color: white;
-    font-family: 'Kurale-Regular', arial, sans-serif;
+
+/* start specific paragraph size */
+.author p, .presentation p, #singleChapterExtract p, .singleChapterContent p, .comment p, .empty {
+    font-size: 1.2em;
 }
+/* end specific paragraph size */
 
-.chapterTitle {
-    color: white;
-    text-shadow: 0.05em 0.05em #4a4747;
-}
 
-.tableActions a:hover .fas, #show a:hover .fas, .whiteBlock:hover .fas{
+/* start common hover and button layout */
+.tableActions a:hover .fas, #show a:hover .fas, .whiteBlock:hover .fas {
     font-size: 1.5em;
 }
 
@@ -310,7 +316,7 @@ header {
     margin: 10px;
 }
 
-.alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a, .routeAdministration a{
+.alreadyMember a, .notMember a,  .routeProfile a, .routeChapter a, .routeAdministration a {
     border: 2px solid #30536F;
     padding: 8px;
     background-color: #DDC3AC;
@@ -327,9 +333,10 @@ header {
     display: flex;
     align-items: center;
 }
+/* end common hover and button layout */
 
-/*part footer*/
 
+/*start footer*/
 footer {
     width: 100%;
     position: absolute;
@@ -344,12 +351,12 @@ footer {
     align-items: center;
     text-align: center;
 }
+/*end footer*/
 
-/*media queries*/
-
+/* start media queries */
 @media screen and (max-width: 1134px)
 {
-    .sectionThree {
+    .homeLinks{
         margin-top: 0px;
     }
 
@@ -438,20 +445,16 @@ footer {
 
     h1 {
         font-size: 1.1em;
+        margin: 50px 0 50px 0;
     }
 
     .title {
         margin-top: 50px;
     }
-}
 
-@media all and (max-device-width: 687px)
-{
-    .logo {
-        display: none;
-    }
     .menu {
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
+/* end media queries */

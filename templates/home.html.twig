@@ -50,7 +50,7 @@
         </div>
 
         <div class="presentation" id="textPresentation">
-            <p> {{presentation.content | raw}} </p> 
+            <p> {% autoescape 'html' %} {{presentation.content | raw}} {% endautoescape %}</p> 
         </div>
 
         <div class="lastChapterContainer">
@@ -83,7 +83,7 @@
             {% endfor %} 
         </div>
         
-        <section class="sectionThree">
+        <div class="homeLinks">
             <div class="allChaptersContainer">
                 <a class="whiteBlock" id="blockAllChapter" href="../public/index.php?route=allChapters">
                     <div class="allChaptersLink"> 
@@ -109,7 +109,7 @@
                     </div>        
                 </div>           
             </div> 
-        </section>
+        </div>
 
     </div>
 {% endblock %}  

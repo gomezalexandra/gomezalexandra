@@ -1,5 +1,4 @@
-/*page password*/
-
+/* start page password */
 .passwordChange {
     display: flex;
     flex-wrap: wrap;
@@ -11,12 +10,14 @@
     font-size: 1.1em;
     text-align: center;
 }
+/* end page password */
 
-/*page profile */
 
+/* start page profile */
 .profilePseudo{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
 }
+/* end page profile */

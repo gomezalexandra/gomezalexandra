@@ -7,18 +7,29 @@
     max-width: 600px;
 }
 
-.formContainer, .formContainerComment {
+.formContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
 }
 
-.formContainer form, .formContainerComment {
+.formContainer form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+    padding: 50px;
+    background-color:#30536F;
+    width: 80%;
+}
+
+.formContainerComment {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
     padding: 50px;
     background-color:#30536F;
     width: 80%;
@@ -61,8 +72,8 @@ label {
     cursor: pointer;
 }
 
-.checkbox label {
-    padding-left: 15px;
+#submit:hover {
+    background-color: #e8f0fe;
 }
 
 .checkbox {
@@ -70,11 +81,9 @@ label {
     align-items: center;
 }
 
-#submit:hover {
-    background-color: #e8f0fe;
+.checkbox label {
+    padding-left: 15px;
 }
-
-/* Message d'erreur */
 
 .formError {
     color: #ff5f5f;

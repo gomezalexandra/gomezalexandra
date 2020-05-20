@@ -1,3 +1,4 @@
+/* start home text presentation */
 .presentation {
     display: flex;
     flex-wrap: wrap;
@@ -11,82 +12,18 @@
 #textPresentation {
     opacity: 0;
 }
+/* end home text presentation */
 
-.lastChapterContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 200px;
-    max-width: 1000px;
-}
 
-.chapterContent {
-    padding: 10px;
-}
-
-.sectionThree{ 
-    margin-top: 200px;
-}
-
-.allChaptersContainer, .authorContainer {
-    margin-top: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.whiteBlock {
-    background-color: white;
-    height: 180px;
-    width: 250px;
-    position: relative;
-    left: -55px;
-    z-index: 1;
-}
-
-.whiteBlock h3{
-    display: flex;
-    align-items: center;
-    padding-left: 7px;
-    font-size: 1.3em;
-}
-
-.whiteBlock:hover h3 {
-    color: #30536F;
-    border-left: 2px #30536F solid;
-}
-
-.allChaptersLink, .authorLink{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
-.blueBlockChapter, .blueBlockAuthor  {
-    height: 300px;
-    width: 600px;
-    background-color: #30536F;
-    position: relative;
-    right: 100px;
-    z-index: 0;
-    opacity: 0;
-}
-
-.imageHomeChapter, .imageHomeAuthor {
-    height: 250px;
-    width: 250px;
-    position: relative;
-    left: 300px;
-    bottom: 28px;
-    z-index: 3;
+/* start last chapter part */
+.lastChapterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 200px;
+  max-width: 1000px;
 }
 
 .lastChapterLink {
@@ -269,3 +206,70 @@
     font-size: 13px;
     padding-right: 20px;
   }
+  /* end last chapter part */
+
+
+/* start allchapters and author page links */
+.homeLinks { 
+  margin-top: 200px;
+}
+
+.allChaptersContainer, .authorContainer {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.whiteBlock {
+  background-color: white;
+  height: 180px;
+  width: 250px;
+  position: relative;
+  left: -55px;
+  z-index: 1;
+}
+
+.whiteBlock h3{
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+  font-size: 1.3em;
+}
+
+.whiteBlock:hover h3 {
+  color: #30536F;
+  border-left: 2px #30536F solid;
+}
+
+.allChaptersLink, .authorLink{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.blueBlockChapter, .blueBlockAuthor {
+  height: 300px;
+  width: 600px;
+  background-color: #30536F;
+  position: relative;
+  right: 100px;
+  z-index: 0;
+  opacity: 0;
+}
+
+.imageHomeChapter, .imageHomeAuthor {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  left: 300px;
+  bottom: 28px;
+  z-index: 3;
+}
+/* end allchapters and author page links */
