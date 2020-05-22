@@ -61,7 +61,6 @@ abstract class Controller
         $this->twig->addGlobal('session', $this->session);
         $this->twig->addFilter($filterExtract);
         $this->twig->addFilter($filterLongExtract);
-        $this->twig->addFilter($filterBlankTable);
-        
+        $this->twig->addFilter($filterBlankTable);       
     }
 }

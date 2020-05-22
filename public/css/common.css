@@ -70,13 +70,15 @@ header {
     width: 100%;
     z-index: 5;
     top: 0;
-    background-image: url("../img/feather.jpg");
+    background: center no-repeat url("../img/feather.jpg");
 }
 
 #pageContent {
     position: relative;
     top: 80px;
     min-height: calc(100vh - 150px);
+    max-width: 1780px;
+    margin: auto;
 }
 
 .bottomSpace{
