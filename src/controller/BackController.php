@@ -216,7 +216,7 @@ class BackController extends Controller
             if ($post->get('submit')) { 
                 
                     $this->authorDAO->modifyAuthor($post, $this->session);
-                    $this->session->set('modify_author', 'La page auteur a bien été modifiée'); //TODO
+                    $this->session->set('modify_author', 'La page auteur a bien été modifiée');
                     header('Location: ../public/index.php?route=administration');              
             }
             
@@ -234,7 +234,7 @@ class BackController extends Controller
             if ($post->get('submit')) { 
                 
                     $this->presentationDAO->modifyPresentation($post, $this->session);
-                    $this->session->set('modify_presentation', 'Le texte de la page Accueil a bien été modifié'); //TODO
+                    $this->session->set('modify_presentation', 'Le texte de la page Accueil a bien été modifié');
                     header('Location: ../public/index.php?route=administration');              
             }
             

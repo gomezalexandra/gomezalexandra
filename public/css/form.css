@@ -24,6 +24,10 @@
     width: 80%;
 }
 
+.tox-tinymce, .tox-edit-area {
+    min-height: 500px;
+}
+
 .formContainerComment {
     display: flex;
     flex-wrap: wrap;

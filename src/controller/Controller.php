@@ -45,7 +45,7 @@ abstract class Controller
     {
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $this->twig = new \Twig\Environment($loader, [
-            'cache' => false, //'../cache', TODO modifier pour false quand en dvp
+            'cache' => '../cache',
             'debug' => true,
             ]);
         $filterExtract = new \Twig\TwigFilter('extract', function ($string) {

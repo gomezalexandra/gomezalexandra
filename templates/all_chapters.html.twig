@@ -44,7 +44,7 @@
         </div>
 
         <div>   
-            <section class="chaptersContainer">
+            <div class="chaptersContainer">
                 {% for chapter in chapters %}
                     <article class="chapterStyle">
                         <div class="image">
@@ -53,7 +53,7 @@
                         
                         <a href="../public/index.php?route=chapter&chapterId={{chapter.id}}">
                             <h2 class="chapterTitle">Chapitre {{chapter.chapterNumber}} </h2>
-                            <div class="content">
+                            <div class="articleContent">
                                 <h3>{{chapter.title}}</h3>
                                 <p>Ecrit par {{chapter.author}}</p>
                                 <p>Publié le {{chapter.createdAt("d/m/Y")}}</p>
@@ -61,7 +61,7 @@
                         </a>
                     </article>
                 {% endfor %}
-            </section>   
+            </div>   
         </div>
     </div>
 {% endblock %}

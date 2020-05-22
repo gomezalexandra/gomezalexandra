@@ -49,10 +49,10 @@
                 <p id="chapterButton">Tout Lire<i class="fas fa-angle-double-down"></i></p>
             </div>
             <div id="singleChapterExtract">
-                {% autoescape 'html' %} <p> EXTRACT {{ chapter.content | longExtract | raw}}  [...]</p> {% endautoescape %}
+                {% autoescape 'html' %} <p> {{ chapter.content | longExtract | raw}}  [...]</p> {% endautoescape %}
             </div>
             <div class="singleChapterContent">
-                {% autoescape 'html' %} <p> TOTAL {{chapter.content | raw}} </p> {% endautoescape %}
+                {% autoescape 'html' %} <p> {{chapter.content | raw}} </p> {% endautoescape %}
             </div>
             <div class="singleChapterDetails">
                 <p>Ecrit par {{chapter.author}}</p>
