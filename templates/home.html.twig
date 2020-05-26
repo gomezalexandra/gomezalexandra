@@ -2,6 +2,11 @@
 
 {% block title %} Accueil {% endblock %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../public/css/home.css"/>
+{% endblock %}
+
 {% block content %} 
  
     <div>

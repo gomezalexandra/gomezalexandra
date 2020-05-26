@@ -20,7 +20,7 @@ class CommentDAO extends DAO
 
     public function getChapterComment($chapterId)
     {
-        $sql = 'SELECT id, pseudo, content, createdAt, flag, chapterId FROM comment WHERE chapterId = ? ORDER BY createdAt DESC';
+        $sql = 'SELECT comment.id, user.pseudo, comment.content, comment.createdAt, comment.flag, comment.chapterId FROM comment INNER JOIN user ON comment.userId = user.id WHERE comment.chapterId = ? ORDER BY comment.createdAt DESC';
         $result = $this->createQuery($sql, [$chapterId]);
         $comments = [];
         foreach ($result as $row) {
@@ -33,7 +33,7 @@ class CommentDAO extends DAO
 
     public function addComment(Parameter $post, $chapterId, $pseudo)
     {           
-        $sql = 'INSERT INTO comment (pseudo, content, createdAt, flag, chapterId) VALUES (?, ?, NOW(), ?, ?)';
+        $sql = 'INSERT INTO comment (userId, content, createdAt, flag, chapterId) VALUES (?, ?, NOW(), ?, ?)';
         $this->createQuery($sql, [$pseudo , $post->get('content'), 0, $chapterId]);
     }
 
@@ -57,7 +57,7 @@ class CommentDAO extends DAO
 
     public function getFlagComments()
     {
-        $sql = 'SELECT id, pseudo, content, createdAt, flag, chapterId FROM comment WHERE flag = ? ORDER BY createdAt DESC';
+        $sql = 'SELECT comment.id, user.pseudo, comment.content, comment.createdAt, comment.flag, comment.chapterId FROM comment INNER JOIN user ON comment.userId = user.id WHERE comment.flag = ? ORDER BY comment.createdAt DESC';
         $result = $this->createQuery($sql, [1]);
         $comments = [];
         foreach ($result as $row) {

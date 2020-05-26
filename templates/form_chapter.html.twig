@@ -1,40 +1,29 @@
-{% block form %} 
+{% if  post.get('id')  %}
+    {% set route =  "modifyChapter&chapterId=" %}
+{% else %}
+    {% set route = 'newChapter' %}
+{% endif %}
 
-    {% if  post.get('id')  %}
-        {% set route =  "modifyChapter&chapterId=" %}
-    {% else %}
-        {% set route = 'newChapter' %}
-    {% endif %}
+{% if   route  == 'newChapter' %}
+    {% set submit = "Créer le chapitre" %}
+{% else %}
+    {% set submit = "Modifier" %}
+{% endif %}
 
-    {% if   route  == 'newChapter' %}
-        {% set submit = "Créer le chapitre" %}
-    {% else %}
-        {% set submit = "Modifier" %}
-    {% endif %}
+{% set chapterNumber =  post.get('chapterNumber') %}
+{% set title =  post.get('title') %}
+{% set content =  post.get('content') %}    
+{% set id =  post.get('id') %}
 
-    {% set chapterNumber =  post.get('chapterNumber') %}
-    {% set title =  post.get('title') %}
-    {% set content =  post.get('content') %}    
-    {% set id =  post.get('id') %}
-
-    <script>
-        tinymce.init({
-        selector: 'textarea',
-        toolbar_mode: 'floating',
-        });
-    </script>
-
-    <div class="formContainer">
-        <form class="formChapter" method="post" action="../public/index.php?route={{ route ~ id }}">
-            <label for="chapterNumber"> Numéro du Chapitre </label> <br> <input autofocus type="text" id="chapterNumber" name="chapterNumber" value= "{{chapterNumber}}" /> <br>
-            <div class="formError"> {% autoescape 'html' %} {{errors.chapterNumber | raw}} {% endautoescape %} </div>
-            <label for="title"> Titre </label><br><input type="text" id="title" name="title" value= "{{title}}" /> <br>
-            <div class="formError"> {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %} </div>
-            <label for="content"> Contenu </label> <br> <textarea id="content" name="content"> {{content}} </textarea> <br>
-            <div class="formError"> {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %} </div>
-            <div class="checkbox"><input type="checkbox" id="draft" name="draft" /> <label for="draft"> Enregistrer comme brouillon </label></div>
-            <input type="submit" value = "{{ submit }}"  id="submit" name="submit">  
-        </form>                  
-    </div>
-
-{% endblock %} 
+<div class="formContainer">
+    <form class="formChapter" method="post" action="../public/index.php?route={{ route ~ id }}">
+        <label for="chapterNumber"> Numéro du Chapitre </label> <br> <input autofocus type="text" id="chapterNumber" name="chapterNumber" value= "{{chapterNumber}}" /> <br>
+        <div class="formError"> {% autoescape 'html' %} {{errors.chapterNumber | raw}} {% endautoescape %} </div>
+        <label for="title"> Titre </label><br><input type="text" id="title" name="title" value= "{{title}}" /> <br>
+        <div class="formError"> {% autoescape 'html' %} {{errors.title | raw}} {% endautoescape %} </div>
+        <label for="content"> Contenu </label> <br> <textarea id="content" name="content"> {{content}} </textarea> <br>
+        <div class="formError"> {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %} </div>
+        <div class="checkbox"><input type="checkbox" id="draft" name="draft" /> <label for="draft"> Enregistrer comme brouillon </label></div>
+        <input type="submit" value = "{{ submit }}"  id="submit" name="submit">  
+    </form>                  
+</div>

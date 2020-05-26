@@ -2,6 +2,11 @@
 
 {% block title %} Modification {% endblock %}
 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../public/css/form.css"/>
+{% endblock %}
+
 {% block content %} 
 
     <div class="title">
@@ -45,3 +50,14 @@
     </div>
 
 {% endblock %} 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.tiny.cloud/1/cw4q64aokxm6bpoqnqo3ll1stp1bwm7285a3jsoyczyjp3dm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+        selector: 'textarea',
+        toolbar_mode: 'floating',
+        });
+    </script>
+{% endblock %}

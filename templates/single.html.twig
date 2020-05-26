@@ -2,8 +2,13 @@
 
 {% block title %} Chapitre {% endblock %}
 
-{% block content %} 
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../public/css/singleChapter.css"/>
+    <link rel="stylesheet" href="../public/css/form.css"/>
+{% endblock %}
 
+{% block content %}
     <div>
         <div class="title">
             <h1>

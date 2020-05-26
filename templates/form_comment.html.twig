@@ -1,5 +1,3 @@
-{% block form %} 
-
     <div class="formContainerComment" >
         <form method="post" action="../public/index.php?route=addComment&chapterId={{chapter.id}}">        
             <label for="content">Commentaire :</label><br>
@@ -7,6 +5,4 @@
             <div class="formError"> {% autoescape 'html' %} {{errors.content | raw}} {% endautoescape %} </div>
             <input type="submit" value="Ajouter" id="submit" name="submit">            
         </form>
-    </div> 
-
-{% endblock %}
+    </div>

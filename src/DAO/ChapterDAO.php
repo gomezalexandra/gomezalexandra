@@ -44,7 +44,7 @@ class ChapterDAO extends DAO
         return $drafts;
     }
 
-    public function getLastChapter()
+    public function getLastChapter() 
     {
         $sql = 'SELECT chapter.id, chapter.chapterNumber, chapter.title, chapter.content, user.pseudo, chapter.createdAt, chapter.draft FROM chapter INNER JOIN user ON chapter.userId = user.id WHERE chapter.draft = ? ORDER BY chapter.chapterNumber DESC LIMIT 0, 1';
         $result = $this->createQuery($sql, [0]);
@@ -115,8 +115,6 @@ class ChapterDAO extends DAO
     public function deleteChapter($chapterId)
     {
         $sql = 'DELETE FROM chapter WHERE id = ?';
-        $this->createQuery($sql, [$chapterId]);
-        $sql = 'DELETE FROM comment WHERE chapterId = ?';
         $this->createQuery($sql, [$chapterId]);
     }
 }
